@@ -1,0 +1,44 @@
+---
+title: "O365_Tenant_Activity"
+author: "Don Fernandes"
+date: "July 24, 2025"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+
+```{r libraries, include=FALSE}
+# Load essential R libraries using pacman for efficient loading and installation.
+# pacman::p_load checks if packages are installed and loads them; installs if missing.
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(
+  data.table, tidyverse, ggplot2, janitor, lubridate, ggthemes, tufte
+)
+
+```
+
+
+```{r import, include=FALSE}
+# csv files are created from powershell script Get-UserData.ps1
+# import the data and remove empty columns and columns containing same values
+
+setwd("C:/scripts/m365Pros")
+
+email_data <- fread("email.csv") %>% clean_names() %>% 
+  remove_empty(which = "cols") %>% select(-is_deleted)
+
+odb_data <- fread("onedrive.csv") %>% clean_names() %>%
+  remove_empty(which = "cols") %>% select(-is_deleted)
+
+teams_data <- fread("teams.csv") %>% clean_names() %>%
+  remove_empty(which = "cols") %>% select(-is_deleted)
+
+```

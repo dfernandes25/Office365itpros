@@ -8,10 +8,14 @@
 
 Connect-MgGraph -NoWelcome -Scopes Reports.Read.All, ReportSettings.ReadWrite.All, User.Read.All
 
-$TempDownloadFile = "c:\scripts\copilot.csv"
-$ObscureFlag = $false
-$CSVOutputFile = "C:\scripts\CopilotUserAnalysis.csv"
+$dirPath = "C:\scripts\m365Pros"
+if($dirPath){Remove-Item -Path "$dirPath" -Recurse -Force}
+Sleep -Seconds 3
+mkdir $dirPath -Force
 
+#$CSVOutputFile = "C:\scripts\CopilotUserAnalysis.csv"
+
+$ObscureFlag = $false
 $Uri = "https://graph.microsoft.com/beta/admin/reportSettings"
 # Check if the tenant has obscured real names for reports - see https://office365itpros.com/2022/09/09/graph-usage-report-tips/
 $DisplaySettings = Invoke-MgGraphRequest -Method Get -Uri $Uri
@@ -35,21 +39,32 @@ Write-Host "Finding user accounts to check..."
 Write-Host "Fetching usage data for Teams, Exchange, and OneDrive for Business..."
 # Get Teams user activity detail for the last 30 days
 $Uri = "https://graph.microsoft.com/v1.0/reports/getTeamsUserActivityUserDetail(period='D30')"
-Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath $TempDownloadFile
-[array]$TeamsUserData = Import-CSV $TempDownloadFile
+Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$TempDownloadFile\teams.csv"
+#[array]$TeamsUserData = Import-CSV $TempDownloadFile
+
 # Get Email activity data
 $Uri = "https://graph.microsoft.com/v1.0/reports/getEmailActivityUserDetail(period='D30')"
-Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath $TempDownloadFile
-[array]$EmailUserData = Import-CSV $TempDownloadFile
+Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$TempDownloadFile\email.csv"
+#[array]$EmailUserData = Import-CSV $TempDownloadFile
+
 # Get OneDrive data 
 $Uri = "https://graph.microsoft.com/v1.0/reports/getOneDriveActivityUserDetail(period='D30')"
-Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath $TempDownloadFile
-[array]$OneDriveUserData = Import-CSV $TempDownloadFile
+Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$TempDownloadFile\onedrive.csv"
+#[array]$OneDriveUserData = Import-CSV $TempDownloadFile
+
 # Get Apps detail
 $Uri = "https://graph.microsoft.com/v1.0/reports/getM365AppUserDetail(period='D30')"
-Invoke-mgGraphRequest -Uri $Uri -Method GET -OutputFilePath $TempDownloadFile
-[array]$AppsUserData = Import-CSV $TempDownloadFile
+Invoke-mgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$TempDownloadFile\apps.csv"
+#[array]$AppsUserData = Import-CSV $TempDownloadFile
 
+# Switch the tenant report obscure data setting back if necessary
+If ($ObscureFlag -eq $True) {
+    Write-Host "Resetting tenant data concealment for reports to True" -foregroundcolor red
+    Invoke-MgGraphRequest -Method PATCH -Uri 'https://graph.microsoft.com/beta/admin/reportSettings' `
+     -Body (@{"displayConcealedNames"= $true} | ConvertTo-Json) 
+     }
+
+<#
 Write-Host "Analyzing information..."
 $CopilotReport = [System.Collections.Generic.List[Object]]::new()
 ForEach ($User in $Users) {
@@ -151,3 +166,4 @@ If ($ObscureFlag -eq $True) {
 # Do not use our scripts in production until you are satisfied that the code meets the need of your organization. Never run any code downloaded from the Internet without
 # first validating the code in a non-production environment.
 
+#>
