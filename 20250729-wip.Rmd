@@ -1,8 +1,12 @@
 ---
-title: "O365_Tenant_Activity"
-author: "Don Fernandes"
-date: "July 24, 2025"
-output: html_document
+title: "July 2025 BT M365 Insights"
+author: "Prepared by CBC Technologies"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html:
+    toc: true
+    toc_depth: 3
+    self_contained: true
 ---
 
 ```{r setup, include=FALSE}
@@ -13,22 +17,21 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 ```{r libraries, include=FALSE}
 # Load essential R libraries using pacman for efficient loading and installation.
 # pacman::p_load checks if packages are installed and loads them; installs if missing.
 
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(
-  data.table, DT, gdata, ggplot2, ggthemes, esquisse, tidyverse, janitor, lubridate, tufte
+  data.table, DT, gdata, ggplot2, ggthemes, esquisse, tidyverse, janitor, kable, kableExtra, lubridate, shiny, tufte
 )
 
 ```
 
-
 ```{r import, include=FALSE}
 # csv files are created from powershell script Get-UserData.ps1
-# import the data and remove empty columns and columns containing same values
+# import the data
+# remove empty and same value columns (ex: all column values equal 'x')
 # convert dates
 
 setwd("C:/scripts/m365Pros")
@@ -49,8 +52,6 @@ teams_data$last_activity_date <- ymd(teams_data$last_activity_date)
 
 ```
 
-### Exchange Online Summary
-
 ```{r email-summary-data, include=FALSE}
 
 email_summary <- email_data %>% summarise(
@@ -61,13 +62,11 @@ total_received = sum(receive_count, na.rm = TRUE),
 total_read = sum(read_count, na.rm = TRUE)
 )
 
-
 top_users <- email_data %>%
 mutate(total_activity = send_count + receive_count + read_count) %>%
 arrange(desc(total_activity)) %>%
 select(display_name, send_count, receive_count, read_count, total_activity) %>%
 head(10)
-#datatable(top_users)
 
 top_senders <- email_data %>%
 arrange(desc(send_count)) %>%
@@ -84,50 +83,7 @@ arrange(desc(read_count)) %>%
 select(display_name, read_count) %>%
 head(10) 
 
-# email_data %>%
-# pivot_longer(cols = c(send_count, receive_count, read_count),
-# names_to = "activity_type", values_to = "count") %>%
-# ggplot(aes(x = count, fill = activity_type)) +
-# geom_histogram(bins = 30, alpha = 0.7, position = "identity") +
-# facet_wrap(~activity_type, scales = "free") +
-# theme_minimal() +
-# labs(title = "Distribution of Email Activities", x = "Count", y = "Frequency")
-# 
-
 ```
-
-
-```{r email- summary-graphs, echo=FALSE}
-
-datatable(email_summary)
-
-top_users %>%
-ggplot(aes(x = reorder(display_name, total_activity), y = total_activity)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Total Email Activity", x = "User", y = "Total Activity")
-
-top_senders %>%
-ggplot(aes(x = reorder(display_name, send_count), y = send_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Emails Sent", x = "User", y = "Emails Sent")
-
-top_receivers %>%
-ggplot(aes(x = reorder(display_name, receive_count), y = receive_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Emails Received", x = "User", y = "Emails Received")
-
-top_readers %>%
-ggplot(aes(x = reorder(display_name, read_count), y = read_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Emails Read", x = "User", y = "Emails Read")
-
-```
-
-### OneDrive for Business Summary
 
 ```{r odb-summary-data, include=FALSE}
 
@@ -146,7 +102,7 @@ mutate(total_activity = viewed_or_edited_file_count + synced_file_count + shared
 arrange(desc(total_activity)) %>%
 select(user_principal_name,total_activity) %>%
 head(10)
-#datatable(top_users)
+
 
 top_odb_viewers <- odb_data %>%
 arrange(desc(viewed_or_edited_file_count)) %>%
@@ -170,45 +126,6 @@ head(10)
 
 ```
 
-```{r odb-summary-graphs, echo=FALSE}
-
-datatable(odb_summary)
-
-top_odb_users %>%
-ggplot(aes(x = reorder(user_principal_name, total_activity), y = total_activity)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by OneDrive Activity", x = "User", y = "Total Activity")
-
-top_odb_viewers %>%
-ggplot(aes(x = reorder(user_principal_name, viewed_or_edited_file_count), y = viewed_or_edited_file_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Files Viewed", x = "User", y = "Files Viewed")
-
-top_odb_sync %>%
-ggplot(aes(x = reorder(user_principal_name, synced_file_count), y = synced_file_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Files Synced", x = "User", y = "Files Synced")
-
-top_odb_shared_internal %>%
-ggplot(aes(x = reorder(user_principal_name, shared_internally_file_count), y = shared_internally_file_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Files Shared Internally", x = "User", y = "Shared Internally")
-
-top_odb_shared_external %>%
-ggplot(aes(x = reorder(user_principal_name, shared_externally_file_count), y = shared_externally_file_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Files Shared Externally", x = "User", y = "Shared Externally")
-
-```
-
-
-### Teams Summary
-
 ```{r teams-summary-data, include=FALSE}
 
 teams_summary <- teams_data %>% summarise(
@@ -219,9 +136,9 @@ private_chats = sum(private_chat_message_count, na.rm = TRUE),
 all_meetings = sum(meeting_count, na.rm = TRUE),
 meetings_organized = sum(meetings_organized_count, na.rm = TRUE),
 meetings_attended = sum(meetings_attended_count, na.rm = TRUE),
-message_posts = sum(post_messages, na.rm = TRUE),
-message_urgent = sum(urgent_messages, na.rm = TRUE),
-message_replies = sum(reply_messages, na.rm = TRUE),
+#message_posts = sum(post_messages, na.rm = TRUE),
+#message_urgent = sum(urgent_messages, na.rm = TRUE),
+#message_replies = sum(reply_messages, na.rm = TRUE),
 )
 
 top_teams_users <- teams_data %>%
@@ -260,66 +177,17 @@ head(10)
 
 ```
 
-```{r teams-summary-graphs, echo=FALSE}
-
-datatable(teams_summary)
-
-top_teams_users %>%
-ggplot(aes(x = reorder(user_principal_name, total_activity), y = total_activity)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Teams Activity", x = "User", y = "Total Activity")
-
-top_teams_private_chats %>%
-ggplot(aes(x = reorder(user_principal_name, private_chat_message_count), y = private_chat_message_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Private Chat", x = "User", y = "Private Chats")
-
-organized_meetings %>%
-ggplot(aes(x = reorder(user_principal_name, meetings_organized_count), y = meetings_organized_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Meetings Organized", x = "User", y = "Total Organized")
-
-attended_meetings %>%
-ggplot(aes(x = reorder(user_principal_name, meetings_attended_count), y = meetings_attended_count)) +
-geom_col(fill = "steelblue") +
-coord_flip() + theme_minimal() +
-labs(title = "Top 10 Users by Meetings Attended", x = "User", y = "Total Attended")
-
-
-```
-
-### Assigned Products
-
 ```{r assigned-products-summary-data, echo=FALSE}
-
-# activity_summary <- email_data %>%
-# group_by(assigned_products) %>%
-# summarise(
-# users = n(),
-# total_sent = sum(send_count, na.rm = TRUE),
-# total_received = sum(receive_count, na.rm = TRUE), total_read = sum(read_count, na.rm = TRUE)
-# ) %>%
-# arrange(desc(total_sent + total_received + total_read))
-# datatable(activity_summary, options = list(pageLength = 10), caption = "User Activity by Assigned Product")
 
 product_freq <- email_data %>%
 count(assigned_products, sort = TRUE)
-datatable(product_freq, options = list(pageLength = 10), caption = "Assigned Products")
-
-# top_products <- product_freq %>% top_n(10, n)
-# ggplot(top_products, aes(x = reorder(assigned_products, n), y = n)) + geom_col(fill = "steelblue") + coord_flip() + theme_minimal() +
-# labs(title = "Top 10 Assigned Products", x = "Products", y = "Count")
-
 
 ```
 
-```{r test-data}
+```{r chart-function, echo=FALSE}
 
 lollipop_chart <- function(data, x_var, y_var, top_n = 10, title = "Lollipop Chart",
-                           label_color = "black", label_size = 4, label_font = "sans") {
+                           label_color = "black", label_size = 3, label_font = "Times") {
   library(ggplot2)
   library(dplyr)
 
@@ -330,46 +198,138 @@ lollipop_chart <- function(data, x_var, y_var, top_n = 10, title = "Lollipop Cha
   ggplot(filtered_data, aes(x = reorder(.data[[x_var]], .data[[y_var]]), 
                             y = .data[[y_var]])) +
     geom_segment(aes(xend = .data[[x_var]], y = 0, yend = .data[[y_var]]), 
-                 color = "gray70", size = 1) +
+                 color = "black", size = 2) +
     geom_point(aes(color = .data[[y_var]], size = .data[[y_var]])) +
     geom_text(aes(label = .data[[y_var]]), 
               hjust = -0.1, 
               color = label_color, 
               size = label_size, 
               family = label_font) +
-    scale_color_gradient(low = "lightpink", high = "red") +
+    scale_color_gradient(low = "pink", high = "red") +
+    #scale_color_gradient(low = "lightpink", high = "darkpink") +
     scale_size(range = c(3, 8)) +
     guides(color = "none", size = "none") +
     coord_flip() +
-    theme_fivethirtyeight() +
-    labs(title = title, x = x_var, y = y_var) +
+    theme_tufte() +
+    #theme_fivethirtyeight() +
+    labs(
+      title = title, 
+      x = x_var, 
+      y = y_var
+      ) +
     theme(plot.title = element_text(hjust = 0.5))
 }
 
 
 ```
 
-```{r test-graph-function}
 
+## Email Summary
+
+```{r email-graph, echo=FALSE}
+
+kable(email_summary)
 
 lollipop_chart(
-  data = top_teams_private_chats,
-  x_var = "user_principal_name",
-  y_var = "private_chat_message_count",
+  data = top_users,
+  x_var = "display_name",
+  y_var = "total_activity",
   top_n = 10,
-  title = "Private Chat Users",
-  label_color = "darkred",
-  label_size = 5,
-  label_font = "Times"
+  title = "Top Mail Users"
 )
 
+lollipop_chart(
+  data = top_senders,
+  x_var = "display_name",
+  y_var = "send_count",
+  top_n = 10,
+  title = "Top Mail Senders"
+)
+
+lollipop_chart(
+  data = top_receivers,
+  x_var = "display_name",
+  y_var = "receive_count",
+  top_n = 10,
+  title = "Top Mail Receivers"
+)
+
+lollipop_chart(
+  data = top_readers,
+  x_var = "display_name",
+  y_var = "read_count",
+  top_n = 10,
+  title = "Top Mail Readers"
+)
+
+```
+
+## OneDrive for Business Summary
+
+```{r odb-graph, echo=FALSE}
+
+kable(odb_summary)
+lollipop_chart(
+  data = top_odb_users,
+  x_var = "user_principal_name",
+  y_var = "total_activity",
+  top_n = 10,
+  title = "Top OneDrive Users"
+)
+
+lollipop_chart(
+  data = top_odb_viewers,
+  x_var = "user_principal_name",
+  y_var = "viewed_or_edited_file_count",
+  top_n = 10,
+  title = "Files Viewed/Edited"
+)
+
+lollipop_chart(
+  data = top_odb_sync,
+  x_var = "user_principal_name",
+  y_var = "synced_file_count",
+  top_n = 10,
+  title = "Files Synced"
+)
+
+lollipop_chart(
+  data = top_odb_shared_internal,
+  x_var = "user_principal_name",
+  y_var = "shared_internally_file_count",
+  top_n = 10,
+  title = "Files Shared Internally"
+)
+
+lollipop_chart(
+  data = top_odb_shared_external,
+  x_var = "user_principal_name",
+  y_var = "shared_externally_file_count",
+  top_n = 10,
+  title = "Files Shared externally"
+)
+
+```
+
+## Teams
+
+```{r teams-graph, echo=FALSE}
+kable(teams_summary)
+
+lollipop_chart(
+  data = top_teams_users,
+  x_var = "user_principal_name",
+  y_var = "total_activity",
+  top_n = 10,
+  title = "Top Teams Users"
+)
 
 lollipop_chart(
   data = top_teams_private_chats,
   x_var = "user_principal_name",
   y_var = "private_chat_message_count",
   top_n = 10,
-  title = "Private Chat Users"
+  title = "Teams Private Chats"
 )
 
 lollipop_chart(
