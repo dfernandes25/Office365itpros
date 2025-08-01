@@ -1,0 +1,496 @@
+---
+title: "July 2025 BT M365 Insights"
+author: "Prepared by CBC Technologies"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html:
+    toc: true
+    toc_depth: 3
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+```{r libraries, include=FALSE}
+# Load essential R libraries using pacman for efficient loading and installation.
+# pacman::p_load checks if packages are installed and loads them; installs if missing.
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(
+  data.table, DT, gdata, ggplot2, ggthemes, esquisse, tidyverse, janitor, kable, kableExtra, leaflet, lubridate, plotly, shiny, tufte
+)
+
+```
+
+```{r import, include=FALSE}
+# csv files are created from powershell script Get-UserData.ps1
+# import the data
+# remove empty and same value columns (ex: all column values equal 'x')
+# convert dates
+
+setwd("C:/scripts/m365Pros")
+
+email_data <- fread("email.csv") %>% clean_names() %>% 
+  remove_empty(which = "cols") %>% select(-is_deleted)
+
+odb_data <- fread("onedrive.csv") %>% clean_names() %>%
+  remove_empty(which = "cols") %>% select(-is_deleted)
+
+teams_data <- fread("teams.csv") %>% clean_names() %>%
+  remove_empty(which = "cols") %>% select(-is_deleted)
+
+trace_data <- fread("messages.csv") %>% clean_names() 
+
+mfa_data <- fread("auditMFA.csv") %>% clean_names() 
+
+login_data <- fread("suspiciousLogins.csv", stringsAsFactors = FALSE) %>% clean_names
+
+# date conversions
+email_data$last_activity_date <- ymd(email_data$last_activity_date)
+odb_data$last_activity_date <- ymd(odb_data$last_activity_date)
+teams_data$last_activity_date <- ymd(teams_data$last_activity_date)
+
+trace_data <- trace_data %>%
+mutate(time_stamp = mdy_hms(time_stamp), time_stamp = as_date(time_stamp))
+
+mfa_data <- mfa_data %>% mutate(last_sign_in = mdy_hms(last_sign_in, quiet = TRUE),
+mfa_timestamp = mdy_hms(mfa_timestamp, quiet = TRUE))
+
+
+```
+
+```{r email-summary-data, include=FALSE}
+
+email_summary <- email_data %>% summarise(
+total_users = n(),
+active_users = sum(!is.na(last_activity_date)),
+total_sent = sum(send_count, na.rm = TRUE),
+total_received = sum(receive_count, na.rm = TRUE),
+total_read = sum(read_count, na.rm = TRUE)
+)
+
+top_users <- email_data %>%
+mutate(total_activity = send_count + receive_count + read_count) %>%
+arrange(desc(total_activity)) %>%
+select(display_name, send_count, receive_count, read_count, total_activity) %>%
+head(10)
+
+top_senders <- email_data %>%
+arrange(desc(send_count)) %>%
+select(display_name, send_count) %>%
+head(10) 
+
+top_receivers <- email_data %>%
+arrange(desc(receive_count)) %>%
+select(display_name, receive_count) %>%
+head(10)
+
+top_readers <- email_data %>%
+arrange(desc(read_count)) %>%
+select(display_name, read_count) %>%
+head(10) 
+
+```
+
+```{r odb-summary-data, include=FALSE}
+
+odb_summary <- odb_data %>% summarise(
+total_users = n(),
+active_users = sum(!is.na(last_activity_date)),
+total_viewed_edited = sum(viewed_or_edited_file_count, na.rm = TRUE),
+total_synced = sum(synced_file_count, na.rm = TRUE),
+total_shared_internally = sum(shared_internally_file_count, na.rm = TRUE),
+total_shared_externally = sum(shared_externally_file_count, na.rm = TRUE)
+)
+
+
+top_odb_users <- odb_data %>%
+mutate(total_activity = viewed_or_edited_file_count + synced_file_count + shared_internally_file_count + shared_externally_file_count) %>%
+arrange(desc(total_activity)) %>%
+select(user_principal_name,total_activity) %>%
+head(10)
+
+
+top_odb_viewers <- odb_data %>%
+arrange(desc(viewed_or_edited_file_count)) %>%
+select(user_principal_name, viewed_or_edited_file_count) %>%
+head(10) 
+
+top_odb_sync <- odb_data %>%
+arrange(desc(synced_file_count)) %>%
+select(user_principal_name, synced_file_count) %>%
+head(10)
+
+top_odb_shared_internal <- odb_data %>%
+arrange(desc(shared_internally_file_count)) %>%
+select(user_principal_name, shared_internally_file_count) %>%
+head(10)
+
+top_odb_shared_external <- odb_data %>%
+arrange(desc(shared_externally_file_count)) %>%
+select(user_principal_name, shared_externally_file_count) %>%
+head(10)
+
+```
+
+```{r teams-summary-data, include=FALSE}
+
+teams_summary <- teams_data %>% summarise(
+total_users = n(),
+active_users = sum(!is.na(last_activity_date)),
+team_chats = sum(team_chat_message_count, na.rm = TRUE),
+private_chats = sum(private_chat_message_count, na.rm = TRUE),
+all_meetings = sum(meeting_count, na.rm = TRUE),
+meetings_organized = sum(meetings_organized_count, na.rm = TRUE),
+meetings_attended = sum(meetings_attended_count, na.rm = TRUE),
+#message_posts = sum(post_messages, na.rm = TRUE),
+#message_urgent = sum(urgent_messages, na.rm = TRUE),
+#message_replies = sum(reply_messages, na.rm = TRUE),
+)
+
+top_teams_users <- teams_data %>%
+mutate(total_activity = team_chat_message_count + private_chat_message_count + 
+         meeting_count + meetings_organized_count + meetings_attended_count + 
+         post_messages + urgent_messages + reply_messages) %>%
+arrange(desc(total_activity)) %>%
+select(user_principal_name,total_activity) %>%
+head(10)
+#datatable(top_users)
+
+top_teams_chats <- teams_data %>%
+arrange(desc(team_chat_message_count)) %>%
+select(user_principal_name, team_chat_message_count) %>%
+head(10) 
+
+top_teams_private_chats <- teams_data %>%
+arrange(desc(private_chat_message_count)) %>%
+select(user_principal_name, private_chat_message_count) %>%
+head(10) 
+
+all_meetings <- teams_data %>%
+arrange(desc(meeting_count)) %>%
+select(user_principal_name, meeting_count) %>%
+head(10)
+
+organized_meetings <- teams_data %>%
+arrange(desc(meetings_organized_count)) %>%
+select(user_principal_name, meetings_organized_count) %>%
+head(10)
+
+attended_meetings <- teams_data %>%
+arrange(desc(meetings_attended_count)) %>%
+select(user_principal_name, meetings_attended_count) %>%
+head(10)
+
+```
+
+```{r message-trace-summary-data, include=FALSE}
+
+
+top_10_summary <- function(column) { trace_data %>% count(!!sym(column), sort = TRUE) %>% top_n(10, n) }
+columns <- c("sender", "recipient", "sender_domain", "recipient_domain", "status", "direction")
+top_10_tables <- lapply(columns, top_10_summary)
+names(top_10_tables) <- columns
+
+message_ <- teams_data %>%
+arrange(desc(meeting_count)) %>%
+select(user_principal_name, meeting_count) %>%
+head(10)
+
+
+```
+
+```{r assigned-products-summary-data, eval=FALSE, include=FALSE}
+
+product_freq <- email_data %>%
+count(assigned_products, sort = TRUE)
+
+```
+
+```{r mfa-summary-data, include=FALSE} 
+
+summary_stats <- tibble(
+metric = c( "Total Users", "Users with MFA", "Users with No Sign-in Records", "Users with Single Factor",
+"MFA Performed", "Existing Claim in Token",
+"Users with MFA Methods Listed" ), value = c(
+nrow(mfa_data),
+sum(mfa_data$authentication == "MFA", na.rm = TRUE),
+sum(mfa_data$authentication == "No sign-in records found", na.rm = TRUE),
+sum(mfa_data$authentication == "Single factor", na.rm = TRUE),
+sum(mfa_data$mfa_status == "MFA Performed", na.rm = TRUE),
+sum(mfa_data$mfa_status == "Existing claim in the token used", na.rm = TRUE),
+sum(!is.na(mfa_data$mfa_methods))
+))
+
+```
+
+```{r chart-function, echo=FALSE}
+
+lollipop_chart <- function(data, x_var, y_var, top_n = 10, title = "Lollipop Chart",
+                           label_color = "black", label_size = 3, label_font = "Times") {
+  library(ggplot2)
+  library(dplyr)
+
+  # Filter top N by y_var
+  filtered_data <- data %>%
+    slice_max(order_by = .data[[y_var]], n = top_n)
+
+  ggplot(filtered_data, aes(x = reorder(.data[[x_var]], .data[[y_var]]), 
+                            y = .data[[y_var]])) +
+    geom_segment(aes(xend = .data[[x_var]], y = 0, yend = .data[[y_var]]), 
+                 color = "black", size = 2) +
+    geom_point(aes(color = .data[[y_var]], size = .data[[y_var]])) +
+    geom_text(aes(label = .data[[y_var]]), 
+              hjust = -0.1, 
+              color = label_color, 
+              size = label_size, 
+              family = label_font) +
+    scale_color_gradient(low = "pink", high = "red") +
+    #scale_color_gradient(low = "lightpink", high = "darkpink") +
+    scale_size(range = c(3, 8)) +
+    guides(color = "none", size = "none") +
+    coord_flip() +
+    theme_tufte() +
+    #theme_fivethirtyeight() +
+    labs(
+      title = title, 
+      x = x_var, 
+      y = y_var
+      ) +
+    theme(plot.title = element_text(hjust = 0.5))
+}
+
+
+```
+
+
+## Email Summary
+
+```{r email-graph, echo=FALSE}
+
+kable(email_summary)
+
+lollipop_chart(
+  data = top_users,
+  x_var = "display_name",
+  y_var = "total_activity",
+  top_n = 10,
+  title = "Top Mail Users"
+)
+
+lollipop_chart(
+  data = top_senders,
+  x_var = "display_name",
+  y_var = "send_count",
+  top_n = 10,
+  title = "Top Mail Senders"
+)
+
+lollipop_chart(
+  data = top_receivers,
+  x_var = "display_name",
+  y_var = "receive_count",
+  top_n = 10,
+  title = "Top Mail Receivers"
+)
+
+lollipop_chart(
+  data = top_readers,
+  x_var = "display_name",
+  y_var = "read_count",
+  top_n = 10,
+  title = "Top Mail Readers"
+)
+
+```
+
+## OneDrive for Business Summary
+
+```{r odb-graph, echo=FALSE}
+
+kable(odb_summary)
+lollipop_chart(
+  data = top_odb_users,
+  x_var = "user_principal_name",
+  y_var = "total_activity",
+  top_n = 10,
+  title = "Top OneDrive Users"
+)
+
+lollipop_chart(
+  data = top_odb_viewers,
+  x_var = "user_principal_name",
+  y_var = "viewed_or_edited_file_count",
+  top_n = 10,
+  title = "Files Viewed/Edited"
+)
+
+lollipop_chart(
+  data = top_odb_sync,
+  x_var = "user_principal_name",
+  y_var = "synced_file_count",
+  top_n = 10,
+  title = "Files Synced"
+)
+
+lollipop_chart(
+  data = top_odb_shared_internal,
+  x_var = "user_principal_name",
+  y_var = "shared_internally_file_count",
+  top_n = 10,
+  title = "Files Shared Internally"
+)
+
+lollipop_chart(
+  data = top_odb_shared_external,
+  x_var = "user_principal_name",
+  y_var = "shared_externally_file_count",
+  top_n = 10,
+  title = "Files Shared externally"
+)
+
+```
+
+## Teams
+
+```{r teams-graph, echo=FALSE}
+kable(teams_summary)
+
+lollipop_chart(
+  data = top_teams_users,
+  x_var = "user_principal_name",
+  y_var = "total_activity",
+  top_n = 10,
+  title = "Top Teams Users"
+)
+
+lollipop_chart(
+  data = top_teams_private_chats,
+  x_var = "user_principal_name",
+  y_var = "private_chat_message_count",
+  top_n = 10,
+  title = "Teams Private Chats"
+)
+
+lollipop_chart(
+  data = attended_meetings,
+  x_var = "user_principal_name",
+  y_var = "meetings_attended_count",
+  top_n = 10,
+  title = "Teams Meeting Attendance"
+)
+
+```
+
+## Message Trace (10 Day)
+
+```{r trace-graph, echo=FALSE}
+
+# message by date conversions
+stamp_count <- trace_data %>% count(time_stamp)
+stamp_count$time_stamp <- as.character(stamp_count$time_stamp)
+
+lollipop_chart(
+  data = stamp_count,
+  x_var = "time_stamp",
+  y_var = "n",
+  top_n = 10,
+  title = "Message Count by Date"
+)
+
+lollipop_chart(
+  data <- top_10_tables$direction,
+  x_var = "direction",
+  y_var = "n",
+  top_n = 10,
+  title = "Message Count by Direction"
+)
+
+lollipop_chart(
+  data <- top_10_tables$sender,
+  x_var = "sender",
+  y_var = "n",
+  top_n = 10,
+  title = "Message Count by Sender"
+)
+
+lollipop_chart(
+  data <- top_10_tables$sender_domain,
+  x_var = "sender_domain",
+  y_var = "n",
+  top_n = 10,
+  title = "Message Count by Sender Domains"
+)
+
+lollipop_chart(
+  data <- top_10_tables$recipient,
+  x_var = "recipient",
+  y_var = "n",
+  top_n = 10,
+  title = "Message Count by Recipient"
+)
+
+lollipop_chart(
+  data <- top_10_tables$recipient_domain,
+  x_var = "recipient_domain",
+  y_var = "n",
+  top_n = 10,
+  title = "Message Counts by Recipient Domains"
+)
+
+
+# Display the tables using kable
+# kable(stamp_count, caption = "Message Volume by Date")
+# kable(top_10_tables$direction, caption = "Message Direction")
+# kable(top_10_tables$sender, caption = "Top 10 Senders")
+# kable(top_10_tables$sender_domain, caption = "Top 10 Sending Domains")
+# kable(top_10_tables$recipient, caption = "Top 10 Recipients")
+# kable(top_10_tables$recipient_domain, caption = "Top 10 Recipient Domains")
+
+```
+
+
+## MultiFactor Authentication
+
+```{r mfa-graph, echo=FALSE}
+
+mfa_methods <- mfa_data %>% filter(!is.na(mfa_methods)) %>% separate_rows(mfa_methods, sep = ",\\s*") %>% count(mfa_methods, sort = TRUE)
+ggplot(mfa_methods, aes(x = reorder(mfa_methods, n), y = n)) +
+geom_col(fill = "steelblue") + coord_flip() +
+labs(title = "MFA Method Usage", x = "MFA Method", y = "Count")
+
+
+status_counts <- mfa_data %>% count(mfa_status, sort = TRUE)
+plot_ly(status_counts, labels = ~mfa_status, values = ~n, type = 'pie') %>% layout(title = 'MFA Status Distribution')
+
+
+mfa_data <- mfa_data %>% mutate(sign_in_date = as.Date(last_sign_in)) %>%
+filter(!is.na(sign_in_date))
+sign_in_counts <- mfa_data %>%
+count(sign_in_date)
+ggplot(sign_in_counts, aes(x = sign_in_date, y = n)) + geom_line(color = "darkgreen") + geom_point() + labs(title = "User Sign-in Activity Over Time", x = "Date", y = "Number of Sign-ins")
+
+
+# MFA Coverage: Only about a third of users have MFA enabled. Enforce MFA for all active users.
+# Dormant Accounts: Many users have no sign-in records. Audit and deactivate unused accounts.
+# Authentication Diversity: Encourage users to register multiple MFA methods for redundancy.
+# Token Reuse: Investigate users with repeated “Existing claim” statuses for session security.
+# User Training: Provide guidance on MFA setup and benefits to improve adoption.
+
+```
+
+## Questionable Logins
+```{r login-summary-data, include=FALSE}
+
+
+p <- ggplot(login_data, aes(x = created_date_time)) +
+geom_histogram(binwidth = 3600, fill = "steelblue", color = "white") + labs(title = "Login Attempts Over Time", x = "Time", y = "Count") + theme_minimal()
+
+
+```

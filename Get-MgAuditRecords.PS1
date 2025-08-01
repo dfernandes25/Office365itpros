@@ -4,11 +4,14 @@
 # See https://github.com/12Knocksinna/Office365itpros/blob/master/Search-AuditLogGraph.PS1 for an example using Graph API requests
 # GitHub link: https://github.com/12Knocksinna/Office365itpros/blob/master/Get-MgAuditRecords.PS1
 
+## 20250731 DF ##
+## takes a long time to run ##
+
 Connect-MgGraph -NoWelcome -Scopes AuditLogsQuery.Read.All
 
 Set-MgRequestContext -MaxRetry 10 -RetryDelay 15
 $AuditQueryName = ("Audit Job created at {0}" -f (Get-Date))
-$StartDate = (Get-Date).AddDays(-180)
+$StartDate = (Get-Date).AddDays(-30)
 $EndDate = (Get-Date).AddDays(1)
 $AuditQueryStart = (Get-Date $StartDate -format s)
 $AuditQueryEnd = (Get-Date $EndDate -format s)

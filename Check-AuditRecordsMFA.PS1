@@ -5,7 +5,7 @@
 
 Connect-MgGraph -Scopes Directory.Read.All, AuditLog.Read.All -NoWelcome
 
-$CSVOutputFile = "c:\temp\CheckAuditRecordsMFA.csv"
+$CSVOutputFile = "c:\scripts\m365Pros\auditMFA.csv"
 $TenantId = (Get-MgOrganization).Id
 $StartDate = (Get-Date).AddDays(-30)
 $StartDateS = (Get-Date $StartDate -Format s) + "Z"
@@ -75,7 +75,7 @@ ForEach ($User in $Users) {
     $Report.Add($ReportLine)
 }
 
-$Report | Out-GridView -Title 'MFA Usage by User'
+# $Report | Out-GridView -Title 'MFA Usage by User'
 $Report | Export-CSV -NoTypeInformation $CSVOutputFile
 [float]$MFACheck = ($MFAUsers/$Users.Count)*100
 $PercentMFAUsers = ($MFAUsers/$Users.Count).toString('P')

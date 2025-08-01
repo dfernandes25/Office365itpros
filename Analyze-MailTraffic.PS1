@@ -93,6 +93,7 @@ Write-Host "Top 10 domains for inbound messages"
 Write-Host "-----------------------------------"
 $InboundMessages | Group-Object SenderDomain -NoElement | Sort-Object Count -Descending | Select-Object -First 10 | Format-Table Name, Count -AutoSize
 
+<#
 
 # Generate sortable HTML table with type-aware sorting - use number as the type for numeric values, date for dates, and string for text
 $HtmlHeader = @"
@@ -163,12 +164,17 @@ $HtmlFooter = @"
 </html>
 "@
 
-$ReportFile = "c:\temp\MessageStats.html"
+$ReportFile = "c:\scripts\m365Pros\MessageStats.html"
 #Generate the full HTML content and save it to a file
 $HtmlFile = $HtmlHeader + ($HtmlRows -join "`n") + $HtmlFooter
 $HtmlFile | Out-File -FilePath $ReportFile -Encoding utf8
 
 Write-Host "Detailed message statistics saved to $ReportFile" -ForegroundColor Green
+
+#>
+
+
+$Report | Export-csv "C:\scripts\m365Pros\messages.csv" -nti -force
 
 # An example script used to illustrate a concept. More information about the topic can be found in the Office 365 for IT Pros eBook https://gum.co/O365IT/
 # and/or a relevant article on https://office365itpros.com or https://www.practical365.com. See our post about the Office 365 for IT Pros repository 
