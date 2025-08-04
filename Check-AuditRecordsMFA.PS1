@@ -11,7 +11,7 @@ $StartDate = (Get-Date).AddDays(-30)
 $StartDateS = (Get-Date $StartDate -Format s) + "Z"
 
 Write-Host "Looking for sign-in records..."
-[array]$AuditRecords = Get-MgBetaAuditLogSignIn -Top 10000 -PageSize 500 `
+[array]$AuditRecords = Get-MgBetaAuditLogSignIn
   -Filter "(CreatedDateTime ge $StartDateS) and (signInEventTypes/any(t:t eq 'interactiveuser')) and (usertype eq 'Member')"
 If (!$AuditRecords) {
     Write-Host "No sign-in records found - exiting"

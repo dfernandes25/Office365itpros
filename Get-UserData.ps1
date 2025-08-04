@@ -43,19 +43,19 @@ Write-Host "Finding user accounts to check..."
 Write-Host "Fetching usage data for Teams, Exchange, and OneDrive for Business..."
 # Get Teams user activity detail for the last 30 days
 $Uri = "https://graph.microsoft.com/v1.0/reports/getTeamsUserActivityUserDetail(period='D30')"
-Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$TempDownloadFile\teams.csv"
+Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$dirPath\teams.csv"
 
 # Get Email activity data
 $Uri = "https://graph.microsoft.com/v1.0/reports/getEmailActivityUserDetail(period='D30')"
-Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$TempDownloadFile\email.csv"
+Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$dirPath\email.csv"
 
 # Get OneDrive data 
 $Uri = "https://graph.microsoft.com/v1.0/reports/getOneDriveActivityUserDetail(period='D30')"
-Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$TempDownloadFile\onedrive.csv"
+Invoke-MgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$dirPath\onedrive.csv"
 
 # Get Apps detail
 $Uri = "https://graph.microsoft.com/v1.0/reports/getM365AppUserDetail(period='D30')"
-Invoke-mgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$TempDownloadFile\apps.csv"
+Invoke-mgGraphRequest -Uri $Uri -Method GET -OutputFilePath "$dirPath\apps.csv"
 
 
 # Fetch recent sign-in logs
@@ -70,7 +70,7 @@ $suspiciousLogins = $signIns | Where-Object {
 $suspiciousLogins | 
 Select-Object UserPrincipalName, CreatedDateTime, IPAddress, 
     @{Name="City";Expression={$_.Location.City}}, @{Name="Country";Expression={$_.Location.CountryOrRegion}}, 
-    @{Name="FailureReason";Expression={$_.Status.FailureReason}}, ConditionalAccessStatus | Export-csv "$TempDownloadFile\suspiciousLogins.csv" -nti -Force
+    @{Name="FailureReason";Expression={$_.Status.FailureReason}}, ConditionalAccessStatus | Export-csv "$dirPath\suspiciousLogins.csv" -nti -Force
     
 
 # Switch the tenant report obscure data setting back if necessary

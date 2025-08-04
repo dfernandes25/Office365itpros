@@ -1,0 +1,294 @@
+
+---
+title: "July 2025 Resilient Retreat M365 Insights"
+author: "Prepared by CBC Technologies"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html:
+    toc: true
+    number_sections: false
+    css: ["tufte.css"]
+    html_dependencies: null
+    self_contained: true
+    highlight: "tango"
+---
+
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set( echo = TRUE, 
+                       message = FALSE, 
+                       warning = FALSE, 
+                       fig.align = "center", 
+                       fig.width = 8, 
+                       fig.height = 5 )
+```
+
+
+```{r, libraries, include=FALSE}
+if (!require("pacman")) install.packages("pacman") 
+pacman::p_load(
+data.table, tidyverse, janitor, lubridate, # Visualization
+ggplot2, ggthemes, plotly, leaflet, esquisse, # Reporting
+DT, gdata, kable, kableExtra, tufte, # Interactive tools
+shiny )
+
+```
+
+
+```{r import_data, include=FALSE}
+# Define a reusable function for importing and cleaning data
+clean_import <- function(file) { fread(file) %>% clean_names() %>% remove_empty("cols") %>%
+select(-is_deleted) }
+
+#Set working directory (consider replacing with here::here() for portability)
+setwd("C:/scripts/m365Pros")
+
+#Import and clean datasets
+email_data <- clean_import("email.csv")
+odb_data <- clean_import("onedrive.csv") 
+teams_data <- clean_import("teams.csv")
+trace_data <- fread("messages.csv") %>% clean_names() 
+mfa_data <- fread("auditMFA.csv") %>% clean_names()
+login_data <- fread("suspiciousLogins.csv", stringsAsFactors = FALSE) %>% clean_names()
+
+```
+
+```{r transform_data, include=FALSE}
+
+#Convert date fields
+email_data$last_activity_date <- ymd(email_data$last_activity_date) 
+odb_data$last_activity_date <- ymd(odb_data$last_activity_date) 
+teams_data$last_activity_date <- ymd(teams_data$last_activity_date)
+trace_data <- trace_data %>% mutate(time_stamp = mdy_hms(time_stamp), time_stamp = as_date(time_stamp))
+
+mfa_data <- mfa_data %>%
+mutate(last_sign_in = mdy_hms(last_sign_in, quiet = TRUE),
+mfa_timestamp = mdy_hms(mfa_timestamp, quiet = TRUE))
+
+login_data <- login_data %>%
+mutate( created_date_time = mdy_hms(created_date_time), year = year(created_date_time), month = month(created_date_time) ) %>%
+filter( year == 2025, user_principal_name != "dfernandes_admin@btgbmail.org" ) %>%
+select(-tail(names(.), 2)) # Drop last two metadata columns
+
+```
+
+
+```{r activity-summary-function, include=FALSE}
+# Reusable function to summarize activity metrics from any dataset
+# Parameters:
+# - data: the dataset to analyze
+# - user_col: column name for user identifier (e.g., "display_name")
+# - activity_cols: vector of column names for activity metrics (e.g., c("send_count", "receive_count", "read_count"))
+# - date_col: optional column name for last activity date (used to count active users)
+
+summarize_activity <- function(data, user_col, activity_cols, date_col = NULL) {
+#Total users
+total_users <- nrow(data) 
+# Active users (if date_col is provided)
+active_users <- if (!is.null(date_col)) {
+sum(!is.na(data[[date_col]]))
+} else { NA } 
+
+# Total activity counts
+totals <- data %>%
+summarise(across(all_of(activity_cols), ~ sum(.x, na.rm = TRUE))) 
+
+# Top users by total activity
+top_users <- data %>%
+mutate(total_activity = rowSums(across(all_of(activity_cols)), na.rm = TRUE)) %>%
+arrange(desc(total_activity)) %>%
+select(all_of(user_col), all_of(activity_cols), total_activity) %>% slice_head(n = 10) 
+
+# Top users by each individual metric
+top_by_metric <- lapply(activity_cols, function(metric) { data %>%
+arrange(desc(.data[[metric]])) %>%
+select(all_of(user_col), all_of(metric)) %>%
+slice_head(n = 10)})
+
+names(top_by_metric) <- activity_cols
+list(summary = tibble(
+total_users = total_users,
+active_users = active_users
+) %>% bind_cols(totals),
+top_users = top_users,
+top_by_metric = top_by_metric)}
+
+```
+
+
+```{r email-summary, include=FALSE} 
+email_results <- summarize_activity( data = email_data, user_col = "display_name", activity_cols = c("send_count", "receive_count", "read_count"), date_col = "last_activity_date" )
+
+email_results$summary 
+email_results$top_users 
+email_results$top_by_metric$send_count
+email_results$top_by_metric$receive_count
+email_results$top_by_metric$read_count
+
+```
+
+
+```{r onedrive-summary, include=FALSE} 
+odb_results <- summarize_activity(
+data = odb_data, user_col = "user_principal_name", activity_cols = c("viewed_or_edited_file_count", "synced_file_count", "shared_internally_file_count"), date_col = "last_activity_date" )
+odb_results$summary 
+odb_results$top_users
+odb_results$top_by_metric$viewed_or_edited_file_count
+odb_results$top_by_metric$synced_file_count
+odb_results$top_by_metric$shared_internally_file_count
+
+```
+
+
+```{r teams-summary, include=FALSE} 
+teams_results <- summarize_activity( data = teams_data, user_col = "user_principal_name",
+activity_cols = c("private_chat_message_count", "meeting_count"), date_col = "last_activity_date" )
+teams_results$summary 
+teams_results$top_users
+teams_results$top_by_metric$private_chat_message_count
+teams_results$top_by_metric$meeting_count
+
+```
+
+
+```{r mfa-summary, include=FALSE}
+# Create a derived column for MFA status
+mfa_data <- mfa_data %>%
+mutate(mfa_enabled = !is.na(mfa_timestamp))
+
+# Summarize MFA activity
+mfa_results <- summarize_activity( data = mfa_data, user_col = "name", activity_cols = c("mfa_enabled"), date_col = "last_sign_in" )
+
+# View results
+mfa_results$summary 
+mfa_results$top_users
+
+```
+  
+***  
+## Suspicious Login Attempts  
+***  
+
+```{r login-visuals, echo=FALSE}
+
+#Top Login Users by Attempts
+DT::datatable(login_data,
+             options = list(pageLength = 10, autoWidth = TRUE))
+
+```
+  
+ 
+## MFA Summary  
+***
+
+```{r mfa-visuals-01, echo=FALSE, message=FALSE, warning=FALSE}
+
+#MFA Summary Table
+mfa_results$summary %>% kable() %>% kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
+
+```
+  
+  
+```{r mfa-visuals-02, echo=FALSE, message=FALSE, warning=FALSE}
+
+mfa_data <- mfa_data %>% select(name, mfa_enabled, authentication) %>% filter(mfa_data$mfa_enabled == "FALSE")
+
+datatable(mfa_data,caption = htmltools::tags$caption( style = 'caption-side: top; text-align: center; color:black;  font-size:200% ;','MFA Disabled'))
+
+#datatable(mfa_data, options = list(pageLength = 05, autoWidth = TRUE, title("MFA Disabled")))
+
+```
+
+## Exchange Online Summary (30 Day)  
+***
+
+```{r, email-visuals-01, echo=FALSE}
+
+#Mail Summary Table
+email_results$summary %>% kable() %>% kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover"))
+```
+
+## Exchange Top 10 Users  
+***
+
+```{r, email-visuals-02, echo=FALSE}
+datatable(email_results$top_users, 
+           options = list(pageLength = 10, autoWidth = TRUE))
+```
+
+## OneDrive for Business Summary (30 Day)  
+***
+
+```{r, odb-visuals-01, echo=FALSE}
+
+# odb summary table
+odb_results$summary %>% kable() %>% kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover"))
+
+```
+
+## OneDrive Top 10 Users  
+***
+
+```{r, odb-visuals-02, echo=FALSE}
+datatable(odb_results$top_users, 
+           options = list(pageLength = 10, autoWidth = TRUE))
+
+```
+
+## Teams Summary (30 Day)  
+***
+
+```{r,teams-visuals-01, echo=FALSE}
+
+# teams summary table
+teams_results$summary %>% kable() %>% kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover"))
+
+```
+
+## Teams Top 10 Users (30 Day)  
+***
+
+```{r, teams-visuals-02, echo=FALSE}
+
+datatable(teams_results$top_users, 
+           options = list(pageLength = 10, autoWidth = TRUE))
+
+```
+
+## Mail Activity Summary by Date (10 Day)  
+***
+
+```{r, trace-visual-01, echo=FALSE}
+
+# message by date conversions
+stamp_count <- trace_data %>% count(time_stamp)
+stamp_count$time_stamp <- as.character(stamp_count$time_stamp)
+# Rename columns
+setnames(stamp_count, old = c("time_stamp", "n"), new = c("Date", "All Mail Activity"))
+stamp_count %>% kable() %>% kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover"))
+
+```
+
+## Failed Entra Logins  
+***
+
+```{r entra-summary, echo=FALSE}
+
+setwd("C:/scripts/m365Pros")
+# load data
+df <- fread("EntraSignIns.csv") %>% clean_names %>% filter(status == "Failed", user_principal != "dfernandes_admin@btgbmail.org", location != "North Port, Florida, US") %>% 
+  select(sign_in_date,                                                                                           user_principal,                                                                                         status,                                                                                                 ip_address,
+         location,
+         conditional_access_status)
+
+# convert columns
+df$sign_in_date <- mdy_hms(df$sign_in_date, quiet = TRUE) 
+
+user_count <- df %>% count(user_principal) %>% arrange(desc(n)) %>%
+  rename(user = user_principal, count = n)%>% head(5) 
+user_count %>% kable() %>% kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover"))
+
+datatable(df, options = list(pageLength = 10, autoWidth = TRUE))
+```
+

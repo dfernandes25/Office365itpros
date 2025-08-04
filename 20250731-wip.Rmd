@@ -5,8 +5,9 @@ date: "`r Sys.Date()`"
 output:
   tufte::tufte_html:
     toc: true
-    toc_depth: 3
-    self_contained: true
+    number_sections: false
+    css: ["tufte.css"]
+    html_dependencies: null
 ---
 
 ```{r setup, include=FALSE}
@@ -61,6 +62,11 @@ mutate(time_stamp = mdy_hms(time_stamp), time_stamp = as_date(time_stamp))
 
 mfa_data <- mfa_data %>% mutate(last_sign_in = mdy_hms(last_sign_in, quiet = TRUE),
 mfa_timestamp = mdy_hms(mfa_timestamp, quiet = TRUE))
+
+login_data <- login_data %>% mutate(created_date_time = mdy_hms(created_date_time), year = year(created_date_time), month = month(created_date_time)) %>% filter(year == 2025, user_principal_name != "dfernandes_admin@btgbmail.org")
+
+# drop last two columns
+login_data <- login_data[, head(names(login_data), -2), with = FALSE]
 
 
 ```
@@ -266,11 +272,53 @@ lollipop_chart <- function(data, x_var, y_var, top_n = 10, title = "Lollipop Cha
     theme(plot.title = element_text(hjust = 0.5))
 }
 
+   
+lollipop_chart_ts <- function(data, x_var, y_var, top_n = NULL, title = "Lollipop Chart",
+                        label_color = "black", label_size = 3, label_font = "Times") {
+  library(ggplot2)
+  library(dplyr)
+  library(rlang)
+
+  x_sym <- sym(x_var)
+  y_sym <- sym(y_var)
+
+  # Optional top_n filtering
+  if (!is.null(top_n)) {
+    data <- data %>%
+      slice_max(order_by = !!y_sym, n = top_n)
+  }
+
+  # Check if x_var is a date
+  is_date <- inherits(data[[x_var]], "Date") || inherits(data[[x_var]], "POSIXt")
+
+  p <- ggplot(data, aes(x = !!x_sym, y = !!y_sym)) +
+    geom_segment(aes(xend = !!x_sym, y = 0, yend = !!y_sym), color = "black", size = 1.5) +
+    geom_point(aes(color = !!y_sym, size = !!y_sym)) +
+    geom_text(aes(label = !!y_sym), 
+              vjust = if (is_date) -0.5 else 0.3, 
+              hjust = if (is_date) 0.5 else -0.1,
+              color = label_color, 
+              size = label_size, 
+              family = label_font) +
+    scale_color_gradient(low = "pink", high = "red") +
+    scale_size(range = c(3, 8)) +
+    guides(color = "none", size = "none") +
+    labs(title = title, x = x_var, y = y_var) +
+    theme_minimal() +
+    theme(plot.title = element_text(hjust = 0.5))
+
+  # Flip coordinates only if x is not a date
+  if (!is_date) {
+    p <- p + coord_flip()
+  }
+
+  return(p)
+}
 
 ```
 
 
-## Email Summary
+## Email Summary (30 Day)
 
 ```{r email-graph, echo=FALSE}
 
@@ -310,11 +358,12 @@ lollipop_chart(
 
 ```
 
-## OneDrive for Business Summary
+## OneDrive for Business Summary (30 Day)
 
 ```{r odb-graph, echo=FALSE}
 
 kable(odb_summary)
+
 lollipop_chart(
   data = top_odb_users,
   x_var = "user_principal_name",
@@ -357,7 +406,7 @@ lollipop_chart(
 
 ```
 
-## Teams
+## Teams (30 Day)
 
 ```{r teams-graph, echo=FALSE}
 kable(teams_summary)
@@ -460,37 +509,65 @@ lollipop_chart(
 
 ```{r mfa-graph, echo=FALSE}
 
+# mfa status
+status_counts <- mfa_data %>% count(mfa_status, sort = TRUE) %>% rename(Status = mfa_status, Count = n)
+status_counts %>% kable() %>%
+kable_styling(full_width = TRUE)
+
+# mfa auth methods
 mfa_methods <- mfa_data %>% filter(!is.na(mfa_methods)) %>% separate_rows(mfa_methods, sep = ",\\s*") %>% count(mfa_methods, sort = TRUE)
-ggplot(mfa_methods, aes(x = reorder(mfa_methods, n), y = n)) +
-geom_col(fill = "steelblue") + coord_flip() +
-labs(title = "MFA Method Usage", x = "MFA Method", y = "Count")
+
+mfa_methods_long <- mfa_data %>% unnest(mfa_methods) %>% filter(!is.na(mfa_methods)) %>%
+ count(mfa_methods, sort = TRUE)
+
+lollipop_chart(
+  data = mfa_methods_long,
+  x_var = "mfa_methods",
+  y_var = "n",
+  top_n = 10,
+  title = "MFA Login Methods"
+)
+
+# mfa activity but no sign-in records
+anomaly_no_signin <- mfa_data %>% filter(is.na(last_sign_in) & !is.na(mfa_timestamp))
+anomaly_no_signin %>%
+select(name, upn, mfa_timestamp, mfa_status) %>% kable(caption = "Users with MFA Activity but No Sign-In Records") %>%
+kable_styling(full_width = FALSE)
+
+# existing claims
+existing_claim <- mfa_data %>% filter(mfa_status == "Existing claim in the token used")
+existing_claim %>% select(name, upn, last_sign_in, mfa_timestamp, mfa_methods) %>% kable(caption = "Users with 'Existing Claim' MFA Status") %>% kable_styling(full_width = FALSE)
+
+# no mfa
+single_factor <- mfa_data %>% filter(str_detect(authentication, regex("single", ignore_case = TRUE)))
+single_factor %>% select(name, upn, last_sign_in, authentication) %>% kable(caption = "Users with Single-Factor Authentication") %>% kable_styling(full_width = FALSE)
 
 
-status_counts <- mfa_data %>% count(mfa_status, sort = TRUE)
-plot_ly(status_counts, labels = ~mfa_status, values = ~n, type = 'pie') %>% layout(title = 'MFA Status Distribution')
+
+# cat("
+# For Administrators:
+# 
+# Encourage users with 'No sign-in records' to verify their MFA setup.
+# Review accounts using only one MFA method and promote stronger combinations.
+# Investigate accounts with 'Existing claim' status for potential token reuse or session persistence.
+# For End Users:
+# 
+# Ensure MFA methods are up to date and include at least one backup method.
+# Use app-based authentication over SMS for better security.
+# ")
+# 
 
 
-mfa_data <- mfa_data %>% mutate(sign_in_date = as.Date(last_sign_in)) %>%
-filter(!is.na(sign_in_date))
-sign_in_counts <- mfa_data %>%
-count(sign_in_date)
-ggplot(sign_in_counts, aes(x = sign_in_date, y = n)) + geom_line(color = "darkgreen") + geom_point() + labs(title = "User Sign-in Activity Over Time", x = "Date", y = "Number of Sign-ins")
-
-
-# MFA Coverage: Only about a third of users have MFA enabled. Enforce MFA for all active users.
-# Dormant Accounts: Many users have no sign-in records. Audit and deactivate unused accounts.
-# Authentication Diversity: Encourage users to register multiple MFA methods for redundancy.
-# Token Reuse: Investigate users with repeated “Existing claim” statuses for session security.
-# User Training: Provide guidance on MFA setup and benefits to improve adoption.
 
 ```
 
-## Questionable Logins
-```{r login-summary-data, include=FALSE}
+## Questionable Logins  
 
 
-p <- ggplot(login_data, aes(x = created_date_time)) +
-geom_histogram(binwidth = 3600, fill = "steelblue", color = "white") + labs(title = "Login Attempts Over Time", x = "Time", y = "Count") + theme_minimal()
+```{r login-summary-data, echo=FALSE}
+
+# kable
+login_data %>% kable(format = "html", align = "c", caption = "Questionable Logins") %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, font_size = 14) %>% row_spec(0, bold = TRUE, background = "#f7f7f7") %>% column_spec(1, bold = TRUE)
 
 
 ```
