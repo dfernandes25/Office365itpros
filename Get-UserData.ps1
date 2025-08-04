@@ -1,8 +1,14 @@
-# collects eol, odb, and teams data
+<# 
+collects eol, odb, and teams data
 # used with Analyze-MailTraffic.ps1 for data collection
 # output used for 20250731-wip.rmd which generates a report
 
+Install-Module Microsoft.Graph -RequiredVersion 2.29.1 -AllowClobber -Force
+Install-Module Microsoft.Graph.Beta -AllowClobber -Force
+Install-Module ExchangeOnlineManagement -AllowClobber -Force
+
 # Connect-MgGraph -Scopes Reports.Read.All, ReportSettings.ReadWrite.All, User.Read.All, AuditLog.Read.All, Directory.Read.All, SignIn.Read.All
+#>
 
 Connect-MgGraph -Scopes @(
     "Reports.Read.All",

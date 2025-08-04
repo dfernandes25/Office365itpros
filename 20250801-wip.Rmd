@@ -48,7 +48,7 @@ setwd("C:/scripts/m365Pros")
 email_data <- clean_import("email.csv")
 odb_data <- clean_import("onedrive.csv") 
 teams_data <- clean_import("teams.csv")
-trace_data <- fread("messages.csv") %>% clean_names() 
+#trace_data <- fread("messages.csv") %>% clean_names() 
 mfa_data <- fread("auditMFA.csv") %>% clean_names()
 login_data <- fread("suspiciousLogins.csv", stringsAsFactors = FALSE) %>% clean_names()
 
@@ -60,7 +60,7 @@ login_data <- fread("suspiciousLogins.csv", stringsAsFactors = FALSE) %>% clean_
 email_data$last_activity_date <- ymd(email_data$last_activity_date) 
 odb_data$last_activity_date <- ymd(odb_data$last_activity_date) 
 teams_data$last_activity_date <- ymd(teams_data$last_activity_date)
-trace_data <- trace_data %>% mutate(time_stamp = mdy_hms(time_stamp), time_stamp = as_date(time_stamp))
+#trace_data <- trace_data %>% mutate(time_stamp = mdy_hms(time_stamp), time_stamp = as_date(time_stamp))
 
 mfa_data <- mfa_data %>%
 mutate(last_sign_in = mdy_hms(last_sign_in, quiet = TRUE),
@@ -68,7 +68,7 @@ mfa_timestamp = mdy_hms(mfa_timestamp, quiet = TRUE))
 
 login_data <- login_data %>%
 mutate( created_date_time = mdy_hms(created_date_time), year = year(created_date_time), month = month(created_date_time) ) %>%
-filter( year == 2025, user_principal_name != "dfernandes_admin@btgbmail.org" ) %>%
+filter( user_principal_name != "rr_ga@resilientretreat.org" ) %>%
 select(-tail(names(.), 2)) # Drop last two metadata columns
 
 ```
@@ -259,7 +259,7 @@ datatable(teams_results$top_users,
 ## Mail Activity Summary by Date (10 Day)  
 ***
 
-```{r, trace-visual-01, echo=FALSE}
+```{r trace-visual-01, eval=FALSE, include=FALSE}
 
 # message by date conversions
 stamp_count <- trace_data %>% count(time_stamp)
@@ -273,12 +273,12 @@ stamp_count %>% kable() %>% kable_styling(full_width = TRUE, bootstrap_options =
 ## Failed Entra Logins  
 ***
 
-```{r entra-summary, echo=FALSE}
+```{r entra-summary, eval=FALSE, include=FALSE}
 
 setwd("C:/scripts/m365Pros")
 # load data
 df <- fread("EntraSignIns.csv") %>% clean_names %>% filter(status == "Failed", user_principal != "dfernandes_admin@btgbmail.org", location != "North Port, Florida, US") %>% 
-  select(sign_in_date,                                                                                           user_principal,                                                                                         status,                                                                                                 ip_address,
+  select(sign_in_date,                                                                                   user_principal,                                                                                 status,                                                                                         ip_address,
          location,
          conditional_access_status)
 

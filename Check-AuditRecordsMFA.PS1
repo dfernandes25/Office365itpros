@@ -2,6 +2,8 @@
 # A script to demonstrate how to use Entra ID sign-in audit records to check MFA usage by user accounts
 # V1.0 13-Feb-2024
 # https://github.com/12Knocksinna/Office365itpros/blob/master/Check-AuditRecordsMFA.PS1
+# Import-Module Microsoft.Graph.Beta
+# Import-Module Microsoft.Graph
 
 Connect-MgGraph -Scopes Directory.Read.All, AuditLog.Read.All -NoWelcome
 
@@ -12,7 +14,7 @@ $StartDateS = (Get-Date $StartDate -Format s) + "Z"
 
 Write-Host "Looking for sign-in records..."
 [array]$AuditRecords = Get-MgBetaAuditLogSignIn
-  -Filter "(CreatedDateTime ge $StartDateS) and (signInEventTypes/any(t:t eq 'interactiveuser')) and (usertype eq 'Member')"
+ # -Filter "(CreatedDateTime ge $StartDateS) and (signInEventTypes/any(t:t eq 'interactiveuser')) and (usertype eq 'Member')"
 If (!$AuditRecords) {
     Write-Host "No sign-in records found - exiting"
     Break
