@@ -5,8 +5,8 @@
 
 [string]$RunDate = Get-Date -format "dd-MMM-yyyy HH:mm:ss"
 $Version = "1.0"
-$CSVOutputFile = "c:\temp\CAPoliciesReport.CSV"
-$ReportFile = "c:\temp\CAPoliciesReport.html"
+$CSVOutputFile = "c:\scripts\m365Pros\CAP-Report.csv"
+$ReportFile = "c:\scripts\m365Pros\CAP-Report.html"
 
 Connect-MgGraph -NoWelcome -Scopes User.Read.All, Policy.Read.All, Group.Read.All, Agreement.Read.All, Application.Read.All
 Write-Host 'Finding conditional access policies'
@@ -298,15 +298,15 @@ ForEach ($Policy in $CAPolicies) {
         'State'                         = $PolicyState
         'Created'                       = $Policy.CreatedDateTime
         'Last modified'                 = $Policy.ModifiedDateTime
-        'Included apps'                 = $IncludedAppOutput
-        'Excluded apps'                 = $ExcludedAppOutput
-        'App filter mode'               = $ApplicationFilterMode
-        'App filter rule'               = $ApplicationFilterRule
+       # 'Included apps'                 = $IncludedAppOutput
+       # 'Excluded apps'                 = $ExcludedAppOutput
+       # 'App filter mode'               = $ApplicationFilterMode
+       # 'App filter rule'               = $ApplicationFilterRule
         'Client app types'              = $ClientAppTypes
-        'Included client apps'          = $IncludedClientAppNames
-        'Excluded client apps'          = $ExcludedClientAppNames
-        'Included Locations'            = $IncludeLocationsOutput
-        'Excluded locations'            = $ExcludeLocationsOutput
+       # 'Included client apps'          = $IncludedClientAppNames
+       # 'Excluded client apps'          = $ExcludedClientAppNames
+       # 'Included Locations'            = $IncludeLocationsOutput
+       # 'Excluded locations'            = $ExcludeLocationsOutput
         'Included users'                = $IncludedUsersOutput
         'Excluded users'                = $ExcludedUsersOutput
         'Included groups'               = $IncludedGroupsOutput
