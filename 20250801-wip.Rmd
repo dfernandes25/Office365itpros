@@ -1,6 +1,6 @@
 
 ---
-title: "July 2025 Resilient Retreat M365 Insights"
+title: "July 2025 Oliver Law M365 Insights"
 author: "Prepared by CBC Technologies"
 date: "`r Sys.Date()`"
 output:
@@ -48,7 +48,7 @@ setwd("C:/scripts/m365Pros")
 email_data <- clean_import("email.csv")
 odb_data <- clean_import("onedrive.csv") 
 teams_data <- clean_import("teams.csv")
-#trace_data <- fread("messages.csv") %>% clean_names() 
+trace_data <- fread("messages.csv") %>% clean_names() 
 mfa_data <- fread("auditMFA.csv") %>% clean_names()
 login_data <- fread("suspiciousLogins.csv", stringsAsFactors = FALSE) %>% clean_names()
 
@@ -60,7 +60,7 @@ login_data <- fread("suspiciousLogins.csv", stringsAsFactors = FALSE) %>% clean_
 email_data$last_activity_date <- ymd(email_data$last_activity_date) 
 odb_data$last_activity_date <- ymd(odb_data$last_activity_date) 
 teams_data$last_activity_date <- ymd(teams_data$last_activity_date)
-#trace_data <- trace_data %>% mutate(time_stamp = mdy_hms(time_stamp), time_stamp = as_date(time_stamp))
+trace_data <- trace_data %>% mutate(time_stamp = mdy_hms(time_stamp), time_stamp = as_date(time_stamp))
 
 mfa_data <- mfa_data %>%
 mutate(last_sign_in = mdy_hms(last_sign_in, quiet = TRUE),
@@ -259,7 +259,7 @@ datatable(teams_results$top_users,
 ## Mail Activity Summary by Date (10 Day)  
 ***
 
-```{r trace-visual-01, eval=FALSE, include=FALSE}
+```{r trace-visual-01, echo=FALSE}
 
 # message by date conversions
 stamp_count <- trace_data %>% count(time_stamp)
@@ -273,7 +273,7 @@ stamp_count %>% kable() %>% kable_styling(full_width = TRUE, bootstrap_options =
 ## Failed Entra Logins  
 ***
 
-```{r entra-summary, eval=FALSE, include=FALSE}
+```{r entra-summary, echo=FALSE}
 
 setwd("C:/scripts/m365Pros")
 # load data
