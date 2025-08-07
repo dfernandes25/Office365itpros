@@ -2,8 +2,36 @@
 
 $OutputDir = 'C:\scripts\mext'
 
+function Reset-Folder {
+    param (
+        [string]$ParentPath = "C:\Scripts",
+        [string]$FolderName = "Mext"
+    )
 
-function Check-Modules {
+    $fullPath = Join-Path $ParentPath $FolderName
+
+    if (Test-Path $fullPath) {
+        Write-Host "Folder '$fullPath' exists. Clearing contents..." -ForegroundColor Yellow
+        try {
+            Get-ChildItem -Path $fullPath -Recurse -Force | Remove-Item -Recurse -Force
+            Write-Host "Contents of '$fullPath' deleted successfully." -ForegroundColor Green
+        } catch {
+            Write-Host "Error deleting contents of '$fullPath': $_" -ForegroundColor Red
+        }
+    } else {
+        Write-Host "Folder '$fullPath' does not exist. Creating it..." -ForegroundColor Cyan
+        try {
+            New-Item -Path $fullPath -ItemType Directory -Force | Out-Null
+            Write-Host "Folder '$fullPath' created successfully." -ForegroundColor Green
+        } catch {
+            Write-Host "Error creating folder '$fullPath': $_" -ForegroundColor Red
+        }
+    }
+}
+
+Reset-Folder
+
+function Get-MextModules {
     param (
         [Parameter(Mandatory)]
         [string[]]$ModuleNames
@@ -56,7 +84,7 @@ function Check-Modules {
     }
 }
 
-Check-Modules -ModuleName @('ExchangeOnlineManagement',
+Get-MextModules -ModuleName @('ExchangeOnlineManagement',
                             'Az', 
                             'Microsoft.Graph',
                             'Microsoft.Graph.Beta',
@@ -65,10 +93,7 @@ Check-Modules -ModuleName @('ExchangeOnlineManagement',
 
 
 Connect-ExchangeOnline
-Connect-MgGraph
 Connect-AzureAZ
-
-
 Connect-MgGraph -Scopes ("AuditLog.Read.All",
                         "Application.Read.All",
                         "Device.Read.All",
