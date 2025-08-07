@@ -95,7 +95,7 @@ Get-MextModules -ModuleName @('ExchangeOnlineManagement',
 
 # Connect with proper scopes
 Connect-ExchangeOnline
-Connect-AzureAZ
+Connect-AzureAz
 Connect-MgGraph -Scopes ("AuditLog.Read.All",
                         "AuditLogsQuery.Read.All",
                         "Application.Read.All",
@@ -117,11 +117,11 @@ Get-MFA -OutputDir $OutputDir
 Get-Users -OutputDir $OutputDir 
 Get-AdminUsers -OutputDir $OutputDir 
 Get-AllRoleActivity -OutputDir $OutputDir 
-Get-GraphEntraSignInLogs -OutputDir $OutputDir -startDate 2025-08-01 #json output
-Get-GraphEntraAuditLogs -OutputDir $OutputDir -startDate 2025-08-01 #json output
+Get-GraphEntraSignInLogs -OutputDir $OutputDir -startDate 2025-08-01 #json output of interactive and non-interactive logins
+Get-GraphEntraAuditLogs -OutputDir $OutputDir -startDate 2025-08-01 #json output of Entra audit logs
 Get-ConditionalAccessPolicies -OutputDir $OutputDir
 Get-OAuthPermissionsGraph -OutputDir $OutputDir
-Get-SecurityAlerts -OutputDir $OutputDir -DaysBack 180
+# Get-SecurityAlerts -OutputDir $OutputDir -DaysBack 180 -- not working, think i need the compliance role
 
 Get-Groups -OutputDir $OutputDir
 Get-DynamicGroups -OutputDir $OutputDir
@@ -152,4 +152,4 @@ Get-DirectoryActivityLogs -OutputDir $OutputDir
 Get-AdminAuditLog -OutputDir $OutputDir
 Get-MailboxAuditLog -OutputDir $OutputDir -StartDate 8/1/2025 -EndDate 8/6/2025
 Get-MessageTraceLog -OutputDir $OutputDir -StartDate 8/1/2025 -EndDate 8/6/2025
-Get-UALGraph -searchName test2 -Service Teams -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
+Get-UALGraph -searchName test3 -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
