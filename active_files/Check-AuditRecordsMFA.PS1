@@ -1,13 +1,12 @@
 # Check-AuditRecordsMFA.PS1
 # A script to demonstrate how to use Entra ID sign-in audit records to check MFA usage by user accounts
-# V1.0 13-Feb-2024
-# https://github.com/12Knocksinna/Office365itpros/blob/master/Check-AuditRecordsMFA.PS1
+put# https://github.com/12Knocksinna/Office365itpros/blob/master/Check-AuditRecordsMFA.PS1
 # Import-Module Microsoft.Graph.Beta
 # Import-Module Microsoft.Graph
 
 Connect-MgGraph -Scopes Directory.Read.All, AuditLog.Read.All -NoWelcome
 
-$CSVOutputFile = "c:\scripts\m365Pros\auditMFA.csv"
+$outputFile = "c:\scripts\m365Pros\auditMFA.csv"
 $TenantId = (Get-MgOrganization).Id
 $StartDate = (Get-Date).AddDays(-30)
 $StartDateS = (Get-Date $StartDate -Format s) + "Z"
@@ -78,7 +77,7 @@ ForEach ($User in $Users) {
 }
 
 # $Report | Out-GridView -Title 'MFA Usage by User'
-$Report | Export-CSV -NoTypeInformation $CSVOutputFile
+$Report | Export-CSV -NoTypeInformation $outputFile
 [float]$MFACheck = ($MFAUsers/$Users.Count)*100
 $PercentMFAUsers = ($MFAUsers/$Users.Count).toString('P')
 Write-Host ("{0} users of {1} found to use MFA" -f $MFAUsers, $Users.count)

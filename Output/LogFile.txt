@@ -1,0 +1,1002 @@
+2025-08-06 16:24:41: [INFO] All required connections verified for M365 platform.
+2025-08-06 16:24:41: [INFO] Creating output directory: Output\HR_Case
+2025-08-06 16:24:41: 
+=== Evidence Collection Overview ===
+2025-08-06 16:24:41: Project: HR_Case
+2025-08-06 16:24:41: Platform: M365
+2025-08-06 16:24:41: Target User(s): testuser@resilientretreat.org.
+2025-08-06 16:24:41: Output Directory: Output\HR_Case
+2025-08-06 16:24:41: Start Time: 2025-08-06 16:24:41
+2025-08-06 16:24:41: ----------------------------------------
+2025-08-06 16:24:41: 
+==== Starting Microsoft 365 Data Collection ====
+2025-08-06 16:24:41: Starting Unified Audit Log collection (this may take a while)...
+2025-08-06 16:24:41: === Starting Unified Audit Log Collection ===
+2025-08-06 16:24:43: Start date: 2025-02-07 20:24:43
+2025-08-06 16:24:43: End date: 2025-08-06 20:24:43
+2025-08-06 16:24:43: Output format: CSV
+2025-08-06 16:24:43: Output Directory: Output\HR_Case\UnifiedAuditLog
+2025-08-06 16:24:43: ----------------------------------------
+
+2025-08-06 16:24:45: [INFO] Total number of events during the acquisition period: 64
+2025-08-06 16:25:48: [INFO] No audit logs between 2025-02-07 20:24:43 and 2025-02-09 20:24:43. Moving on!
+2025-08-06 16:26:28: [INFO] No audit logs between 2025-02-09 20:24:43 and 2025-02-11 20:24:43. Moving on!
+2025-08-06 16:27:09: [INFO] No audit logs between 2025-02-11 20:24:43 and 2025-02-13 20:24:43. Moving on!
+2025-08-06 16:27:49: [INFO] No audit logs between 2025-02-13 20:24:43 and 2025-02-15 20:24:43. Moving on!
+2025-08-06 16:28:30: [INFO] No audit logs between 2025-02-15 20:24:43 and 2025-02-17 20:24:43. Moving on!
+2025-08-06 16:29:09: [INFO] No audit logs between 2025-02-17 20:24:43 and 2025-02-19 20:24:43. Moving on!
+2025-08-06 16:29:48: [INFO] No audit logs between 2025-02-19 20:24:43 and 2025-02-21 20:24:43. Moving on!
+2025-08-06 16:30:26: [INFO] No audit logs between 2025-02-21 20:24:43 and 2025-02-23 20:24:43. Moving on!
+2025-08-06 16:31:05: [INFO] No audit logs between 2025-02-23 20:24:43 and 2025-02-25 20:24:43. Moving on!
+2025-08-06 16:31:44: [INFO] No audit logs between 2025-02-25 20:24:43 and 2025-02-27 20:24:43. Moving on!
+2025-08-06 16:32:22: [INFO] No audit logs between 2025-02-27 20:24:43 and 2025-03-01 20:24:43. Moving on!
+2025-08-06 16:33:01: [INFO] No audit logs between 2025-03-01 20:24:43 and 2025-03-03 20:24:43. Moving on!
+2025-08-06 16:33:39: [INFO] No audit logs between 2025-03-03 20:24:43 and 2025-03-05 20:24:43. Moving on!
+2025-08-06 16:40:27: === Starting MFA Status Collection ===
+2025-08-06 16:40:27: [INFO] Identifying authentication methods...
+2025-08-06 16:40:27: [INFO] Processing all users...
+2025-08-06 16:40:27: [INFO] Found 76 users to process
+2025-08-06 16:40:27: [INFO] Collecting phone numbers for MFA...
+2025-08-06 16:42:53: [INFO] Retrieving user registration details...
+2025-08-06 16:42:54: 
+=== MFA Status Analysis Summary ===
+2025-08-06 16:42:54: 
+MFA Status:
+2025-08-06 16:42:54:   Total Users: 76
+2025-08-06 16:42:54:   MFA Enabled: 12 users (15.8%)
+2025-08-06 16:42:54:   MFA Disabled: 64 users (84.2%)
+2025-08-06 16:42:54:   Users with Phone MFA: 9 users
+2025-08-06 16:42:54: 
+Authentication Methods:
+2025-08-06 16:42:54:   - Email: 0
+2025-08-06 16:42:54:   - Fido2: 1
+2025-08-06 16:42:54:   - Microsoft Authenticator App: 10
+2025-08-06 16:42:54:   - Phone: 9
+2025-08-06 16:42:54:   - Software OAuth: 0
+2025-08-06 16:42:54:   - Hello Business: 0
+2025-08-06 16:42:54:   - Temporary Access Pass: 0
+2025-08-06 16:42:54:   - Certificate Based Auth: 0
+2025-08-06 16:42:54: 
+Output Files:
+2025-08-06 16:42:54:   Authentication Methods: C:\scripts\202508061642-MFA-AuthenticationMethods.csv
+2025-08-06 16:42:54:   Registration Details: C:\scripts\202508061642-MFA-UserRegistrationDetails.csv 
+2025-08-06 16:42:54: Processing Time: 02:25
+2025-08-06 16:42:54: ===================================
+2025-08-06 16:47:01: [INFO] All required connections verified for M365 platform.
+2025-08-06 16:47:01: [INFO] Creating output directory: C:\scripts\mext\HR_Case
+2025-08-06 16:47:01: 
+=== Evidence Collection Overview ===
+2025-08-06 16:47:01: Project: HR_Case
+2025-08-06 16:47:01: Platform: M365
+2025-08-06 16:47:01: Target User(s): testuser@resilientretreat.org.
+2025-08-06 16:47:01: Output Directory: C:\scripts\mext\HR_Case
+2025-08-06 16:47:01: Start Time: 2025-08-06 16:47:01
+2025-08-06 16:47:01: ----------------------------------------
+2025-08-06 16:47:01: 
+==== Starting Microsoft 365 Data Collection ====
+2025-08-06 16:47:01: Starting Unified Audit Log collection (this may take a while)...
+2025-08-06 16:47:01: === Starting Unified Audit Log Collection ===
+2025-08-06 16:47:04: Start date: 2025-02-07 20:47:04
+2025-08-06 16:47:04: End date: 2025-08-06 20:47:04
+2025-08-06 16:47:04: Output format: CSV
+2025-08-06 16:47:04: Output Directory: C:\scripts\mext\HR_Case\UnifiedAuditLog
+2025-08-06 16:47:04: ----------------------------------------
+
+2025-08-06 16:47:06: [INFO] Total number of events during the acquisition period: 64
+2025-08-06 16:47:45: [INFO] No audit logs between 2025-02-07 20:47:04 and 2025-02-09 20:47:04. Moving on!
+2025-08-06 16:48:24: [INFO] No audit logs between 2025-02-09 20:47:04 and 2025-02-11 20:47:04. Moving on!
+2025-08-06 16:49:02: [INFO] No audit logs between 2025-02-11 20:47:04 and 2025-02-13 20:47:04. Moving on!
+2025-08-06 16:49:42: [INFO] No audit logs between 2025-02-13 20:47:04 and 2025-02-15 20:47:04. Moving on!
+2025-08-06 16:50:20: [INFO] No audit logs between 2025-02-15 20:47:04 and 2025-02-17 20:47:04. Moving on!
+2025-08-06 16:50:59: [INFO] No audit logs between 2025-02-17 20:47:04 and 2025-02-19 20:47:04. Moving on!
+2025-08-06 16:51:37: [INFO] No audit logs between 2025-02-19 20:47:04 and 2025-02-21 20:47:04. Moving on!
+2025-08-06 16:52:16: [INFO] No audit logs between 2025-02-21 20:47:04 and 2025-02-23 20:47:04. Moving on!
+2025-08-06 16:52:55: [INFO] No audit logs between 2025-02-23 20:47:04 and 2025-02-25 20:47:04. Moving on!
+2025-08-06 16:53:33: [INFO] No audit logs between 2025-02-25 20:47:04 and 2025-02-27 20:47:04. Moving on!
+2025-08-06 16:54:12: [INFO] No audit logs between 2025-02-27 20:47:04 and 2025-03-01 20:47:04. Moving on!
+2025-08-06 16:54:49: [INFO] No audit logs between 2025-03-01 20:47:04 and 2025-03-03 20:47:04. Moving on!
+2025-08-06 16:55:27: [INFO] No audit logs between 2025-03-03 20:47:04 and 2025-03-05 20:47:04. Moving on!
+2025-08-06 16:56:04: [INFO] No audit logs between 2025-03-05 20:47:04 and 2025-03-07 20:47:04. Moving on!
+2025-08-06 16:56:43: [INFO] No audit logs between 2025-03-07 20:47:04 and 2025-03-09 20:47:04. Moving on!
+2025-08-06 16:57:21: [INFO] No audit logs between 2025-03-09 20:47:04 and 2025-03-11 20:47:04. Moving on!
+2025-08-06 16:57:58: [INFO] No audit logs between 2025-03-11 20:47:04 and 2025-03-13 20:47:04. Moving on!
+2025-08-06 16:58:36: [INFO] No audit logs between 2025-03-13 20:47:04 and 2025-03-15 20:47:04. Moving on!
+2025-08-06 16:59:14: [INFO] No audit logs between 2025-03-15 20:47:04 and 2025-03-17 20:47:04. Moving on!
+2025-08-06 16:59:52: [INFO] No audit logs between 2025-03-17 20:47:04 and 2025-03-19 20:47:04. Moving on!
+2025-08-06 17:00:31: [INFO] No audit logs between 2025-03-19 20:47:04 and 2025-03-21 20:47:04. Moving on!
+2025-08-06 17:01:09: [INFO] No audit logs between 2025-03-21 20:47:04 and 2025-03-23 20:47:04. Moving on!
+2025-08-06 17:01:47: [INFO] No audit logs between 2025-03-23 20:47:04 and 2025-03-25 20:47:04. Moving on!
+2025-08-06 17:02:25: [INFO] No audit logs between 2025-03-25 20:47:04 and 2025-03-27 20:47:04. Moving on!
+2025-08-06 17:03:04: [INFO] No audit logs between 2025-03-27 20:47:04 and 2025-03-29 20:47:04. Moving on!
+2025-08-06 17:03:43: [INFO] No audit logs between 2025-03-29 20:47:04 and 2025-03-31 20:47:04. Moving on!
+2025-08-06 17:04:21: [INFO] No audit logs between 2025-03-31 20:47:04 and 2025-04-02 20:47:04. Moving on!
+2025-08-06 17:04:59: [INFO] No audit logs between 2025-04-02 20:47:04 and 2025-04-04 20:47:04. Moving on!
+2025-08-06 17:05:37: [INFO] No audit logs between 2025-04-04 20:47:04 and 2025-04-06 20:47:04. Moving on!
+2025-08-06 17:06:16: [INFO] No audit logs between 2025-04-06 20:47:04 and 2025-04-08 20:47:04. Moving on!
+2025-08-06 17:06:54: [INFO] No audit logs between 2025-04-08 20:47:04 and 2025-04-10 20:47:04. Moving on!
+2025-08-06 17:07:32: [INFO] No audit logs between 2025-04-10 20:47:04 and 2025-04-12 20:47:04. Moving on!
+2025-08-06 17:08:10: [INFO] No audit logs between 2025-04-12 20:47:04 and 2025-04-14 20:47:04. Moving on!
+2025-08-06 17:08:48: [INFO] No audit logs between 2025-04-14 20:47:04 and 2025-04-16 20:47:04. Moving on!
+2025-08-06 17:09:26: [INFO] No audit logs between 2025-04-16 20:47:04 and 2025-04-18 20:47:04. Moving on!
+2025-08-06 17:10:06: [INFO] No audit logs between 2025-04-18 20:47:04 and 2025-04-20 20:47:04. Moving on!
+2025-08-06 17:10:44: [INFO] No audit logs between 2025-04-20 20:47:04 and 2025-04-22 20:47:04. Moving on!
+2025-08-06 17:11:21: [INFO] No audit logs between 2025-04-22 20:47:04 and 2025-04-24 20:47:04. Moving on!
+2025-08-06 17:11:59: [INFO] No audit logs between 2025-04-24 20:47:04 and 2025-04-26 20:47:04. Moving on!
+2025-08-06 17:12:37: [INFO] No audit logs between 2025-04-26 20:47:04 and 2025-04-28 20:47:04. Moving on!
+2025-08-06 17:13:16: [INFO] No audit logs between 2025-04-28 20:47:04 and 2025-04-30 20:47:04. Moving on!
+2025-08-06 17:13:54: [INFO] No audit logs between 2025-04-30 20:47:04 and 2025-05-02 20:47:04. Moving on!
+2025-08-06 17:14:32: [INFO] No audit logs between 2025-05-02 20:47:04 and 2025-05-04 20:47:04. Moving on!
+2025-08-06 17:15:10: [INFO] No audit logs between 2025-05-04 20:47:04 and 2025-05-06 20:47:04. Moving on!
+2025-08-06 17:15:48: [INFO] No audit logs between 2025-05-06 20:47:04 and 2025-05-08 20:47:04. Moving on!
+2025-08-06 17:16:26: [INFO] No audit logs between 2025-05-08 20:47:04 and 2025-05-10 20:47:04. Moving on!
+2025-08-06 17:17:03: [INFO] No audit logs between 2025-05-10 20:47:04 and 2025-05-12 20:47:04. Moving on!
+2025-08-06 17:17:41: [INFO] No audit logs between 2025-05-12 20:47:04 and 2025-05-14 20:47:04. Moving on!
+2025-08-06 17:18:19: [INFO] No audit logs between 2025-05-14 20:47:04 and 2025-05-16 20:47:04. Moving on!
+2025-08-06 17:18:58: [INFO] No audit logs between 2025-05-16 20:47:04 and 2025-05-18 20:47:04. Moving on!
+2025-08-06 17:19:37: [INFO] No audit logs between 2025-05-18 20:47:04 and 2025-05-20 20:47:04. Moving on!
+2025-08-06 17:20:14: [INFO] No audit logs between 2025-05-20 20:47:04 and 2025-05-22 20:47:04. Moving on!
+2025-08-06 17:20:52: [INFO] No audit logs between 2025-05-22 20:47:04 and 2025-05-24 20:47:04. Moving on!
+2025-08-06 17:21:37: [INFO] No audit logs between 2025-05-24 20:47:04 and 2025-05-26 20:47:04. Moving on!
+2025-08-06 17:22:45: [INFO] No audit logs between 2025-05-26 20:47:04 and 2025-05-28 20:47:04. Moving on!
+2025-08-06 17:23:46: [INFO] No audit logs between 2025-05-28 20:47:04 and 2025-05-30 20:47:04. Moving on!
+2025-08-06 17:24:25: [INFO] No audit logs between 2025-05-30 20:47:04 and 2025-06-01 20:47:04. Moving on!
+2025-08-06 17:25:02: [INFO] No audit logs between 2025-06-01 20:47:04 and 2025-06-03 20:47:04. Moving on!
+2025-08-06 17:25:40: [INFO] No audit logs between 2025-06-03 20:47:04 and 2025-06-05 20:47:04. Moving on!
+2025-08-06 17:26:17: [INFO] No audit logs between 2025-06-05 20:47:04 and 2025-06-07 20:47:04. Moving on!
+2025-08-06 17:26:55: [INFO] No audit logs between 2025-06-07 20:47:04 and 2025-06-09 20:47:04. Moving on!
+2025-08-06 17:27:35: [INFO] No audit logs between 2025-06-09 20:47:04 and 2025-06-11 20:47:04. Moving on!
+2025-08-06 17:28:27: [INFO] No audit logs between 2025-06-11 20:47:04 and 2025-06-13 20:47:04. Moving on!
+2025-08-06 17:29:05: [INFO] No audit logs between 2025-06-13 20:47:04 and 2025-06-15 20:47:04. Moving on!
+2025-08-06 17:29:42: [INFO] No audit logs between 2025-06-15 20:47:04 and 2025-06-17 20:47:04. Moving on!
+2025-08-06 17:36:43: === Starting Risky Users Collection ===
+2025-08-06 17:36:44: [ERROR] An error occurred: Response status code does not indicate success: Forbidden (Forbidden).
+2025-08-06 17:39:50: === Starting MFA Status Collection ===
+2025-08-06 17:39:50: [INFO] Identifying authentication methods...
+2025-08-06 17:39:50: [INFO] Processing all users...
+2025-08-06 17:39:51: [INFO] Found 76 users to process
+2025-08-06 17:40:29: [INFO] Retrieving user registration details...
+2025-08-06 17:40:30: 
+=== MFA Status Analysis Summary ===
+2025-08-06 17:40:30: 
+MFA Status:
+2025-08-06 17:40:30:   Total Users: 76
+2025-08-06 17:40:30:   MFA Enabled: 12 users (15.8%)
+2025-08-06 17:40:30:   MFA Disabled: 64 users (84.2%)
+2025-08-06 17:40:30: 
+Authentication Methods:
+2025-08-06 17:40:30:   - Email: 0
+2025-08-06 17:40:30:   - Fido2: 1
+2025-08-06 17:40:30:   - Microsoft Authenticator App: 10
+2025-08-06 17:40:30:   - Phone: 9
+2025-08-06 17:40:30:   - Software OAuth: 0
+2025-08-06 17:40:30:   - Hello Business: 0
+2025-08-06 17:40:30:   - Temporary Access Pass: 0
+2025-08-06 17:40:30:   - Certificate Based Auth: 0
+2025-08-06 17:40:30: 
+Output Files:
+2025-08-06 17:40:30:   Authentication Methods: C:\scripts\mext\202508061740-MFA-AuthenticationMethods.csv
+2025-08-06 17:40:30:   Registration Details: C:\scripts\mext\202508061740-MFA-UserRegistrationDetails.csv 
+2025-08-06 17:40:30: Processing Time: 00:39
+2025-08-06 17:40:30: ===================================
+2025-08-06 17:43:25: === Starting Users Collection ===
+2025-08-06 17:43:27: User Analysis Results:
+2025-08-06 17:43:27: Total Users: 76
+2025-08-06 17:43:27:   - Enabled: 74
+2025-08-06 17:43:27:   - Disabled: 2
+2025-08-06 17:43:27:   - Synced from On-Premises: 0
+2025-08-06 17:43:27:   - Guest Users: 13
+2025-08-06 17:43:27: 
+Recent Account Creation:
+2025-08-06 17:43:27:   - Last 7 days: 0
+2025-08-06 17:43:27:   - Last 30 days: 3
+2025-08-06 17:43:27:   - Last 90 days: 5
+2025-08-06 17:43:27:   - Last 6 months: 7
+2025-08-06 17:43:27:   - Last 1 year 13
+2025-08-06 17:43:27: 
+Exported File:
+2025-08-06 17:43:27:   - File: C:\scripts\mext\202508061743-Users.csv
+2025-08-06 17:45:27: === Starting Admin Users Collection ===
+2025-08-06 17:45:27: [INFO] Analyzing administrator roles...
+2025-08-06 17:45:28: [WARNING] Error processing user 98f5f043-ae75-476e-ab8c-ee9cfebac3cf in role Groups Administrator: [Request_ResourceNotFound] : Resource '98f5f043-ae75-476e-ab8c-ee9cfebac3cf' does not exist or one of its queried reference-property objects are not present.
+2025-08-06 17:45:30: 
+Roles with users:
+2025-08-06 17:45:30:   + Global Administrator (3 users)
+2025-08-06 17:45:30: 
+Empty roles:
+2025-08-06 17:45:30:   - Groups Administrator
+2025-08-06 17:45:30:   - Billing Administrator
+2025-08-06 17:45:30:   - Azure AD Joined Device Local Administrator
+2025-08-06 17:45:30: 
+Summary:
+2025-08-06 17:45:30:   Total admin roles: 4
+2025-08-06 17:45:30:   Roles with users: 1
+2025-08-06 17:45:30:   Empty roles: 3
+2025-08-06 17:45:30:   Total administrators: 3
+2025-08-06 17:45:30: 
+Exported files:
+2025-08-06 17:45:30:   Individual role files: C:\scripts\mext
+2025-08-06 17:45:30:   Merged file: C:\scripts\mext\Merged\202508061745-All-Administrators.csv
+2025-08-06 17:48:32: === Starting Risky Users Collection ===
+2025-08-06 17:48:33: [ERROR] An error occurred: Response status code does not indicate success: Forbidden (Forbidden).
+2025-08-06 17:49:13: === Starting Risky Users Collection ===
+2025-08-06 17:49:13: [ERROR] An error occurred: Response status code does not indicate success: Forbidden (Forbidden).
+2025-08-06 17:55:35: === Starting Sign-in Log Collection ===
+2025-08-06 17:55:35: Start Date: 2025-08-01T00:00:00Z
+2025-08-06 17:55:35: End Date: 2025-08-06T21:55:35Z
+2025-08-06 17:55:35: Output Format: JSON
+2025-08-06 17:55:35: Output Directory: C:\scripts\mext
+2025-08-06 17:55:35: ----------------------------------------
+
+2025-08-06 17:55:35: [INFO] Acquiring the interactiveUser & nonInteractiveUser sign-in logs
+2025-08-06 17:55:53: [INFO] Retrieved 1000 records between 08/06/2025 16:45:15 and 08/06/2025 21:49:03
+2025-08-06 17:56:03: [INFO] Retrieved 1000 records between 08/06/2025 13:36:33 and 08/06/2025 16:45:15
+2025-08-06 17:56:10: [INFO] Retrieved 1000 records between 08/05/2025 22:11:17 and 08/06/2025 13:36:13
+2025-08-06 17:56:21: [INFO] Retrieved 1000 records between 08/05/2025 19:48:10 and 08/05/2025 22:11:01
+2025-08-06 17:56:25: [INFO] Retrieved 1000 records between 08/05/2025 16:42:24 and 08/05/2025 19:48:10
+2025-08-06 17:56:31: [INFO] Retrieved 1000 records between 08/05/2025 15:31:23 and 08/05/2025 16:42:23
+2025-08-06 17:56:36: [INFO] Retrieved 1000 records between 08/05/2025 05:57:18 and 08/05/2025 15:31:23
+2025-08-06 17:56:57: [INFO] Retrieved 1000 records between 08/04/2025 14:16:04 and 08/05/2025 05:54:35
+2025-08-06 17:57:04: [INFO] Retrieved 1000 records between 08/03/2025 20:10:11 and 08/04/2025 14:16:02
+2025-08-06 17:57:11: [INFO] Retrieved 1000 records between 08/02/2025 21:03:01 and 08/03/2025 20:10:11
+2025-08-06 17:57:16: [INFO] Retrieved 1000 records between 08/01/2025 22:00:00 and 08/02/2025 21:03:00
+2025-08-06 17:57:27: [INFO] Retrieved 1000 records between 08/01/2025 18:39:46 and 08/01/2025 22:00:00
+2025-08-06 17:57:32: [INFO] Retrieved 1000 records between 08/01/2025 14:53:53 and 08/01/2025 18:39:46
+2025-08-06 17:57:39: [INFO] Retrieved 877 records between 08/01/2025 00:02:03 and 08/01/2025 14:53:19
+2025-08-06 17:57:39: 
+Summary for interactiveUser & nonInteractiveUser:
+2025-08-06 17:57:39:   Records: 13877
+2025-08-06 17:57:39:   Files: 14
+
+2025-08-06 17:57:39: [INFO] Acquiring the servicePrincipal sign-in logs
+2025-08-06 17:57:52: [INFO] Retrieved 1000 records between 08/01/2025 02:39:29 and 08/06/2025 21:39:11
+2025-08-06 17:57:54: [INFO] Retrieved 16 records between 08/01/2025 00:03:41 and 08/01/2025 02:39:29
+2025-08-06 17:57:54: 
+Summary for servicePrincipal:
+2025-08-06 17:57:54:   Records: 1016
+2025-08-06 17:57:54:   Files: 2
+
+2025-08-06 17:57:54: [INFO] Acquiring the managedIdentity sign-in logs
+2025-08-06 17:58:02: 
+Summary for managedIdentity:
+2025-08-06 17:58:02:   Records: 0
+2025-08-06 17:58:02:   Files: 0
+
+2025-08-06 17:58:02: 
+Overall Collection Summary:
+2025-08-06 17:58:02:   Total Records: 14893
+2025-08-06 17:58:02:   Files Created: 16
+2025-08-06 17:58:02:   Output Directory: C:\scripts\mext
+2025-08-06 17:58:02:   Processing Time: 02:26
+2025-08-06 17:58:02: === Starting Audit Log Collection ===
+2025-08-06 17:58:02: Start Date: 2025-08-01T00:00:00Z
+2025-08-06 17:58:02: End Date: 2025-08-06T21:58:02Z
+2025-08-06 17:58:02: Output Format: JSON
+2025-08-06 17:58:02: Output Directory: C:\scripts\mext
+2025-08-06 17:58:02: ----------------------------------------
+
+2025-08-06 17:58:04: [INFO] Retrieved 40 records between 2025-08-01T03:56Z and 2025-08-06T19:25Z
+2025-08-06 17:58:04: 
+Collection Summary:
+2025-08-06 17:58:04:   Total Records: 40
+2025-08-06 17:58:04:   Files Created: 1
+2025-08-06 17:58:04:   Output Directory: C:\scripts\mext
+2025-08-06 17:58:04:   Processing Time: 00:01
+2025-08-06 18:03:18: === Starting Conditional Access Policy Collection ===
+2025-08-06 18:03:19: [INFO] Processing policy: Require multifactor authentication for all users
+2025-08-06 18:03:19: 
+=== Conditional Access Policy Summary ===
+2025-08-06 18:03:19: Total Policies: 1
+2025-08-06 18:03:19: Enabled Policies: 0
+2025-08-06 18:03:19: Disabled Policies: 0
+2025-08-06 18:03:19: Output: C:\scripts\mext\20250806180319-ConditionalAccessPolicy.csv
+2025-08-06 18:03:19: ===================================
+2025-08-06 18:06:29: === Starting Azure Activity Log Collection ===
+2025-08-06 18:06:29: Start Date: 2025-08-05 00:00:00
+2025-08-06 18:06:29: End Date: 2025-08-06 22:06:29
+2025-08-06 18:06:29: Output Directory: C:\scripts\mext
+2025-08-06 18:06:29: ----------------------------------------
+
+2025-08-06 18:06:30: [INFO] Retrieving all available subscriptions...
+2025-08-06 18:06:30: [INFO] Found 0 subscriptions
+2025-08-06 18:06:30:  
+2025-08-06 18:06:30: 
+=== Activity Log Collection Summary ===
+2025-08-06 18:06:30:   Total Records: 0
+2025-08-06 18:06:30:   Files Created: 0
+2025-08-06 18:06:30:   Subscriptions:
+2025-08-06 18:06:30:     - Total Processed: 0
+2025-08-06 18:06:30:     - With Data: 0
+2025-08-06 18:06:30:     - Empty: 0
+2025-08-06 18:06:30: 
+Output Details:
+2025-08-06 18:06:30:   Directory: C:\scripts\mext
+2025-08-06 18:06:30:   Processing Time: 00:00
+2025-08-06 18:06:30: ===================================
+2025-08-06 18:07:41: === Starting Azure Activity Log Collection ===
+2025-08-06 18:07:41: Start Date: 2025-08-01 00:00:00
+2025-08-06 18:07:41: End Date: 2025-08-06 22:07:41
+2025-08-06 18:07:41: Output Directory: C:\scripts\mext
+2025-08-06 18:07:41: ----------------------------------------
+
+2025-08-06 18:07:41: [INFO] Retrieving all available subscriptions...
+2025-08-06 18:07:41: [INFO] Found 0 subscriptions
+2025-08-06 18:07:41:  
+2025-08-06 18:07:41: 
+=== Activity Log Collection Summary ===
+2025-08-06 18:07:41:   Total Records: 0
+2025-08-06 18:07:41:   Files Created: 0
+2025-08-06 18:07:41:   Subscriptions:
+2025-08-06 18:07:41:     - Total Processed: 0
+2025-08-06 18:07:41:     - With Data: 0
+2025-08-06 18:07:41:     - Empty: 0
+2025-08-06 18:07:41: 
+Output Details:
+2025-08-06 18:07:41:   Directory: C:\scripts\mext
+2025-08-06 18:07:41:   Processing Time: 00:00
+2025-08-06 18:07:41: ===================================
+2025-08-06 18:11:00: [INFO] Missing Graph scope detected: Application.Read.All
+2025-08-06 18:11:00: [INFO] Attempting to re-authenticate with the appropriate scope(s): Directory.Read.All,Application.Read.All
+2025-08-06 18:11:17: === Starting OAuth Permissions Collection ===
+2025-08-06 18:11:17: [INFO] Retrieving all ServicePrincipal objects...
+2025-08-06 18:11:28: [INFO] Successfully retrieved 327 ServicePrincipal objects
+2025-08-06 18:11:28: [INFO] Caching all ServicePrincipal objects...
+2025-08-06 18:11:28: [INFO] Cached 100 of 327 service principals...
+2025-08-06 18:11:28: [INFO] Cached 200 of 327 service principals...
+2025-08-06 18:11:28: [INFO] Cached 300 of 327 service principals...
+2025-08-06 18:11:28: [INFO] All ServicePrincipal objects cached successfully
+2025-08-06 18:11:28: [INFO] Processing delegated permissions...
+2025-08-06 18:11:28: [INFO] Found 34 OAuth2PermissionGrants to process
+2025-08-06 18:11:29: [INFO] Processing delegated grant 25 of 34 - App: 'monday.com'
+2025-08-06 18:11:30: [INFO] Delegated permissions processing completed - Found 178 delegated permissions from 34 grants
+2025-08-06 18:11:30: [INFO] Processing application permissions...
+2025-08-06 18:11:35: [INFO] Processing application permissions for app 25 of 327 - 'Microsoft Graph Connectors Core'
+2025-08-06 18:11:39: [INFO] Processing application permissions for app 50 of 327 - 'Microsoft Teams UIS'
+2025-08-06 18:11:43: [INFO] Processing application permissions for app 75 of 327 - 'Azure AD Identity Governance - Entitlement Management'
+2025-08-06 18:11:47: [INFO] Processing application permissions for app 100 of 327 - 'Azure Multi-Factor Auth Client'
+2025-08-06 18:11:52: [INFO] Processing application permissions for app 125 of 327 - 'KaizalaActionsPlatform'
+2025-08-06 18:11:56: [INFO] Processing application permissions for app 150 of 327 - 'Azure Purview'
+2025-08-06 18:12:00: [INFO] Processing application permissions for app 175 of 327 - 'WindowsUpdate-Service'
+2025-08-06 18:12:04: [INFO] Processing application permissions for app 200 of 327 - 'Skype Business Voice Directory'
+2025-08-06 18:12:09: [INFO] Processing application permissions for app 225 of 327 - 'Microsoft Invitation Acceptance Portal'
+2025-08-06 18:12:13: [INFO] Processing application permissions for app 250 of 327 - 'Cortana at Work Service'
+2025-08-06 18:12:17: [INFO] Processing application permissions for app 275 of 327 - 'Windows Azure Service Management API'
+2025-08-06 18:12:21: [INFO] Processing application permissions for app 300 of 327 - 'Microsoft Teams Targeting Application'
+2025-08-06 18:12:26: [INFO] Processing application permissions for app 325 of 327 - 'Recommended'
+2025-08-06 18:12:26: [INFO] Application permissions processing completed - Found 23 application permissions
+2025-08-06 18:12:26: [INFO] Exporting results to CSV...
+2025-08-06 18:12:26: [INFO] Export completed successfully
+2025-08-06 18:12:26: 
+=== OAuth Permissions Analysis Summary ===
+2025-08-06 18:12:26: Service Principals Processed: 327
+2025-08-06 18:12:26: Delegated Grants Processed: 34
+2025-08-06 18:12:26: Total Permissions Found: 201
+2025-08-06 18:12:26:   - Delegated Permissions: 178
+2025-08-06 18:12:26:   - Application Permissions: 23
+2025-08-06 18:12:26: 
+Output File: C:\scripts\mext\06082025181100-OAuthPermissions.csv
+2025-08-06 18:12:26: Processing Time: 01:26
+2025-08-06 18:12:26: ===================================
+2025-08-06 18:17:12: === Starting Groups Collection ===
+2025-08-06 18:17:12: [INFO] Fetching all groups...
+2025-08-06 18:17:23: [INFO] Found 23 groups
+2025-08-06 18:17:23: 
+Group Analysis Results:
+2025-08-06 18:17:23: Total Groups: 23
+2025-08-06 18:17:23:   - Security Enabled: 3
+2025-08-06 18:17:23:   - Mail Enabled: 21
+2025-08-06 18:17:23:   - On-Premises Synced: 0
+2025-08-06 18:17:23: 
+Exported File:
+2025-08-06 18:17:23:   - File: C:\scripts\mext\202508061817-Groups.csv
+2025-08-06 18:17:23: === Starting Dynamic Groups Collection ===
+2025-08-06 18:17:23: [INFO] Fetching all groups from Microsoft Graph...
+2025-08-06 18:17:23: [INFO] Found 23 total groups
+2025-08-06 18:17:23: [INFO] Found 2 dynamic groups
+2025-08-06 18:17:23: 
+Dynamic Group Analysis Results:
+2025-08-06 18:17:23: Total Dynamic Groups: 2
+2025-08-06 18:17:23:   - Security Enabled: 2
+2025-08-06 18:17:23:   - Mail Enabled: 1
+2025-08-06 18:17:23: 
+Membership Rule Processing States:
+2025-08-06 18:17:23:   - On: 2
+2025-08-06 18:17:23: 
+Exported File:
+2025-08-06 18:17:23:   - File: C:\scripts\mext\202508061817-DynamicGroups.csv
+2025-08-06 18:17:23: === Starting Group Members Collection ===
+2025-08-06 18:17:23: [INFO] Fetching all groups...
+2025-08-06 18:17:24: [INFO] Found 23 groups
+2025-08-06 18:17:24: [INFO] Processing group: General OnBoarding & Getting Started
+2025-08-06 18:17:24: [INFO] Processing group: Gratitude Committee
+2025-08-06 18:17:24: [INFO] Processing group: Board
+2025-08-06 18:17:24: [INFO] Processing group: Resilient Retreat Private
+2025-08-06 18:17:24: [INFO] Processing group: All Users
+2025-08-06 18:17:25: [INFO] Processing group: Forwarding List II
+2025-08-06 18:17:25: [INFO] Processing group: Resilient Retreat Staff
+2025-08-06 18:17:25: [INFO] Processing group: Staff
+2025-08-06 18:17:26: [INFO] Processing group: Kind Line
+2025-08-06 18:17:26: [INFO] Processing group: Palisades
+2025-08-06 18:17:26: [INFO] Processing group: Forwarding List
+2025-08-06 18:17:26: [INFO] Processing group: 20250617DF-GuestUsers
+2025-08-06 18:17:26: [INFO] Processing group: Resilient Retreat, Inc.
+2025-08-06 18:17:27: [INFO] Processing group: LPM-AdminRoles
+2025-08-06 18:17:27: [INFO] Processing group: Resilient Rhapsody 2024 Committee
+2025-08-06 18:17:27: [INFO] Processing group: Group for Answers in Viva Engage – DO NOT DELETE 4393254912
+2025-08-06 18:17:27: [INFO] Processing group: All Company
+2025-08-06 18:17:27: [INFO] Processing group: Development
+2025-08-06 18:17:28: [INFO] Processing group: RR Fundraising Committee
+2025-08-06 18:17:28: [INFO] Processing group: Special Events & Projects
+2025-08-06 18:17:28: [INFO] Processing group: Road to Resilience Campaign Team
+2025-08-06 18:17:28: [INFO] Processing group: Resilient Repartee (1-11-24) Committee
+2025-08-06 18:17:28: [INFO] Processing group: Governance
+2025-08-06 18:17:29: 
+Exported File:
+2025-08-06 18:17:29:   - File: C:\scripts\mext\202508061817-GroupMembers.csv
+2025-08-06 18:23:02: === Starting License Collection ===
+2025-08-06 18:23:02: [INFO] License information saved to: C:\scripts\mext\20250806182302-TenantLicenses.csv
+2025-08-06 18:23:02: 
+License Information:
+2025-08-06 18:23:02: === Starting License Compatibility Check ===
+2025-08-06 18:23:02: 
+License Status:
+2025-08-06 18:23:02: E5: Not Present
+2025-08-06 18:23:02: E3: Not Present
+2025-08-06 18:23:02: P2: Not Present
+2025-08-06 18:23:02: P1: Present
+2025-08-06 18:23:02: 
+Feature Compatibility:
+2025-08-06 18:23:02: Get-Sessions (E5): Not Available
+2025-08-06 18:23:02: Get-MessageIDs (E5): Not Available
+2025-08-06 18:23:02: Get-GraphEntraAuditLogs (E5): Not Available
+2025-08-06 18:23:02: Get-RiskyUsers (E5 or P2): Not Available
+2025-08-06 18:23:02: 
+Retention Information:
+2025-08-06 18:23:02: Audit Log retention: 30 days
+2025-08-06 18:23:02: Sign-in Log retention: 30 days
+2025-08-06 18:23:02: 
+Recommendations:
+2025-08-06 18:23:02: - Consider E5 license for full feature access and extended retention
+2025-08-06 18:23:02: - P2 license would enable risky users monitoring
+2025-08-06 18:23:02: === Starting Security Defaults Check ===
+2025-08-06 18:23:03: 
+Security Defaults Status:
+2025-08-06 18:23:03: Security Defaults: Disabled
+2025-08-06 18:23:04: 
+License Context:
+2025-08-06 18:23:04: Premium License(s) Detected:
+2025-08-06 18:23:04:   - P1
+2025-08-06 18:23:04: 
+Recommendations:
+2025-08-06 18:23:04: Current configuration aligns with Microsoft recommendations
+2025-08-06 18:23:04:   - Ensure Conditional Access policies are properly configured
+2025-08-06 18:23:04:   - Regular review of security policies is recommended
+2025-08-06 18:23:04: 
+Check Summary:
+2025-08-06 18:23:04: SecurityDefaultsEnabled    : No
+HasPremiumLicense          : Yes
+RecommendedState           : Disabled
+AlignedWithRecommendations : Yes
+CheckDate                  : 2025-08-06 18:23:04
+2025-08-06 18:23:04: 
+Output Files:
+2025-08-06 18:23:04: - Results exported to: C:\scripts\mext\20250806182304-EntraSecurityDefaults.csv
+2025-08-06 18:26:02: === Starting User License Collection ===
+2025-08-06 18:26:15: 
+User License Summary:
+2025-08-06 18:26:15: Total Users: 76
+2025-08-06 18:26:15:   - Total License Assignments: 55
+2025-08-06 18:26:15:   - Licensed Users: 76
+2025-08-06 18:26:15:   - Unlicensed Users: 39
+2025-08-06 18:26:15: 
+License Type Distribution:
+2025-08-06 18:26:15:   - O365_BUSINESS_ESSENTIALS: 21 assignments
+2025-08-06 18:26:15:   - NONPROFIT_PORTAL: 12 assignments
+2025-08-06 18:26:15:   - SPB: 11 assignments
+2025-08-06 18:26:15:   - FLOW_FREE: 10 assignments
+2025-08-06 18:26:15:   - EXCHANGEARCHIVE_ADDON: 1 assignments
+2025-08-06 18:26:15: 
+Exported File:
+2025-08-06 18:26:15:   - File: C:\scripts\mext\20250806182615-UserLicenses.csv
+2025-08-06 18:29:07: === Starting Directory Role Membership Export ===
+2025-08-06 18:29:07: [INFO] Retrieving directory roles and memberships...
+2025-08-06 18:29:08: [INFO] Found 6 directory roles
+2025-08-06 18:29:09: [WARNING] Error processing user 98f5f043-ae75-476e-ab8c-ee9cfebac3cf in role Groups Administrator: [Request_ResourceNotFound] : Resource '98f5f043-ae75-476e-ab8c-ee9cfebac3cf' does not exist or one of its queried reference-property objects are not present.
+2025-08-06 18:29:11: [WARNING] Error processing user 98f5f043-ae75-476e-ab8c-ee9cfebac3cf in role Guest Inviter: [Request_ResourceNotFound] : Resource '98f5f043-ae75-476e-ab8c-ee9cfebac3cf' does not exist or one of its queried reference-property objects are not present.
+2025-08-06 18:29:12: 
+Roles with users:
+2025-08-06 18:29:12:   +  (1 users)
+2025-08-06 18:29:12:   + Global Administrator (3 users)
+2025-08-06 18:29:12:   +  (1 users)
+2025-08-06 18:29:12: 
+Empty roles:
+2025-08-06 18:29:12:   - Global Reader
+2025-08-06 18:29:12:   - Billing Administrator
+2025-08-06 18:29:12:   - Azure AD Joined Device Local Administrator
+2025-08-06 18:29:12: 
+Summary:
+2025-08-06 18:29:12:   - Total roles processed: 6
+2025-08-06 18:29:12:   - Roles with members: 3
+2025-08-06 18:29:12:   - Roles without members: 3
+2025-08-06 18:29:12:   - Total role user assignments: 5
+2025-08-06 18:29:12: 
+Exported file:
+2025-08-06 18:29:12:   - File: C:\scripts\mext\202508061829-All-Roles.csv
+2025-08-06 18:32:39: === Starting Security Alerts Collection ===
+2025-08-06 18:32:39: [INFO] Missing Graph scope detected: SecurityEvents.Read.All
+2025-08-06 18:32:39: [INFO] Attempting to re-authenticate with the appropriate scope(s): SecurityEvents.Read.All
+2025-08-06 18:32:56: [INFO] Analyzing security alerts...
+2025-08-06 18:32:56: [INFO] Using delegated authentication - selecting Get-MgSecurityAlert
+2025-08-06 18:32:56: [INFO] Filtering alerts from 2025-07-30T00:00:00Z
+2025-08-06 18:33:11: 
+Security Alert Analysis Results:
+2025-08-06 18:33:11: Total Alerts: 0
+2025-08-06 18:33:11: 
+Severity Distribution:
+2025-08-06 18:33:11:   - High: 0
+2025-08-06 18:33:11:   - Medium: 0
+2025-08-06 18:33:11:   - Low: 0
+2025-08-06 18:33:11:   - Informational: 0
+2025-08-06 18:33:11: 
+Status Distribution:
+2025-08-06 18:33:11:   - New: 0
+2025-08-06 18:33:11:   - In Progress: 0
+2025-08-06 18:33:11:   - Resolved: 0
+2025-08-06 18:33:11:   - Dismissed: 0
+2025-08-06 18:33:11:   - Unknown: 0
+2025-08-06 18:33:11: 
+Exported File:
+2025-08-06 18:33:11:   - File: C:\scripts\mext\202508061832-SecurityAlerts.csv
+2025-08-06 18:33:43: === Starting Security Alerts Collection ===
+2025-08-06 18:33:43: [INFO] Analyzing security alerts...
+2025-08-06 18:33:43: [INFO] Using delegated authentication - selecting Get-MgSecurityAlert
+2025-08-06 18:33:43: [INFO] Filtering alerts from 2025-02-07T00:00:00Z
+2025-08-06 18:33:44: 
+Security Alert Analysis Results:
+2025-08-06 18:33:44: Total Alerts: 0
+2025-08-06 18:33:44: 
+Severity Distribution:
+2025-08-06 18:33:44:   - High: 0
+2025-08-06 18:33:44:   - Medium: 0
+2025-08-06 18:33:44:   - Low: 0
+2025-08-06 18:33:44:   - Informational: 0
+2025-08-06 18:33:44: 
+Status Distribution:
+2025-08-06 18:33:44:   - New: 0
+2025-08-06 18:33:44:   - In Progress: 0
+2025-08-06 18:33:44:   - Resolved: 0
+2025-08-06 18:33:44:   - Dismissed: 0
+2025-08-06 18:33:44:   - Unknown: 0
+2025-08-06 18:33:44: 
+Exported File:
+2025-08-06 18:33:44:   - File: C:\scripts\mext\202508061833-SecurityAlerts.csv
+2025-08-06 18:35:58: === Starting Device Collection ===
+2025-08-06 18:35:58: [INFO] Missing Graph scope detected: Device.Read.All
+2025-08-06 18:35:58: [INFO] Attempting to re-authenticate with the appropriate scope(s): Device.Read.All,Directory.Read.All
+2025-08-06 18:36:05: [INFO] Collecting device information...
+2025-08-06 18:36:13: [INFO] Processing 8 devices...
+2025-08-06 18:36:13: 
+=== Device Analysis Summary ===
+2025-08-06 18:36:13: Device Counts:
+2025-08-06 18:36:13:   Total Devices: 8
+2025-08-06 18:36:13:   Entra ID Joined: 0
+2025-08-06 18:36:13:   Workplace Joined: 8
+2025-08-06 18:36:13:   Hybrid Joined: 0
+2025-08-06 18:36:13: 
+Device Status:
+2025-08-06 18:36:13:   Compliant Devices: 0
+2025-08-06 18:36:13:   Managed Devices: 0
+2025-08-06 18:36:13:   Active (Last 30 Days): 2
+2025-08-06 18:36:13:   Inactive (>90 Days): 6
+2025-08-06 18:36:13: 
+Operating Systems:
+2025-08-06 18:36:13:   Windows: 8
+2025-08-06 18:36:13:   macOS: 0
+2025-08-06 18:36:13:   iOS: 0
+2025-08-06 18:36:13:   Android: 0
+2025-08-06 18:36:13:   Other: 0
+2025-08-06 18:36:13: 
+Export Details:
+2025-08-06 18:36:13:   Output File: C:\scripts\mext\202508061835-Devices.csv
+2025-08-06 18:36:13:   Processing Time: 00:15
+2025-08-06 18:36:13: ===================================
+2025-08-06 18:36:58: === Starting Device Collection ===
+2025-08-06 18:36:58: [INFO] Collecting device information...
+2025-08-06 18:36:58: [INFO] Processing 8 devices...
+2025-08-06 18:36:58: 
+=== Device Analysis Summary ===
+2025-08-06 18:36:58: Device Counts:
+2025-08-06 18:36:58:   Total Devices: 8
+2025-08-06 18:36:58:   Entra ID Joined: 0
+2025-08-06 18:36:58:   Workplace Joined: 8
+2025-08-06 18:36:58:   Hybrid Joined: 0
+2025-08-06 18:36:58: 
+Device Status:
+2025-08-06 18:36:58:   Compliant Devices: 0
+2025-08-06 18:36:58:   Managed Devices: 0
+2025-08-06 18:36:58:   Active (Last 30 Days): 2
+2025-08-06 18:36:58:   Inactive (>90 Days): 6
+2025-08-06 18:36:58: 
+Operating Systems:
+2025-08-06 18:36:58:   Windows: 8
+2025-08-06 18:36:58:   macOS: 0
+2025-08-06 18:36:58:   iOS: 0
+2025-08-06 18:36:58:   Android: 0
+2025-08-06 18:36:58:   Other: 0
+2025-08-06 18:36:58: 
+Export Details:
+2025-08-06 18:36:58:   Output File: C:\scripts\mext\202508061836-Devices.csv
+2025-08-06 18:36:58:   Processing Time: 00:00
+2025-08-06 18:36:58: ===================================
+2025-08-06 21:57:14: === Starting MFA Status Collection ===
+2025-08-06 21:57:14: [INFO] Identifying authentication methods...
+2025-08-06 21:57:14: [INFO] Processing all users...
+2025-08-06 21:57:14: [INFO] Found 76 users to process
+2025-08-06 21:57:52: [INFO] Retrieving user registration details...
+2025-08-06 21:57:54: 
+=== MFA Status Analysis Summary ===
+2025-08-06 21:57:54: 
+MFA Status:
+2025-08-06 21:57:54:   Total Users: 76
+2025-08-06 21:57:54:   MFA Enabled: 12 users (15.8%)
+2025-08-06 21:57:54:   MFA Disabled: 64 users (84.2%)
+2025-08-06 21:57:54: 
+Authentication Methods:
+2025-08-06 21:57:54:   - Email: 0
+2025-08-06 21:57:54:   - Fido2: 1
+2025-08-06 21:57:54:   - Microsoft Authenticator App: 10
+2025-08-06 21:57:54:   - Phone: 9
+2025-08-06 21:57:54:   - Software OAuth: 0
+2025-08-06 21:57:54:   - Hello Business: 0
+2025-08-06 21:57:54:   - Temporary Access Pass: 0
+2025-08-06 21:57:54:   - Certificate Based Auth: 0
+2025-08-06 21:57:54: 
+Output Files:
+2025-08-06 21:57:54:   Authentication Methods: C:\scripts\mext\202508062157-MFA-AuthenticationMethods.csv
+2025-08-06 21:57:54:   Registration Details: C:\scripts\mext\202508062157-MFA-UserRegistrationDetails.csv 
+2025-08-06 21:57:54: Processing Time: 00:38
+2025-08-06 21:57:54: ===================================
+2025-08-06 21:57:54: === Starting Users Collection ===
+2025-08-06 21:58:35: User Analysis Results:
+2025-08-06 21:58:35: Total Users: 76
+2025-08-06 21:58:35:   - Enabled: 74
+2025-08-06 21:58:35:   - Disabled: 2
+2025-08-06 21:58:35:   - Synced from On-Premises: 0
+2025-08-06 21:58:35:   - Guest Users: 13
+2025-08-06 21:58:35: 
+Recent Account Creation:
+2025-08-06 21:58:35:   - Last 7 days: 0
+2025-08-06 21:58:35:   - Last 30 days: 3
+2025-08-06 21:58:35:   - Last 90 days: 5
+2025-08-06 21:58:35:   - Last 6 months: 7
+2025-08-06 21:58:35:   - Last 1 year 13
+2025-08-06 21:58:35: 
+Exported File:
+2025-08-06 21:58:35:   - File: C:\scripts\mext\202508062158-Users.csv
+2025-08-06 21:58:35: === Starting Admin Users Collection ===
+2025-08-06 21:58:35: [INFO] Analyzing administrator roles...
+2025-08-06 21:58:36: [WARNING] Error processing user 98f5f043-ae75-476e-ab8c-ee9cfebac3cf in role Groups Administrator: [Request_ResourceNotFound] : Resource '98f5f043-ae75-476e-ab8c-ee9cfebac3cf' does not exist or one of its queried reference-property objects are not present.
+2025-08-06 21:58:37: 
+Roles with users:
+2025-08-06 21:58:37:   + Global Administrator (3 users)
+2025-08-06 21:58:37: 
+Empty roles:
+2025-08-06 21:58:38:   - Groups Administrator
+2025-08-06 21:58:38:   - Billing Administrator
+2025-08-06 21:58:38:   - Azure AD Joined Device Local Administrator
+2025-08-06 21:58:38: 
+Summary:
+2025-08-06 21:58:38:   Total admin roles: 4
+2025-08-06 21:58:38:   Roles with users: 1
+2025-08-06 21:58:38:   Empty roles: 3
+2025-08-06 21:58:38:   Total administrators: 3
+2025-08-06 21:58:38: 
+Exported files:
+2025-08-06 21:58:38:   Individual role files: C:\scripts\mext
+2025-08-06 21:58:38:   Merged file: C:\scripts\mext\Merged\202508062158-All-Administrators.csv
+2025-08-06 21:58:38: === Starting Directory Role Membership Export ===
+2025-08-06 21:58:38: [INFO] Retrieving directory roles and memberships...
+2025-08-06 21:58:38: [INFO] Found 6 directory roles
+2025-08-06 21:58:38: [WARNING] Error processing user 98f5f043-ae75-476e-ab8c-ee9cfebac3cf in role Groups Administrator: [Request_ResourceNotFound] : Resource '98f5f043-ae75-476e-ab8c-ee9cfebac3cf' does not exist or one of its queried reference-property objects are not present.
+2025-08-06 21:58:41: [WARNING] Error processing user 98f5f043-ae75-476e-ab8c-ee9cfebac3cf in role Guest Inviter: [Request_ResourceNotFound] : Resource '98f5f043-ae75-476e-ab8c-ee9cfebac3cf' does not exist or one of its queried reference-property objects are not present.
+2025-08-06 21:58:42: 
+Roles with users:
+2025-08-06 21:58:42:   +  (1 users)
+2025-08-06 21:58:42:   + Global Administrator (3 users)
+2025-08-06 21:58:42:   +  (1 users)
+2025-08-06 21:58:42: 
+Empty roles:
+2025-08-06 21:58:42:   - Global Reader
+2025-08-06 21:58:42:   - Billing Administrator
+2025-08-06 21:58:42:   - Azure AD Joined Device Local Administrator
+2025-08-06 21:58:42: 
+Summary:
+2025-08-06 21:58:42:   - Total roles processed: 6
+2025-08-06 21:58:42:   - Roles with members: 3
+2025-08-06 21:58:42:   - Roles without members: 3
+2025-08-06 21:58:42:   - Total role user assignments: 5
+2025-08-06 21:58:42: 
+Exported file:
+2025-08-06 21:58:42:   - File: C:\scripts\mext\202508062158-All-Roles.csv
+2025-08-06 21:58:42: === Starting Sign-in Log Collection ===
+2025-08-06 21:58:42: Start Date: 2025-08-01T00:00:00Z
+2025-08-06 21:58:42: End Date: 2025-08-07T01:58:42Z
+2025-08-06 21:58:42: Output Format: JSON
+2025-08-06 21:58:42: Output Directory: C:\scripts\mext
+2025-08-06 21:58:42: ----------------------------------------
+
+2025-08-06 21:58:42: [INFO] Acquiring the interactiveUser & nonInteractiveUser sign-in logs
+2025-08-06 21:58:49: [INFO] Retrieved 1000 records between 08/06/2025 18:07:31 and 08/07/2025 01:48:12
+2025-08-06 21:58:54: [INFO] Retrieved 1000 records between 08/06/2025 14:55:35 and 08/06/2025 18:07:16
+2025-08-06 21:58:58: [INFO] Retrieved 1000 records between 08/06/2025 04:53:46 and 08/06/2025 14:55:35
+2025-08-06 21:59:02: [INFO] Retrieved 1000 records between 08/05/2025 20:18:52 and 08/06/2025 04:46:47
+2025-08-06 21:59:06: [INFO] Retrieved 1000 records between 08/05/2025 17:29:44 and 08/05/2025 20:18:51
+2025-08-06 21:59:10: [INFO] Retrieved 1000 records between 08/05/2025 15:58:33 and 08/05/2025 17:29:43
+2025-08-06 21:59:19: [INFO] Retrieved 1000 records between 08/05/2025 12:32:48 and 08/05/2025 15:58:29
+2025-08-06 21:59:31: [INFO] Retrieved 1000 records between 08/04/2025 17:25:57 and 08/05/2025 12:32:48
+2025-08-06 21:59:56: [INFO] Retrieved 1000 records between 08/03/2025 22:22:19 and 08/04/2025 17:20:04
+2025-08-06 22:00:00: [INFO] Retrieved 1000 records between 08/03/2025 06:11:44 and 08/03/2025 22:22:19
+2025-08-06 22:00:05: [INFO] Retrieved 1000 records between 08/02/2025 02:47:34 and 08/03/2025 06:08:55
+2025-08-06 22:00:12: [INFO] Retrieved 1000 records between 08/01/2025 19:36:54 and 08/02/2025 02:47:33
+2025-08-06 22:00:18: [INFO] Retrieved 1000 records between 08/01/2025 16:03:00 and 08/01/2025 19:36:54
+2025-08-06 22:00:23: [INFO] Retrieved 1000 records between 08/01/2025 08:25:27 and 08/01/2025 16:02:59
+2025-08-06 22:00:29: [INFO] Retrieved 188 records between 08/01/2025 00:02:03 and 08/01/2025 08:25:27
+2025-08-06 22:00:29: 
+Summary for interactiveUser & nonInteractiveUser:
+2025-08-06 22:00:29:   Records: 14188
+2025-08-06 22:00:29:   Files: 15
+
+2025-08-06 22:00:29: [INFO] Acquiring the servicePrincipal sign-in logs
+2025-08-06 22:01:00: [INFO] Retrieved 1000 records between 08/01/2025 06:17:06 and 08/07/2025 01:48:14
+2025-08-06 22:01:03: [INFO] Retrieved 44 records between 08/01/2025 00:03:41 and 08/01/2025 06:14:39
+2025-08-06 22:01:03: 
+Summary for servicePrincipal:
+2025-08-06 22:01:03:   Records: 1044
+2025-08-06 22:01:03:   Files: 2
+
+2025-08-06 22:01:03: [INFO] Acquiring the managedIdentity sign-in logs
+2025-08-06 22:01:27: 
+Summary for managedIdentity:
+2025-08-06 22:01:27:   Records: 0
+2025-08-06 22:01:27:   Files: 0
+
+2025-08-06 22:01:27: 
+Overall Collection Summary:
+2025-08-06 22:01:27:   Total Records: 15232
+2025-08-06 22:01:27:   Files Created: 17
+2025-08-06 22:01:27:   Output Directory: C:\scripts\mext
+2025-08-06 22:01:27:   Processing Time: 02:45
+2025-08-06 22:01:27: === Starting Audit Log Collection ===
+2025-08-06 22:01:27: Start Date: 2025-08-01T00:00:00Z
+2025-08-06 22:01:27: End Date: 2025-08-07T02:01:27Z
+2025-08-06 22:01:27: Output Format: JSON
+2025-08-06 22:01:27: Output Directory: C:\scripts\mext
+2025-08-06 22:01:27: ----------------------------------------
+
+2025-08-06 22:01:27: [INFO] Retrieved 50 records between 2025-08-01T03:56Z and 2025-08-06T22:36Z
+2025-08-06 22:01:27: 
+Collection Summary:
+2025-08-06 22:01:27:   Total Records: 50
+2025-08-06 22:01:27:   Files Created: 1
+2025-08-06 22:01:27:   Output Directory: C:\scripts\mext
+2025-08-06 22:01:27:   Processing Time: 00:00
+2025-08-06 22:01:27: === Starting Conditional Access Policy Collection ===
+2025-08-06 22:01:28: [INFO] Processing policy: Require multifactor authentication for all users
+2025-08-06 22:01:28: 
+=== Conditional Access Policy Summary ===
+2025-08-06 22:01:28: Total Policies: 1
+2025-08-06 22:01:28: Enabled Policies: 0
+2025-08-06 22:01:28: Disabled Policies: 0
+2025-08-06 22:01:28: Output: C:\scripts\mext\20250806220128-ConditionalAccessPolicy.csv
+2025-08-06 22:01:28: ===================================
+2025-08-06 22:01:28: === Starting OAuth Permissions Collection ===
+2025-08-06 22:01:28: [INFO] Retrieving all ServicePrincipal objects...
+2025-08-06 22:01:30: [INFO] Successfully retrieved 327 ServicePrincipal objects
+2025-08-06 22:01:30: [INFO] Caching all ServicePrincipal objects...
+2025-08-06 22:01:30: [INFO] Cached 100 of 327 service principals...
+2025-08-06 22:01:30: [INFO] Cached 200 of 327 service principals...
+2025-08-06 22:01:30: [INFO] Cached 300 of 327 service principals...
+2025-08-06 22:01:30: [INFO] All ServicePrincipal objects cached successfully
+2025-08-06 22:01:30: [INFO] Processing delegated permissions...
+2025-08-06 22:01:30: [INFO] Found 34 OAuth2PermissionGrants to process
+2025-08-06 22:01:31: [INFO] Processing delegated grant 25 of 34 - App: 'monday.com'
+2025-08-06 22:01:32: [INFO] Delegated permissions processing completed - Found 180 delegated permissions from 34 grants
+2025-08-06 22:01:32: [INFO] Processing application permissions...
+2025-08-06 22:01:36: [INFO] Processing application permissions for app 25 of 327 - 'Microsoft Graph Connectors Core'
+2025-08-06 22:01:39: [INFO] Processing application permissions for app 50 of 327 - 'Microsoft Teams UIS'
+2025-08-06 22:01:44: [INFO] Processing application permissions for app 75 of 327 - 'Azure AD Identity Governance - Entitlement Management'
+2025-08-06 22:01:48: [INFO] Processing application permissions for app 100 of 327 - 'Azure Multi-Factor Auth Client'
+2025-08-06 22:01:52: [INFO] Processing application permissions for app 125 of 327 - 'KaizalaActionsPlatform'
+2025-08-06 22:01:57: [INFO] Processing application permissions for app 150 of 327 - 'Azure Purview'
+2025-08-06 22:02:01: [INFO] Processing application permissions for app 175 of 327 - 'WindowsUpdate-Service'
+2025-08-06 22:02:05: [INFO] Processing application permissions for app 200 of 327 - 'Skype Business Voice Directory'
+2025-08-06 22:02:10: [INFO] Processing application permissions for app 225 of 327 - 'Microsoft Invitation Acceptance Portal'
+2025-08-06 22:02:15: [INFO] Processing application permissions for app 250 of 327 - 'Cortana at Work Service'
+2025-08-06 22:02:19: [INFO] Processing application permissions for app 275 of 327 - 'Windows Azure Service Management API'
+2025-08-06 22:02:24: [INFO] Processing application permissions for app 300 of 327 - 'Microsoft Teams Targeting Application'
+2025-08-06 22:02:28: [INFO] Processing application permissions for app 325 of 327 - 'Recommended'
+2025-08-06 22:02:28: [INFO] Application permissions processing completed - Found 23 application permissions
+2025-08-06 22:02:28: [INFO] Exporting results to CSV...
+2025-08-06 22:02:28: [INFO] Export completed successfully
+2025-08-06 22:02:28: 
+=== OAuth Permissions Analysis Summary ===
+2025-08-06 22:02:28: Service Principals Processed: 327
+2025-08-06 22:02:28: Delegated Grants Processed: 34
+2025-08-06 22:02:28: Total Permissions Found: 203
+2025-08-06 22:02:28:   - Delegated Permissions: 180
+2025-08-06 22:02:28:   - Application Permissions: 23
+2025-08-06 22:02:28: 
+Output File: C:\scripts\mext\06082025220128-OAuthPermissions.csv
+2025-08-06 22:02:28: Processing Time: 01:00
+2025-08-06 22:02:28: ===================================
+2025-08-06 22:02:28: === Starting Security Alerts Collection ===
+2025-08-06 22:02:28: [INFO] Analyzing security alerts...
+2025-08-06 22:02:28: [INFO] Using delegated authentication - selecting Get-MgSecurityAlert
+2025-08-06 22:02:28: [INFO] Filtering alerts from 2025-02-07T00:00:00Z
+2025-08-06 22:03:12: 
+Security Alert Analysis Results:
+2025-08-06 22:03:12: Total Alerts: 0
+2025-08-06 22:03:12: 
+Severity Distribution:
+2025-08-06 22:03:12:   - High: 0
+2025-08-06 22:03:12:   - Medium: 0
+2025-08-06 22:03:12:   - Low: 0
+2025-08-06 22:03:12:   - Informational: 0
+2025-08-06 22:03:12: 
+Status Distribution:
+2025-08-06 22:03:12:   - New: 0
+2025-08-06 22:03:12:   - In Progress: 0
+2025-08-06 22:03:12:   - Resolved: 0
+2025-08-06 22:03:12:   - Dismissed: 0
+2025-08-06 22:03:12:   - Unknown: 0
+2025-08-06 22:03:12: 
+Exported File:
+2025-08-06 22:03:12:   - File: C:\scripts\mext\202508062202-SecurityAlerts.csv
+2025-08-06 22:05:42: === Starting Groups Collection ===
+2025-08-06 22:05:42: [INFO] Fetching all groups...
+2025-08-06 22:05:43: [INFO] Found 23 groups
+2025-08-06 22:05:43: 
+Group Analysis Results:
+2025-08-06 22:05:43: Total Groups: 23
+2025-08-06 22:05:43:   - Security Enabled: 3
+2025-08-06 22:05:43:   - Mail Enabled: 21
+2025-08-06 22:05:43:   - On-Premises Synced: 0
+2025-08-06 22:05:43: 
+Exported File:
+2025-08-06 22:05:43:   - File: C:\scripts\mext\202508062205-Groups.csv
+2025-08-06 22:05:43: === Starting Dynamic Groups Collection ===
+2025-08-06 22:05:43: [INFO] Fetching all groups from Microsoft Graph...
+2025-08-06 22:05:43: [INFO] Found 23 total groups
+2025-08-06 22:05:43: [INFO] Found 2 dynamic groups
+2025-08-06 22:05:43: 
+Dynamic Group Analysis Results:
+2025-08-06 22:05:43: Total Dynamic Groups: 2
+2025-08-06 22:05:43:   - Security Enabled: 2
+2025-08-06 22:05:43:   - Mail Enabled: 1
+2025-08-06 22:05:43: 
+Membership Rule Processing States:
+2025-08-06 22:05:43:   - On: 2
+2025-08-06 22:05:43: 
+Exported File:
+2025-08-06 22:05:43:   - File: C:\scripts\mext\202508062205-DynamicGroups.csv
+2025-08-06 22:05:43: === Starting Group Members Collection ===
+2025-08-06 22:05:43: [INFO] Fetching all groups...
+2025-08-06 22:05:43: [INFO] Found 23 groups
+2025-08-06 22:05:43: [INFO] Processing group: General OnBoarding & Getting Started
+2025-08-06 22:05:43: [INFO] Processing group: Gratitude Committee
+2025-08-06 22:05:44: [INFO] Processing group: Board
+2025-08-06 22:05:44: [INFO] Processing group: Resilient Retreat Private
+2025-08-06 22:05:44: [INFO] Processing group: All Users
+2025-08-06 22:05:45: [INFO] Processing group: Forwarding List II
+2025-08-06 22:05:45: [INFO] Processing group: Resilient Retreat Staff
+2025-08-06 22:05:45: [INFO] Processing group: Staff
+2025-08-06 22:05:45: [INFO] Processing group: Kind Line
+2025-08-06 22:05:45: [INFO] Processing group: Palisades
+2025-08-06 22:05:46: [INFO] Processing group: Forwarding List
+2025-08-06 22:05:46: [INFO] Processing group: 20250617DF-GuestUsers
+2025-08-06 22:05:46: [INFO] Processing group: Resilient Retreat, Inc.
+2025-08-06 22:05:46: [INFO] Processing group: LPM-AdminRoles
+2025-08-06 22:05:47: [INFO] Processing group: Resilient Rhapsody 2024 Committee
+2025-08-06 22:05:47: [INFO] Processing group: Group for Answers in Viva Engage – DO NOT DELETE 4393254912
+2025-08-06 22:05:47: [INFO] Processing group: All Company
+2025-08-06 22:05:47: [INFO] Processing group: Development
+2025-08-06 22:05:47: [INFO] Processing group: RR Fundraising Committee
+2025-08-06 22:05:48: [INFO] Processing group: Special Events & Projects
+2025-08-06 22:05:48: [INFO] Processing group: Road to Resilience Campaign Team
+2025-08-06 22:05:48: [INFO] Processing group: Resilient Repartee (1-11-24) Committee
+2025-08-06 22:05:48: [INFO] Processing group: Governance
+2025-08-06 22:05:48: 
+Exported File:
+2025-08-06 22:05:48:   - File: C:\scripts\mext\202508062205-GroupMembers.csv
+2025-08-06 22:05:48: === Starting License Collection ===
+2025-08-06 22:05:49: [INFO] License information saved to: C:\scripts\mext\20250806220549-TenantLicenses.csv
+2025-08-06 22:05:49: 
+License Information:
+2025-08-06 22:05:49: === Starting License Compatibility Check ===
+2025-08-06 22:05:49: 
+License Status:
+2025-08-06 22:05:49: E5: Not Present
+2025-08-06 22:05:49: E3: Not Present
+2025-08-06 22:05:49: P2: Not Present
+2025-08-06 22:05:49: P1: Present
+2025-08-06 22:05:49: 
+Feature Compatibility:
+2025-08-06 22:05:49: Get-Sessions (E5): Not Available
+2025-08-06 22:05:49: Get-MessageIDs (E5): Not Available
+2025-08-06 22:05:49: Get-GraphEntraAuditLogs (E5): Not Available
+2025-08-06 22:05:49: Get-RiskyUsers (E5 or P2): Not Available
+2025-08-06 22:05:49: 
+Retention Information:
+2025-08-06 22:05:49: Audit Log retention: 30 days
+2025-08-06 22:05:49: Sign-in Log retention: 30 days
+2025-08-06 22:05:49: 
+Recommendations:
+2025-08-06 22:05:49: - Consider E5 license for full feature access and extended retention
+2025-08-06 22:05:49: - P2 license would enable risky users monitoring
+2025-08-06 22:05:49: === Starting Security Defaults Check ===
+2025-08-06 22:05:50: 
+Security Defaults Status:
+2025-08-06 22:05:50: Security Defaults: Disabled
+2025-08-06 22:05:50: 
+License Context:
+2025-08-06 22:05:50: Premium License(s) Detected:
+2025-08-06 22:05:50:   - P1
+2025-08-06 22:05:50: 
+Recommendations:
+2025-08-06 22:05:50: Current configuration aligns with Microsoft recommendations
+2025-08-06 22:05:50:   - Ensure Conditional Access policies are properly configured
+2025-08-06 22:05:50:   - Regular review of security policies is recommended
+2025-08-06 22:05:50: 
+Check Summary:
+2025-08-06 22:05:50: SecurityDefaultsEnabled    : No
+HasPremiumLicense          : Yes
+RecommendedState           : Disabled
+AlignedWithRecommendations : Yes
+CheckDate                  : 2025-08-06 22:05:50
+2025-08-06 22:05:50: 
+Output Files:
+2025-08-06 22:05:50: - Results exported to: C:\scripts\mext\20250806220550-EntraSecurityDefaults.csv
+2025-08-06 22:05:50: === Starting User License Collection ===
+2025-08-06 22:06:03: 
+User License Summary:
+2025-08-06 22:06:03: Total Users: 76
+2025-08-06 22:06:03:   - Total License Assignments: 55
+2025-08-06 22:06:04:   - Licensed Users: 76
+2025-08-06 22:06:04:   - Unlicensed Users: 39
+2025-08-06 22:06:04: 
+License Type Distribution:
+2025-08-06 22:06:04:   - O365_BUSINESS_ESSENTIALS: 21 assignments
+2025-08-06 22:06:04:   - NONPROFIT_PORTAL: 12 assignments
+2025-08-06 22:06:04:   - SPB: 11 assignments
+2025-08-06 22:06:04:   - FLOW_FREE: 10 assignments
+2025-08-06 22:06:04:   - EXCHANGEARCHIVE_ADDON: 1 assignments
+2025-08-06 22:06:04: 
+Exported File:
+2025-08-06 22:06:04:   - File: C:\scripts\mext\20250806220603-UserLicenses.csv
+2025-08-06 22:06:04: === Starting Device Collection ===
+2025-08-06 22:06:04: [INFO] Collecting device information...
+2025-08-06 22:06:04: [INFO] Processing 8 devices...
+2025-08-06 22:06:04: 
+=== Device Analysis Summary ===
+2025-08-06 22:06:04: Device Counts:
+2025-08-06 22:06:04:   Total Devices: 8
+2025-08-06 22:06:04:   Entra ID Joined: 0
+2025-08-06 22:06:04:   Workplace Joined: 8
+2025-08-06 22:06:04:   Hybrid Joined: 0
+2025-08-06 22:06:04: 
+Device Status:
+2025-08-06 22:06:04:   Compliant Devices: 0
+2025-08-06 22:06:04:   Managed Devices: 0
+2025-08-06 22:06:04:   Active (Last 30 Days): 2
+2025-08-06 22:06:04:   Inactive (>90 Days): 6
+2025-08-06 22:06:04: 
+Operating Systems:
+2025-08-06 22:06:04:   Windows: 8
+2025-08-06 22:06:04:   macOS: 0
+2025-08-06 22:06:04:   iOS: 0
+2025-08-06 22:06:04:   Android: 0
+2025-08-06 22:06:04:   Other: 0
+2025-08-06 22:06:04: 
+Export Details:
+2025-08-06 22:06:04:   Output File: C:\scripts\mext\202508062206-Devices.csv
+2025-08-06 22:06:04:   Processing Time: 00:00
+2025-08-06 22:06:04: ===================================
