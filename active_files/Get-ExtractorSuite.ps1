@@ -1,7 +1,8 @@
 
-
+# set output path
 $OutputDir = 'C:\scripts\mext'
 
+# functions
 function Reset-Folder {
     param (
         [string]$ParentPath = "C:\Scripts",
@@ -88,13 +89,15 @@ Get-MextModules -ModuleName @('ExchangeOnlineManagement',
                             'Az', 
                             'Microsoft.Graph',
                             'Microsoft.Graph.Beta',
-                            'Microsoft-Extractor-Suite'
+                            'Microsoft-Extractor-Suite',
+                            'ImportExcel'
                             )
 
-
+# Connect with proper scopes
 Connect-ExchangeOnline
 Connect-AzureAZ
 Connect-MgGraph -Scopes ("AuditLog.Read.All",
+                        "AuditLogsQuery.Read.All",
                         "Application.Read.All",
                         "Device.Read.All",
                         "Directory.Read.All",
@@ -107,8 +110,6 @@ Connect-MgGraph -Scopes ("AuditLog.Read.All",
                         "IdentityRiskyUser.Read.All",
                         "SecurityEvents.Read.All"
                         )
-
-
 
 
 ## ENTRA ##
@@ -138,3 +139,17 @@ Get-Devices -OutputDir $OutputDir
 Get-RiskyUsers -OutputDir $OutputDir 
 Get-RiskyDetections -OutputDir $OutputDir 
 ##>
+
+## EXCHANGE ONLINE ##
+Get-MailboxRules -OutputDir $OutputDir
+Get-TransportRules -OutputDir $OutputDir
+Get-MailboxAuditStatus -OutputDir $OutputDir
+Get-MailboxPermissions -OutputDir $OutputDir
+Get-Sessions -StartDate 2025-08-05 -EndDate 2025-08-06 -OutputDir $OutputDir # takes long time and limit is 5k
+
+## AUDIT ##
+Get-DirectoryActivityLogs -OutputDir $OutputDir
+Get-AdminAuditLog -OutputDir $OutputDir
+Get-MailboxAuditLog -OutputDir $OutputDir -StartDate 8/1/2025 -EndDate 8/6/2025
+Get-MessageTraceLog -OutputDir $OutputDir -StartDate 8/1/2025 -EndDate 8/6/2025
+Get-UALGraph -searchName test2 -Service Teams -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
