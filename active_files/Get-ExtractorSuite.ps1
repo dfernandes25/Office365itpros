@@ -95,7 +95,7 @@ Get-MextModules -ModuleName @('ExchangeOnlineManagement',
 
 # Connect with proper scopes
 # $cred = Get-Credential
-Import-Module ExchangeOnlineManagement
+#Import-Module ExchangeOnlineManagement
 #Connect-ExchangeOnline -UserPrincipalName donf@oliverlawfl.com # -Credential $cred
 
 
@@ -112,12 +112,16 @@ Connect-MgGraph -Scopes ("AuditLog.Read.All",
                         "Policy.Read.ConditionalAccess",
                         "User.Read.All",
                         "UserAuthenticationMethod.Read.All",
-                        #"IdentityRiskyUser.Read.All",
-                        "SecurityEvents.Read.All"
-                        )
+                        "SecurityEvents.Read.All")
+
+
 
 
 ## ENTRA ##
+$OutputDir = 'C:\scripts\Mext\Entra'
+if (-not (Test-Path $OutputDir)) {
+    New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
+}
 Get-MFA -OutputDir $OutputDir 
 Get-Users -OutputDir $OutputDir 
 Get-AdminUsers -OutputDir $OutputDir 
@@ -128,16 +132,30 @@ Get-ConditionalAccessPolicies -OutputDir $OutputDir
 Get-OAuthPermissionsGraph -OutputDir $OutputDir
 # Get-SecurityAlerts -OutputDir $OutputDir -DaysBack 180 -- not working, think i need the compliance role
 
+$OutputDir = 'C:\scripts\Mext\Groups'
+if (-not (Test-Path $OutputDir)) {
+    New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
+}
 Get-Groups -OutputDir $OutputDir
 Get-DynamicGroups -OutputDir $OutputDir
 Get-GroupMembers -OutputDir $OutputDir
+Get-GroupOwners -OutputDir $OutputDir
+Get-GroupSettings -OutputDir $OutputDir
 
+$OutputDir = 'C:\scripts\Mext\Licenses'
+if (-not (Test-Path $OutputDir)) {
+    New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
+}
 Get-Licenses -OutputDir $OutputDir
 Get-LicenseCompatibility -OutputDir $OutputDir
 Get-EntraSecurityDefaults -OutputDir $OutputDir
 Get-LicensesByUser -OutputDir $OutputDir
 # Get-ProductLicenses -OutputDir $OutputDir # not working
 
+$OutputDir = 'C:\scripts\Mext\Devices'
+if (-not (Test-Path $OutputDir)) {
+    New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
+}
 Get-Devices -OutputDir $OutputDir
 
 <## need appropriate licensing
@@ -145,16 +163,26 @@ Get-RiskyUsers -OutputDir $OutputDir
 Get-RiskyDetections -OutputDir $OutputDir 
 ##>
 
+$OutputDir = 'C:\scripts\Mext\EOL'
+if (-not (Test-Path $OutputDir)) {
+    New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
+}
 ## EXCHANGE ONLINE ##
-Get-MailboxRules -OutputDir $OutputDir
+Get-MailboxRules -OutputDir $OutputDir 
 Get-TransportRules -OutputDir $OutputDir
 Get-MailboxAuditStatus -OutputDir $OutputDir
 Get-MailboxPermissions -OutputDir $OutputDir
-Get-Sessions -StartDate 2025-08-05 -EndDate 2025-08-06 -OutputDir $OutputDir # takes long time and limit is 5k
+#Get-Sessions -StartDate 2025-08-05 -EndDate 2025-08-06 -OutputDir $OutputDir # takes long time and limit is 5k
 
+$OutputDir = 'C:\scripts\Mext\Audit'
+if (-not (Test-Path $OutputDir)) {
+    New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
+}
 ## AUDIT ##
-Get-DirectoryActivityLogs -OutputDir $OutputDir
-Get-AdminAuditLog -OutputDir $OutputDir
+Get-DirectoryActivityLogs -OutputDir $OutputDir -StartDate 2025-08-01
+Get-AdminAuditLog -OutputDir $OutputDir -StartDate 2025-08-01
 Get-MailboxAuditLog -OutputDir $OutputDir -StartDate 8/1/2025 -EndDate 8/6/2025
 Get-MessageTraceLog -OutputDir $OutputDir -StartDate 8/1/2025 -EndDate 8/6/2025
-Get-UALGraph -searchName test3 -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
+#Get-UALGraph -searchName test3 -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
+Get-UALStatistics -OutputDir $OutputDir
+Get-UALGraph -searchName ualSP -StartDate "2025-08-01" -EndDate "2025-08-02" -OutputDir $OutputDir -Output CSV -Service Azure 
