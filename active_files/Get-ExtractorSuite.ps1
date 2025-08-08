@@ -94,10 +94,15 @@ Get-MextModules -ModuleName @('ExchangeOnlineManagement',
                             )
 
 # Connect with proper scopes
-Connect-ExchangeOnline
-Connect-AzureAz
+# $cred = Get-Credential
+Import-Module ExchangeOnlineManagement
+#Connect-ExchangeOnline -UserPrincipalName donf@oliverlawfl.com # -Credential $cred
+
+
+Connect-AzAccount #-Credential $cred # soon to be deprecated
 Connect-MgGraph -Scopes ("AuditLog.Read.All",
                         "AuditLogsQuery.Read.All",
+                        "AuditLogsQuery-Exchange.Read.All",
                         "Application.Read.All",
                         "Device.Read.All",
                         "Directory.Read.All",
@@ -107,7 +112,7 @@ Connect-MgGraph -Scopes ("AuditLog.Read.All",
                         "Policy.Read.ConditionalAccess",
                         "User.Read.All",
                         "UserAuthenticationMethod.Read.All",
-                        "IdentityRiskyUser.Read.All",
+                        #"IdentityRiskyUser.Read.All",
                         "SecurityEvents.Read.All"
                         )
 
