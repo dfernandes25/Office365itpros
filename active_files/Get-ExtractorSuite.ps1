@@ -1,5 +1,8 @@
 
-# set output path
+
+
+
+# set initial output path
 $OutputDir = 'C:\scripts\mext'
 
 # functions
@@ -93,10 +96,6 @@ Get-MextModules -ModuleName @('ExchangeOnlineManagement',
                             'ImportExcel'
                             )
 
-# Connect with proper scopes
-# $cred = Get-Credential
-#Import-Module ExchangeOnlineManagement
-#Connect-ExchangeOnline -UserPrincipalName donf@oliverlawfl.com # -Credential $cred
 
 
 Connect-AzAccount #-Credential $cred # soon to be deprecated
@@ -183,6 +182,10 @@ Get-DirectoryActivityLogs -OutputDir $OutputDir -StartDate 2025-08-01
 Get-AdminAuditLog -OutputDir $OutputDir -StartDate 2025-08-01
 Get-MailboxAuditLog -OutputDir $OutputDir -StartDate 8/1/2025 -EndDate 8/6/2025
 Get-MessageTraceLog -OutputDir $OutputDir -StartDate 8/1/2025 -EndDate 8/6/2025
-#Get-UALGraph -searchName test3 -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
 Get-UALStatistics -OutputDir $OutputDir
-Get-UALGraph -searchName ualSP -StartDate "2025-08-01" -EndDate "2025-08-02" -OutputDir $OutputDir -Output CSV -Service Azure 
+#Get-UALGraph -searchName test3 -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
+#Get-UALGraph -searchName ualAll -StartDate "2025-08-01" -EndDate "2025-08-02" -OutputDir $OutputDir
+
+Disconnect-AzAccount
+Disconnect-MgGraph
+Disconnect-ExchangeOnline -Confirm:$false

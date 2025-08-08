@@ -49,49 +49,56 @@
 
 #>
 
-
+## THIS MODULE NEEDS TO LOAD AND CONNECT BEFORE MGGRAPH MODULES ##
+if (-not (Get-Module -ListAvailable -Name ExchangeOnlineManagement)) {
+    Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force
+}
+Import-Module ExchangeOnlineManagement
+Connect-ExchangeOnline -UserPrincipalName donf@oliverlawfl.com
+ 
 # Ensure required modules are installed
 if (-not (Get-Module -ListAvailable -Name Microsoft.Graph)) {
     Install-Module Microsoft.Graph -Scope CurrentUser -Force
 }
-if (-not (Get-Module -ListAvailable -Name ExchangeOnlineManagement)) {
-    Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force
+if (-not (Get-Module -ListAvailable -Name Microsoft.Graph.Beta)) {
+    Install-Module Microsoft.Graph.Beta -Scope CurrentUser -Force
 }
+
 if (-not (Get-Module -ListAvailable -Name ImportExcel)) {
     Install-Module ImportExcel -Scope CurrentUser -Force
 }
 
 # Connect to Microsoft 365 services
-Connect-MgGraph -Scopes "User.Read.All", "Group.Read.All", "Team.ReadBasic.All", "Reports.Read.All", "Organization.Read.All", "Directory.Read.All", "Policy.Read.All"
-Connect-ExchangeOnline
+Connect-MgGraph -Scopes "User.Read.All", 
+                        "Group.Read.All",
+                        "Team.ReadBasic.All",
+                        "Reports.Read.All", 
+                        "Organization.Read.All", 
+                        "Directory.Read.All", 
+                        "Policy.Read.All"
+
 
 # Output folder
-$outputPath = "C:\scripts\mg"
+$outputPath = "C:\scripts\mgReports"
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
 
 # 1. Entra Users
-Get-MgUser | Select ID, DisplayName, UserPrincipalName, Mail |
-    Export-Csv "$outputPath\Users.csv" -NoTypeInformation
+Get-MgUser -All | Export-Csv "$outputPath\mgUsers.csv" -NoTypeInformation -Force
 
 # 2. Entra Groups
-Get-MgGroup | Select DisplayName, Mail, MailEnabled, SecurityEnabled |
-    Export-Csv "$outputPath\Groups.csv" -NoTypeInformation
+Get-MgGroup -All | Export-Csv "$outputPath\mgGroups.csv" -NoTypeInformation -Force
 
 # 3. Exchange Unified Groups
-Get-UnifiedGroup | Select Id, AccessType, PrimarySMTPAddress, GroupMemberCount, AllowAddGuests |
-    Export-Csv "$outputPath\UnifiedGroups.csv" -NoTypeInformation
+Get-UnifiedGroup -All | Export-Csv "$outputPath\UnifiedGroups.csv" -NoTypeInformation -Force
 
 # 4. Exchange Distribution Groups
-Get-DistributionGroup | Select GroupType, DisplayName, EmailAddresses, ManagedBy |
-    Export-Csv "$outputPath\DistributionGroups.csv" -NoTypeInformation
+Get-DistributionGroup -All | Export-Csv "$outputPath\DistributionGroups.csv" -NoTypeInformation -Force
 
 # 5. Microsoft Teams
-Get-MgTeam -All | Select ID, DisplayName, Description, Visibility |
-    Export-Csv "$outputPath\Teams.csv" -NoTypeInformation
+Get-MgTeam -All | Export-Csv "$outputPath\mgTeams.csv" -NoTypeInformation -Force
 
 # 6. Organization Info
-Get-MgOrganization | Select Id, DisplayName, TenantType, CreatedDateTime |
-    Export-Csv "$outputPath\Organization.csv" -NoTypeInformation
+Get-MgOrganization | Export-Csv "$outputPath\mgOrganization.csv" -NoTypeInformation -Force
 
 # Combine all CSVs into a single Excel workbook
 $csvFiles = Get-ChildItem -Path $outputPath -Filter *.csv
@@ -134,8 +141,11 @@ Write-Host "✅ Report generated: $excelPath"
 #>
 
 # Switch to beta profile for sign-in activity
-Select-MgProfile beta
-Connect-MgGraph -Scopes "User.Read.All", "Calendars.Read", "Team.ReadBasic.All", "AuditLog.Read.All"
+# Select-MgProfile beta
+Connect-MgGraph -Scopes "User.Read.All", 
+                        "Calendars.Read", 
+                        "Team.ReadBasic.All", 
+                        "AuditLog.Read.All"
 
 # Build lookup tables for SKUs and service plans
 $skuMap = @{}
