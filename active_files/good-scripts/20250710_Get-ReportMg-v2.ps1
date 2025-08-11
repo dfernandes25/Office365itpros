@@ -75,7 +75,9 @@ Connect-MgGraph -Scopes "User.Read.All",
                         "Reports.Read.All", 
                         "Organization.Read.All", 
                         "Directory.Read.All", 
-                        "Policy.Read.All"
+                        "Policy.Read.All",
+                        "Microsoft.Graph.Reports"
+                
 
 
 # Output folder
@@ -89,16 +91,22 @@ Get-MgUser -All | Export-Csv "$outputPath\mgUsers.csv" -NoTypeInformation -Force
 Get-MgGroup -All | Export-Csv "$outputPath\mgGroups.csv" -NoTypeInformation -Force
 
 # 3. Exchange Unified Groups
-Get-UnifiedGroup -All | Export-Csv "$outputPath\UnifiedGroups.csv" -NoTypeInformation -Force
+Get-UnifiedGroup | Export-Csv "$outputPath\mgUnifiedGroups.csv" -NoTypeInformation -Force
 
 # 4. Exchange Distribution Groups
-Get-DistributionGroup -All | Export-Csv "$outputPath\DistributionGroups.csv" -NoTypeInformation -Force
+Get-DistributionGroup | Export-Csv "$outputPath\mgDistributionGroups.csv" -NoTypeInformation -Force
 
 # 5. Microsoft Teams
 Get-MgTeam -All | Export-Csv "$outputPath\mgTeams.csv" -NoTypeInformation -Force
 
 # 6. Organization Info
 Get-MgOrganization | Export-Csv "$outputPath\mgOrganization.csv" -NoTypeInformation -Force
+
+# 7. Entra Devices
+Get-MgDevice -All | Export-Csv "$outputPath\mgDevices.csv" -NoTypeInformation -Force
+
+# 8. Mailboxes
+Get-Mailbox | Export-Csv "$outputPath\mailboxes.csv" -NoTypeInformation -Force
 
 # Combine all CSVs into a single Excel workbook
 $csvFiles = Get-ChildItem -Path $outputPath -Filter *.csv
@@ -200,5 +208,5 @@ $flattened = foreach ($user in $users) {
 }
 
 # Export to CSV
-$flattened | Export-Csv -Path "c:\scripts\Users_Enriched.csv" -NoTypeInformation -Force
+$flattened | Export-Csv -Path "c:\scripts\mgReports\Users_Enriched.csv" -NoTypeInformation -Force
 Write-Host "`n✅ User report generated: .\Users_Enriched.csv" -ForegroundColor Green

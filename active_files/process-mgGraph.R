@@ -27,7 +27,11 @@ drop_columns_by_values_and_patterns <- function(file_path, match_strings = c("Mi
   # Return cleaned data.table
   return(dt[, ..cols_to_keep])
 }
-# Example usage:
+
+#Set working directory (consider replacing with here::here() for portability)
+setwd("C:/scripts/mgReports")
+
+# function usage
  user_data <- drop_columns_by_values_and_patterns("mgUsers.csv", c("Microsoft", "System"))
  group_data <- drop_columns_by_values_and_patterns("mgGroups.csv", c("Microsoft", "System"))
  u_group_data <- drop_columns_by_values_and_patterns("mgUnifiedGroups.csv", c("Microsoft", "System"))
