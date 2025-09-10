@@ -54,7 +54,7 @@ if (-not (Get-Module -ListAvailable -Name ExchangeOnlineManagement)) {
     Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force
 }
 Import-Module ExchangeOnlineManagement
-Connect-ExchangeOnline -UserPrincipalName donf@oliverlawfl.com
+Connect-ExchangeOnline -UserPrincipalName dfernandes_admin@btgbmail.org
  
 # Ensure required modules are installed
 if (-not (Get-Module -ListAvailable -Name Microsoft.Graph)) {
