@@ -50,11 +50,11 @@
 #>
 
 ## THIS MODULE NEEDS TO LOAD AND CONNECT BEFORE MGGRAPH MODULES ##
-if (-not (Get-Module -ListAvailable -Name ExchangeOnlineManagement)) {
-    Install-Module ExchangeOnlineManagement -Scope CurrentUser -Force
+if (-not (Get-Module -ListAvailable -Name ExchangeOnline)) {
+    Install-Module ExchangeOnline -Scope CurrentUser -Force
 }
-Import-Module ExchangeOnlineManagement
-Connect-ExchangeOnline -UserPrincipalName dfernandes_admin@btgbmail.org
+Import-Module ExchangeOnline
+Connect-ExchangeOnline #-UserPrincipalName dfernandes_admin@btgbmail.org
  
 # Ensure required modules are installed
 if (-not (Get-Module -ListAvailable -Name Microsoft.Graph)) {
@@ -85,22 +85,22 @@ $outputPath = "C:\scripts\mgReports"
 New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
 
 # 1. Entra Users
-Get-MgUser -All | Export-Csv "$outputPath\mgUsers.csv" -NoTypeInformation -Force
+Get-MgUser | Select 'DisplayName', 'Id', 'Mail', 'UserPrincipalName' | Export-Csv "$outputPath\mgUsers.csv" -NoTypeInformation -Force
 
 # 2. Entra Groups
-Get-MgGroup -All | Export-Csv "$outputPath\mgGroups.csv" -NoTypeInformation -Force
+Get-MgGroup | Select 'DisplayName', 'Id', 'Description' | Export-Csv "$outputPath\mgGroups.csv" -NoTypeInformation -Force
 
 # 3. Exchange Unified Groups
-Get-UnifiedGroup | Export-Csv "$outputPath\mgUnifiedGroups.csv" -NoTypeInformation -Force
+Get-UnifiedGroup | Select 'DisplayName', 'GroupType', 'PrimarySmtpAddress' | Export-Csv "$outputPath\mgUnifiedGroups.csv" -NoTypeInformation -Force
 
 # 4. Exchange Distribution Groups
 Get-DistributionGroup | Export-Csv "$outputPath\mgDistributionGroups.csv" -NoTypeInformation -Force
 
 # 5. Microsoft Teams
-Get-MgTeam -All | Export-Csv "$outputPath\mgTeams.csv" -NoTypeInformation -Force
+Get-MgTeam | Select 'DisplayName', 'Id', 'IsArchived' | Export-Csv "$outputPath\mgTeams.csv" -NoTypeInformation -Force
 
 # 6. Organization Info
-Get-MgOrganization | Export-Csv "$outputPath\mgOrganization.csv" -NoTypeInformation -Force
+Get-MgOrganization | Select DisplayName, Id, TenantType | Export-Csv "$outputPath\mgOrganization.csv" -NoTypeInformation -Force
 
 # 7. Entra Devices
 Get-MgDevice -All | Export-Csv "$outputPath\mgDevices.csv" -NoTypeInformation -Force
@@ -165,7 +165,7 @@ Get-MgSubscribedSku -All | ForEach-Object {
 $users = Get-MgUser -All -Property Id,DisplayName,UserPrincipalName,Mail,AccountEnabled,CreatedDateTime,SignInActivity
 
 # Pull recent sign-in logs for IP and location mapping
-$signIns = Get-MgAuditLogSignIn -All |
+$signIns = Get-MgAuditLogSignIn  |
     Sort-Object CreatedDateTime -Descending |
     Group-Object UserPrincipalName -AsHashTable -AsString
 
