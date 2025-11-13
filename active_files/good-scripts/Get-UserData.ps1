@@ -14,9 +14,9 @@ Connect-MgGraph -Scopes @(
     "Reports.Read.All",
     "ReportSettings.ReadWrite.All",
     "User.Read.All"
-    #"AuditLog.Read.All",
-    #"Directory.Read.All",
-    #"SignIn.Read.All"
+    "AuditLog.Read.All",
+    "Directory.Read.All",
+    "SignIn.Read.All"
 )
 
 

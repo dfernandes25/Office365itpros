@@ -1,14 +1,23 @@
 ## https://learn.microsoft.com/en-us/microsoft-365/enterprise/connect-to-all-microsoft-365-services-in-a-single-windows-powershell-window?view=o365-worldwide
 ## https://microsoft-365-extractor-suite.readthedocs.io/en/latest/index.html
 
-
+<## INSTALL MODULES
 Install-Module -Name ExchangeOnlineManagement -RequiredVersion 3.9.0
-Install-Module -Name Microsoft.Graph -RequiredVersion 2.32.0
-Install-Module -Name Microsoft.Graph.Beta -RequiredVersion 2.32.0
+Install-Module -Name Microsoft.Graph -Force # -RequiredVersion 2.32.0
+Install-Module -Name Microsoft.Graph.Beta -Force # -RequiredVersion 2.32.0
 Install-Module -Name Microsoft.Online.SharePoint.PowerShell -Force
 Install-Module -Name MicrosoftTeams -Force
 Install-Module -Name Microsoft-Extractor-Suite -Force
 Install-Module -Name ImportExcel -Force
+##>
+
+Import-Module -Name ExchangeOnlineManagement -RequiredVersion 3.9.0
+Import-Module -Name Microsoft.Graph -RequiredVersion 2.32.0
+Import-Module -Name Microsoft.Graph.Beta -RequiredVersion 2.32.0
+Import-Module -Name Microsoft.Online.SharePoint.PowerShell -Force
+Import-Module -Name MicrosoftTeams -Force
+Import-Module -Name Microsoft-Extractor-Suite -Force
+Import-Module -Name ImportExcel -Force
 
 Connect-MgGraph -Scopes ("AuditLog.Read.All",
                         "AuditLogsQuery.Read.All",
