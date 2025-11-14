@@ -5,6 +5,7 @@
 
 $OutputDir = 'C:\scripts\data'
 if (!(Test-Path $OutputDir)) {mkdir $OutputDir -Force}
+gci $OutputDir | Remove-Item -Force -Recurse
 
 
 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Detailed Message Statistics</title>
+<style>
+body { font-family: Segoe UI, Arial, sans-serif; background: #f4f6f8; color: #222; }
+h1 { background: #0078d4; color: #fff; padding: 16px; border-radius: 6px 6px 0 0; margin-bottom: 20px; }
+table { width: 100%; background: #fff; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-collapse: collapse; }
+th, td { padding: 12px; text-align: left; }
+th { background: #e5eaf1; cursor: pointer; position: relative; }
+th:hover { background: #d0e7fa; }
+th::after { content: '↕'; position: absolute; right: 8px; opacity: 0.5; }
+tr:nth-child(even) { background: #f0f4fa; }
+tr:hover { background: #d0e7fa; }
+</style>
+<script>
+function parseValue(val, type) {
+    if(type === 'number') return parseFloat(val.replace(/,/g,'')) || 0;
+    if(type === 'date') return new Date(val);
+    return val.toLowerCase();
+}
+function sortTable(n, type) {
+    var table = document.getElementById('msgstats');
+    var rows = Array.from(table.rows).slice(1);
+    var dir = table.getAttribute('data-sortdir'+n) === 'asc' ? 'desc' : 'asc';
+    rows.sort(function(a, b) {
+        var x = parseValue(a.cells[n].innerText, type);
+        var y = parseValue(b.cells[n].innerText, type);
+        if(x < y) return dir === 'asc' ? -1 : 1;
+        if(x > y) return dir === 'asc' ? 1 : -1;
+        return 0;
+    });
+    rows.forEach(function(row) { table.tBodies[0].appendChild(row); });
+    table.setAttribute('data-sortdir'+n, dir);
+}
+</script>
+</head>
+<body>
+<h1>Detailed Message Statistics</h1>
+<table id="msgstats">
+<thead>
+<tr>
+<th onclick="sortTable(0,'date')">Date</th>
+<th onclick="sortTable(1,'string')">Recipient</th>
+<th onclick="sortTable(2,'number')">Inbound</th>
+<th onclick="sortTable(3,'number')">Outbound</th>
+<th onclick="sortTable(4,'number')">InboundSize</th>
+<th onclick="sortTable(5,'number')">OutboundSize</th>
+</tr>
+</thead>
+<tbody><tr><td>2025-11-04</td><td>caitlyn@oliverlawfl.com</td><td>106</td><td>105</td><td>61607286</td><td>31671873</td></tr>
+<tr><td>2025-11-04</td><td>david@oliverlawfl.com</td><td>85</td><td>13</td><td>25310996</td><td>1632352</td></tr>
+<tr><td>2025-11-04</td><td>dmarc@oliverlawfl.com</td><td>6</td><td>0</td><td>359432</td><td>0</td></tr>
+<tr><td>2025-11-04</td><td>susan@oliverlawfl.com</td><td>108</td><td>83</td><td>54853669</td><td>108662994</td></tr>
+<tr><td>2025-11-05</td><td>caitlyn@oliverlawfl.com</td><td>115</td><td>114</td><td>48191977</td><td>25079028</td></tr>
+<tr><td>2025-11-05</td><td>david@oliverlawfl.com</td><td>72</td><td>5</td><td>20869012</td><td>669020</td></tr>
+<tr><td>2025-11-05</td><td>dmarc@oliverlawfl.com</td><td>8</td><td>0</td><td>524599</td><td>0</td></tr>
+<tr><td>2025-11-05</td><td>susan@oliverlawfl.com</td><td>106</td><td>49</td><td>30609201</td><td>20384584</td></tr>
+<tr><td>2025-11-06</td><td>caitlyn@oliverlawfl.com</td><td>93</td><td>75</td><td>22396019</td><td>48162184</td></tr>
+<tr><td>2025-11-06</td><td>david@oliverlawfl.com</td><td>82</td><td>9</td><td>30792162</td><td>3229707</td></tr>
+<tr><td>2025-11-06</td><td>dmarc@oliverlawfl.com</td><td>4</td><td>0</td><td>282537</td><td>0</td></tr>
+<tr><td>2025-11-06</td><td>susan@oliverlawfl.com</td><td>87</td><td>44</td><td>33238172</td><td>29286655</td></tr>
+<tr><td>2025-11-07</td><td>caitlyn@oliverlawfl.com</td><td>91</td><td>94</td><td>26612479</td><td>38857314</td></tr>
+<tr><td>2025-11-07</td><td>david@oliverlawfl.com</td><td>92</td><td>33</td><td>30552937</td><td>4240224</td></tr>
+<tr><td>2025-11-07</td><td>dmarc@oliverlawfl.com</td><td>5</td><td>0</td><td>343728</td><td>0</td></tr>
+<tr><td>2025-11-07</td><td>susan@oliverlawfl.com</td><td>98</td><td>32</td><td>24353621</td><td>23868916</td></tr>
+<tr><td>2025-11-08</td><td>caitlyn@oliverlawfl.com</td><td>6</td><td>1</td><td>4710493</td><td>266908</td></tr>
+<tr><td>2025-11-08</td><td>david@oliverlawfl.com</td><td>11</td><td>0</td><td>1252746</td><td>0</td></tr>
+<tr><td>2025-11-08</td><td>dmarc@oliverlawfl.com</td><td>8</td><td>0</td><td>554327</td><td>0</td></tr>
+<tr><td>2025-11-08</td><td>susan@oliverlawfl.com</td><td>4</td><td>0</td><td>4451292</td><td>0</td></tr>
+<tr><td>2025-11-09</td><td>caitlyn@oliverlawfl.com</td><td>18</td><td>1</td><td>34860954</td><td>79761</td></tr>
+<tr><td>2025-11-09</td><td>david@oliverlawfl.com</td><td>9</td><td>0</td><td>901756</td><td>0</td></tr>
+<tr><td>2025-11-09</td><td>dmarc@oliverlawfl.com</td><td>6</td><td>0</td><td>384571</td><td>0</td></tr>
+<tr><td>2025-11-09</td><td>susan@oliverlawfl.com</td><td>10</td><td>0</td><td>34860269</td><td>0</td></tr>
+<tr><td>2025-11-10</td><td>caitlyn@oliverlawfl.com</td><td>87</td><td>64</td><td>22052120</td><td>28258785</td></tr>
+<tr><td>2025-11-10</td><td>david@oliverlawfl.com</td><td>72</td><td>15</td><td>25704364</td><td>3652773</td></tr>
+<tr><td>2025-11-10</td><td>susan@oliverlawfl.com</td><td>66</td><td>22</td><td>27365504</td><td>15801568</td></tr>
+<tr><td>2025-11-11</td><td>caitlyn@oliverlawfl.com</td><td>45</td><td>46</td><td>9394438</td><td>5462909</td></tr>
+<tr><td>2025-11-11</td><td>david@oliverlawfl.com</td><td>52</td><td>34</td><td>7819506</td><td>35120645</td></tr>
+<tr><td>2025-11-11</td><td>dmarc@oliverlawfl.com</td><td>4</td><td>0</td><td>248321</td><td>0</td></tr>
+<tr><td>2025-11-11</td><td>firm@oliverlawfl.com</td><td>1</td><td>0</td><td>178367</td><td>0</td></tr>
+<tr><td>2025-11-11</td><td>susan@oliverlawfl.com</td><td>51</td><td>0</td><td>19491520</td><td>0</td></tr>
+<tr><td>2025-11-12</td><td>caitlyn@oliverlawfl.com</td><td>67</td><td>41</td><td>24393547</td><td>25777842</td></tr>
+<tr><td>2025-11-12</td><td>david@oliverlawfl.com</td><td>80</td><td>18</td><td>21783545</td><td>2336551</td></tr>
+<tr><td>2025-11-12</td><td>dmarc@oliverlawfl.com</td><td>16</td><td>0</td><td>924484</td><td>0</td></tr>
+<tr><td>2025-11-12</td><td>susan@oliverlawfl.com</td><td>73</td><td>36</td><td>25098686</td><td>16343566</td></tr>
+<tr><td>2025-11-13</td><td>caitlyn@oliverlawfl.com</td><td>62</td><td>39</td><td>42435171</td><td>7833001</td></tr>
+<tr><td>2025-11-13</td><td>david@oliverlawfl.com</td><td>77</td><td>20</td><td>87334926</td><td>17111132</td></tr>
+<tr><td>2025-11-13</td><td>dmarc@oliverlawfl.com</td><td>5</td><td>0</td><td>340424</td><td>0</td></tr>
+<tr><td>2025-11-13</td><td>susan@oliverlawfl.com</td><td>68</td><td>24</td><td>46715788</td><td>23533576</td></tr></tbody>
+</table>
+</body>
+</html>

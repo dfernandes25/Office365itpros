@@ -1,0 +1,1060 @@
+2025-11-13 17:21:11: === Starting MFA Status Collection ===
+2025-11-13 17:21:11: [INFO] Identifying authentication methods...
+2025-11-13 17:21:11: [INFO] Processing all users...
+2025-11-13 17:21:11: [INFO] Found 5 users to process
+2025-11-13 17:21:15: [INFO] Retrieving user registration details...
+2025-11-13 17:21:16: 
+=== MFA Status Analysis Summary ===
+2025-11-13 17:21:16: 
+MFA Status:
+2025-11-13 17:21:16:   Total Users: 5
+2025-11-13 17:21:16:   MFA Enabled: 4 users (80%)
+2025-11-13 17:21:16:   MFA Disabled: 1 users (20%)
+2025-11-13 17:21:16: 
+Authentication Methods:
+2025-11-13 17:21:16:   Email: 1
+2025-11-13 17:21:16:   Fido2: 3
+2025-11-13 17:21:16:   Microsoft Authenticator App: 5
+2025-11-13 17:21:16:   Phone: 3
+2025-11-13 17:21:16:   Software OAuth: 0
+2025-11-13 17:21:16:   Hello Business: 3
+2025-11-13 17:21:16:   Temporary Access Pass: 0
+2025-11-13 17:21:16:   Certificate Based Auth: 0
+2025-11-13 17:21:16: 
+Output Files:
+2025-11-13 17:21:16:   Authentication Methods: C:\scripts\Mext\Entra\MFA\20251113\20251113-UserRegistrationDetails.csv
+2025-11-13 17:21:16:   Registration Details: C:\scripts\Mext\Entra\MFA\20251113\20251113-AuthenticationMethods.csv
+2025-11-13 17:21:16: === Starting Users Collection ===
+2025-11-13 17:21:27: [INFO] Found 5 users
+2025-11-13 17:21:28: 
+=== User Analysis Summary ===
+2025-11-13 17:21:28: 
+User Counts:
+2025-11-13 17:21:28:   Total Users: 5
+2025-11-13 17:21:28:   Enabled Users: 4
+2025-11-13 17:21:28:   Disabled Users: 1
+2025-11-13 17:21:28:   Synced from On-Premises: 0
+2025-11-13 17:21:28:   Guest Users: 0
+2025-11-13 17:21:28: 
+Recent Account Creation:
+2025-11-13 17:21:28:   Last 7 days: 0
+2025-11-13 17:21:28:   Last 30 days: 0
+2025-11-13 17:21:28:   Last 90 days: 0
+2025-11-13 17:21:28:   Last 6 months: 2
+2025-11-13 17:21:28:   Last 1 year: 2
+2025-11-13 17:21:28: 
+Export Details:
+2025-11-13 17:21:28:   Output File: C:\scripts\Mext\Entra\Users\20251113\20251113-Users.csv
+2025-11-13 17:21:28:   Processing Time: 00:11
+2025-11-13 17:21:28: === Starting Admin Users Collection ===
+2025-11-13 17:21:28: [INFO] Analyzing administrator roles...
+2025-11-13 17:21:32: 
+Roles with users:
+2025-11-13 17:21:32:   + Azure Information Protection Administrator (1 users)
+2025-11-13 17:21:32:   + Compliance Administrator (1 users)
+2025-11-13 17:21:32:   + Attack Simulation Administrator (1 users)
+2025-11-13 17:21:32:   + Compliance Data Administrator (1 users)
+2025-11-13 17:21:32:   + Security Administrator (2 users)
+2025-11-13 17:21:32:   + Global Administrator (2 users)
+2025-11-13 17:21:32: 
+Empty roles:
+2025-11-13 17:21:32:   - Azure AD Joined Device Local Administrator
+2025-11-13 17:21:32: 
+=== Admin Users Summary ===
+2025-11-13 17:21:32: 
+Role Summary:
+2025-11-13 17:21:32:   Total admin roles: 7
+2025-11-13 17:21:32:   Roles with users: 6
+2025-11-13 17:21:32:   Empty roles: 1
+2025-11-13 17:21:32:   Total administrators: 8
+2025-11-13 17:21:32:   Inactive administrators (30+ days): 0
+2025-11-13 17:21:32: 
+Export Details:
+2025-11-13 17:21:32:   Output File: C:\scripts\Mext\Entra\Admins\20251113\20251113-AdminUsers.csv
+2025-11-13 17:21:32:   Processing Time: 00:04
+2025-11-13 17:21:32: === Starting Directory Role Membership Export ===
+2025-11-13 17:21:32: [INFO] Retrieving directory roles and memberships...
+2025-11-13 17:21:32: [INFO] Found 11 directory roles
+2025-11-13 17:22:40: 
+Roles with users:
+2025-11-13 17:22:40:   + Azure Information Protection Administrator (1 users)
+2025-11-13 17:22:40:   + Compliance Administrator (1 users)
+2025-11-13 17:22:40:   + Customer LockBox Access Approver (1 users)
+2025-11-13 17:22:40:   + Attack Payload Author (1 users)
+2025-11-13 17:22:40:   + Attack Simulation Administrator (1 users)
+2025-11-13 17:22:40:   + Security Operator (1 users)
+2025-11-13 17:22:40:   + Compliance Data Administrator (1 users)
+2025-11-13 17:22:40:   + Security Administrator (2 users)
+2025-11-13 17:22:40:   + Global Administrator (2 users)
+2025-11-13 17:22:40: 
+Empty roles:
+2025-11-13 17:22:40:   - Azure AD Joined Device Local Administrator
+2025-11-13 17:22:40:   - Directory Readers
+2025-11-13 17:22:40: 
+=== Directory Role Membership Summary ===
+2025-11-13 17:22:40: 
+Role Statistics:
+2025-11-13 17:22:40:   Total Roles Processed: 11
+2025-11-13 17:22:40:   Roles with Members: 9
+2025-11-13 17:22:40:   Roles without Members: 2
+2025-11-13 17:22:40:   Total User Assignments: 11
+2025-11-13 17:22:40: 
+Export Details:
+2025-11-13 17:22:40:   Output File: C:\scripts\Mext\Entra\Roles\20251113\20251113-AllRoles.csv
+2025-11-13 17:22:40:   Processing Time: 01:08
+2025-11-13 17:24:07: === Starting Conditional Access Policy Collection ===
+2025-11-13 17:24:15: [INFO] Processing policy: Microsoft-managed: Multifactor authentication for admins accessing Microsoft Admin Portals
+2025-11-13 17:24:15: [INFO] Processing policy: Microsoft-managed: Block legacy authentication
+2025-11-13 17:24:15: [INFO] Processing policy: Microsoft-managed: Block device code flow
+2025-11-13 17:24:15: [INFO] Processing policy: Require multifactor authentication for all users
+2025-11-13 17:24:15: 
+=== Conditional Access Policy Summary ===
+2025-11-13 17:24:15: 
+Policy Summary:
+2025-11-13 17:24:15:   Total Policies: 4
+2025-11-13 17:24:15:   Enabled Policies: 4
+2025-11-13 17:24:15:   Disabled Policies: 0
+2025-11-13 17:24:15:   Report Only: 0
+2025-11-13 17:24:15: 
+Export Details:
+2025-11-13 17:24:15:   Output File: C:\scripts\Mext\Entra\ConditionalAccessPolicies\20251113\20251113-ConditionalAccessPolicies.csv
+2025-11-13 17:24:15:   Processing Time: 00:08
+2025-11-13 17:24:15: === Starting OAuth Permissions Collection ===
+2025-11-13 17:24:15: [INFO] Retrieving all ServicePrincipal objects...
+2025-11-13 17:24:17: [INFO] Successfully retrieved 330 ServicePrincipal objects
+2025-11-13 17:24:17: [INFO] Caching all ServicePrincipal objects...
+2025-11-13 17:24:17: [INFO] Cached 100 of 330 service principals...
+2025-11-13 17:24:17: [INFO] Cached 200 of 330 service principals...
+2025-11-13 17:24:17: [INFO] Cached 300 of 330 service principals...
+2025-11-13 17:24:17: [INFO] All ServicePrincipal objects cached successfully
+2025-11-13 17:24:17: [INFO] Processing delegated permissions...
+2025-11-13 17:24:17: [INFO] Found 28 OAuth2PermissionGrants to process
+2025-11-13 17:24:18: [INFO] Processing delegated grant 25 of 28 - App: 'Clio Contacts - US'
+2025-11-13 17:24:18: [INFO] Delegated permissions processing completed - Found 177 delegated permissions from 28 grants
+2025-11-13 17:24:18: [INFO] Processing application permissions...
+2025-11-13 17:24:23: [INFO] Processing application permissions for app 25 of 330 - 'Common Data Service - Azure Data Lake Storage'
+2025-11-13 17:24:27: [INFO] Processing application permissions for app 50 of 330 - 'PTSS'
+2025-11-13 17:24:32: [INFO] Processing application permissions for app 75 of 330 - 'SecOps for Security Copilot'
+2025-11-13 17:24:36: [INFO] Processing application permissions for app 100 of 330 - 'Azure Purview'
+2025-11-13 17:24:41: [INFO] Processing application permissions for app 125 of 330 - 'Group Configuration Processor'
+2025-11-13 17:24:45: [INFO] Processing application permissions for app 150 of 330 - 'ComplianceAuthServer'
+2025-11-13 17:24:50: [INFO] Processing application permissions for app 175 of 330 - 'TelephoneNumberManagement'
+2025-11-13 17:24:55: [INFO] Processing application permissions for app 200 of 330 - 'Teams NRT DLP Ingestion Service'
+2025-11-13 17:24:59: [INFO] Processing application permissions for app 225 of 330 - 'Teams Admin Monitoring Alerting Platform'
+2025-11-13 17:25:04: [INFO] Processing application permissions for app 250 of 330 - 'AzureLockbox'
+2025-11-13 17:25:08: [INFO] Processing application permissions for app 275 of 330 - 'Microsoft Exact Data Match Service'
+2025-11-13 17:25:13: [INFO] Processing application permissions for app 300 of 330 - 'CompliancePolicy'
+2025-11-13 17:25:17: [INFO] Processing application permissions for app 325 of 330 - 'DWEngineV2'
+2025-11-13 17:25:18: [INFO] Application permissions processing completed - Found 0 application permissions
+2025-11-13 17:25:18: [INFO] Exporting results to CSV...
+2025-11-13 17:25:18: [INFO] Exporting service principals to CSV...
+2025-11-13 17:25:18: [INFO] Exporting App Registrations to CSV...
+2025-11-13 17:25:19: 
+=== OAuth Permissions Summary ===
+2025-11-13 17:25:19: 
+Processing Summary:
+2025-11-13 17:25:19:   Service Principals Processed: 330
+2025-11-13 17:25:19:   Delegated Grants Processed: 28
+2025-11-13 17:25:19: 
+Permissions Found:
+2025-11-13 17:25:19:   Total Permissions: 177
+2025-11-13 17:25:19:   Delegated Permissions: 177
+2025-11-13 17:25:19:   Application Permissions: 0
+2025-11-13 17:25:19: 
+Output Files:
+2025-11-13 17:25:19:   OAuth Permissions: C:\scripts\Mext\Entra\EntraID\20251113-OAuthPermissions\20251113-OAuthPermissions.csv
+2025-11-13 17:25:19:   Service Principals: C:\scripts\Mext\Entra\EntraID\20251113-ServicePrincipals\20251113-ServicePrincipals.csv
+2025-11-13 17:25:19:   App Registrations: C:\scripts\Mext\Entra\EntraID\20251113-AppRegistrations\20251113-AppRegistrations.csv
+2025-11-13 17:25:28: === Starting Security Alerts Collection ===
+2025-11-13 17:25:28: [INFO] Analyzing security alerts...
+2025-11-13 17:25:28: [INFO] Filtering alerts from 2025-11-06T00:00:00Z
+2025-11-13 17:25:46: 
+=== Security Alerts Analysis ===
+2025-11-13 17:25:46: 
+Alert Summary:
+2025-11-13 17:25:46:   Total Alerts: 0
+2025-11-13 17:25:46: 
+Severity Distribution:
+2025-11-13 17:25:46:   High: 0
+2025-11-13 17:25:46:   Medium: 0
+2025-11-13 17:25:46:   Low: 0
+2025-11-13 17:25:46:   Informational: 0
+2025-11-13 17:25:46: 
+Status Distribution:
+2025-11-13 17:25:46:   New: 0
+2025-11-13 17:25:46:   In Progress: 0
+2025-11-13 17:25:46:   Resolved: 0
+2025-11-13 17:25:46:   Dismissed: 0
+2025-11-13 17:25:46:   Unknown: 0
+2025-11-13 17:25:46: 
+Export Details:
+2025-11-13 17:25:46:   Output File: C:\scripts\Mext\Entra\SecurityAlerts\20251113\20251113-SecurityAlerts.csv
+2025-11-13 17:25:46:   Processing Time: 00:17
+2025-11-13 17:25:54: === Starting Sign-in Log Collection ===
+2025-11-13 17:25:54: Start Date: 2025-11-05T05:00:00Z
+2025-11-13 17:25:54: End Date: 2025-11-13T22:25:54Z
+2025-11-13 17:25:54: Output Format: JSON
+2025-11-13 17:25:54: ----------------------------------------
+
+2025-11-13 17:25:54: [INFO] Acquiring the interactiveUser & nonInteractiveUser sign-in logs
+2025-11-13 17:26:00: [INFO] Retrieved 1000 records between 11/13/2025 12:14:37 and 11/13/2025 21:37:37
+2025-11-13 17:27:01: [INFO] Retrieved 1000 records between 11/12/2025 16:50:13 and 11/13/2025 12:14:37
+2025-11-13 17:27:15: [INFO] Retrieved 1000 records between 11/11/2025 13:23:14 and 11/12/2025 16:50:04
+2025-11-13 17:28:02: [INFO] Retrieved 1000 records between 11/10/2025 14:50:31 and 11/11/2025 13:23:14
+2025-11-13 17:29:16: [INFO] Retrieved 1000 records between 11/07/2025 19:17:32 and 11/10/2025 14:50:08
+2025-11-13 17:29:30: [INFO] Retrieved 1000 records between 11/06/2025 22:59:25 and 11/07/2025 19:16:29
+2025-11-13 17:31:51: [INFO] Retrieved 1000 records between 11/06/2025 10:57:21 and 11/06/2025 22:59:17
+2025-11-13 17:32:01: [INFO] Retrieved 1000 records between 11/05/2025 13:59:38 and 11/06/2025 10:53:41
+2025-11-13 17:32:11: [INFO] Retrieved 228 records between 11/05/2025 05:03:19 and 11/05/2025 13:59:38
+2025-11-13 17:32:11: 
+Summary for interactiveUser & nonInteractiveUser:
+2025-11-13 17:32:11:   Records: 8228
+2025-11-13 17:32:11:   Files: 9
+
+2025-11-13 17:32:11: [INFO] Acquiring the servicePrincipal sign-in logs
+2025-11-13 17:37:11: [WARNING] Failed to acquire logs. Retrying... Attempt 1 of 3
+2025-11-13 17:42:26: [WARNING] Failed to acquire logs. Retrying... Attempt 2 of 3
+2025-11-13 17:47:41: [ERROR] Failed to acquire logs after 3 attempts. Error: The request was canceled due to the configured HttpClient.Timeout of 300 seconds elapsing.
+2025-11-13 17:47:41: [ERROR] An error occurred: The request was canceled due to the configured HttpClient.Timeout of 300 seconds elapsing.
+2025-11-13 17:48:16: === Starting Audit Log Collection ===
+2025-11-13 17:48:16: Start Date: 2025-11-05T05:00:00Z
+2025-11-13 17:48:16: End Date: 2025-11-13T22:48:16Z
+2025-11-13 17:48:16: Output Format: JSON
+2025-11-13 17:48:16: ----------------------------------------
+
+2025-11-13 17:48:17: [INFO] Retrieved 44 records between 2025-11-05T14:20Z and 2025-11-12T20:46Z
+2025-11-13 17:48:17: 
+=== Audit Log Collection Summary ===
+2025-11-13 17:48:17: 
+Collection Results:
+2025-11-13 17:48:17:   Total Records: 44
+2025-11-13 17:48:17:   Files Created: 1
+2025-11-13 17:48:17: 
+Export Details:
+2025-11-13 17:48:17:   Output File: C:\scripts\Mext\Entra\EntraID\20251113-AuditLogs\20251113-AuditLogs.csv
+2025-11-13 17:48:17:   Processing Time: 00:00
+2025-11-13 17:48:17: 
+Note: Output files saved to: C:\scripts\Mext\Entra\EntraID\20251113-AuditLogs
+2025-11-13 17:49:58: === Starting Groups Collection ===
+2025-11-13 17:49:58: [INFO] Fetching all groups...
+2025-11-13 17:49:59: [INFO] Found 9 groups
+2025-11-13 17:49:59: 
+=== Group Analysis Summary ===
+2025-11-13 17:49:59: 
+Group Summary:
+2025-11-13 17:49:59:   Total Groups: 9
+2025-11-13 17:49:59:   Security Enabled: 6
+2025-11-13 17:49:59:   Mail Enabled: 3
+2025-11-13 17:49:59:   On-Premises Synced: 0
+2025-11-13 17:49:59: 
+Export Details:
+2025-11-13 17:49:59:   Output File: C:\scripts\Mext\Groups\Groups\20251113\20251113-Groups.csv
+2025-11-13 17:49:59:   Processing Time: 00:00
+2025-11-13 17:49:59: === Starting Dynamic Groups Collection ===
+2025-11-13 17:49:59: [INFO] Fetching all groups from Microsoft Graph...
+2025-11-13 17:49:59: [INFO] Found 9 total groups
+2025-11-13 17:49:59: [INFO] Found 2 dynamic groups
+2025-11-13 17:49:59: 
+=== Dynamic Group Analysis Summary ===
+2025-11-13 17:49:59: 
+Dynamic Group Summary:
+2025-11-13 17:49:59:   Total Dynamic Groups: 2
+2025-11-13 17:49:59:   Security Enabled: 2
+2025-11-13 17:49:59:   Mail Enabled: 0
+2025-11-13 17:49:59: 
+Membership Rule Processing States:
+2025-11-13 17:49:59:   On: 2
+2025-11-13 17:49:59: 
+Export Details:
+2025-11-13 17:49:59:   Output File: C:\scripts\Mext\Groups\Groups\20251113\20251113-DynamicGroups.csv
+2025-11-13 17:49:59:   Processing Time: 00:00
+2025-11-13 17:49:59: === Starting Group Members Collection ===
+2025-11-13 17:49:59: [INFO] Fetching all groups...
+2025-11-13 17:49:59: [INFO] Found 9 groups
+2025-11-13 17:49:59: [INFO] Processing group: All Company
+2025-11-13 17:50:00: [INFO] Processing group: All Users
+2025-11-13 17:50:00: [INFO] Processing group: Firm
+2025-11-13 17:50:00: [INFO] Processing group: AutoPatchQualityUpdateGroup - Test
+2025-11-13 17:50:00: [INFO] Processing group: AutoPatchQualityUpdateGroup - Parent Group
+2025-11-13 17:50:00: [INFO] Processing group: AutoPatchGroup
+2025-11-13 17:50:01: [INFO] Processing group: AutoPatchQualityUpdateGroup - Last
+2025-11-13 17:50:01: [INFO] Processing group: AutoPatchQualityUpdateGroup - Ring1
+2025-11-13 17:50:01: [INFO] Processing group: Oliver Law, PLLC
+2025-11-13 17:50:01: 
+=== Group Members Summary ===
+2025-11-13 17:50:01: 
+Collection Results:
+2025-11-13 17:50:01:   Total Groups Processed: 9
+2025-11-13 17:50:01:   Total Members Found: 20
+2025-11-13 17:50:01: 
+Export Details:
+2025-11-13 17:50:01:   Output File: C:\scripts\Mext\Groups\Groups\20251113\20251113-GroupMembers.csv
+2025-11-13 17:50:01:   Processing Time: 00:01
+2025-11-13 17:50:14: === Starting License Collection ===
+2025-11-13 17:50:14: [INFO] License information saved to: C:\scripts\Mext\Licenses\Licenses\20251113\20251113-TenantLicenses.csv
+2025-11-13 17:50:14: 
+License Information:
+2025-11-13 17:50:14: === Starting License Compatibility Check ===
+2025-11-13 17:50:15: 
+License Status:
+2025-11-13 17:50:15: E5: Not Present
+2025-11-13 17:50:15: E3: Not Present
+2025-11-13 17:50:15: P2: Not Present
+2025-11-13 17:50:15: P1: Present
+2025-11-13 17:50:15: 
+Feature Compatibility:
+2025-11-13 17:50:15: Get-Sessions (E5): Not Available
+2025-11-13 17:50:15: Get-MessageIDs (E5): Not Available
+2025-11-13 17:50:15: Get-GraphEntraAuditLogs (E5): Not Available
+2025-11-13 17:50:15: Get-RiskyUsers (E5 or P2): Not Available
+2025-11-13 17:50:15: 
+Retention Information:
+2025-11-13 17:50:15: Audit Log retention: 30 days
+2025-11-13 17:50:15: Sign-in Log retention: 30 days
+2025-11-13 17:50:15: 
+Recommendations:
+2025-11-13 17:50:15: - Consider E5 license for full feature access and extended retention
+2025-11-13 17:50:15: - P2 license would enable risky users monitoring
+2025-11-13 17:50:15: === Starting Security Defaults Check ===
+2025-11-13 17:50:15: 
+Security Defaults Status:
+2025-11-13 17:50:15: Security Defaults: Disabled
+2025-11-13 17:50:16: 
+License Context:
+2025-11-13 17:50:16: Premium License(s) Detected:
+2025-11-13 17:50:16:   - P1
+2025-11-13 17:50:16: 
+Recommendations:
+2025-11-13 17:50:16: Current configuration aligns with Microsoft recommendations
+2025-11-13 17:50:16:   - Ensure Conditional Access policies are properly configured
+2025-11-13 17:50:16:   - Regular review of security policies is recommended
+2025-11-13 17:50:16: 
+Check Summary:
+2025-11-13 17:50:16: SecurityDefaultsEnabled    : No
+HasPremiumLicense          : Yes
+RecommendedState           : Disabled
+AlignedWithRecommendations : Yes
+CheckDate                  : 2025-11-13 17:50:16
+2025-11-13 17:50:16: 
+Output Files:
+2025-11-13 17:50:16: - Results exported to: C:\scripts\Mext\Licenses\Licenses\20251113\20251113-EntraSecurityDefaults.csv
+2025-11-13 17:50:16: === Starting User License Collection ===
+2025-11-13 17:50:17: 
+User License Summary:
+2025-11-13 17:50:17: Total Users: 5
+2025-11-13 17:50:17:   - Total License Assignments: 4
+2025-11-13 17:50:17:   - Licensed Users: 5
+2025-11-13 17:50:17:   - Unlicensed Users: 2
+2025-11-13 17:50:17: 
+License Type Distribution:
+2025-11-13 17:50:17:   - SPB: 3 assignments
+2025-11-13 17:50:17:   - FLOW_FREE: 1 assignments
+2025-11-13 17:50:17: 
+Exported File:
+2025-11-13 17:50:17:   - File: C:\scripts\Mext\Licenses\Licenses\20251113\20251113-UserLicenses.csv
+2025-11-13 17:50:50: === Starting Device Collection ===
+2025-11-13 17:50:50: [INFO] Collecting device information...
+2025-11-13 17:50:51: [INFO] Processing 6 devices...
+2025-11-13 17:50:51: 
+=== Device Analysis Summary ===
+2025-11-13 17:50:51: 
+Device Counts:
+2025-11-13 17:50:51:   Total Devices: 6
+2025-11-13 17:50:51:   Entra ID Joined: 3
+2025-11-13 17:50:51:   Workplace Joined: 3
+2025-11-13 17:50:51:   Hybrid Joined: 0
+2025-11-13 17:50:51: 
+Device Status:
+2025-11-13 17:50:51:   Compliant Devices: 3
+2025-11-13 17:50:51:   Managed Devices: 3
+2025-11-13 17:50:51:   Active (Last 30 Days): 5
+2025-11-13 17:50:51:   Inactive (>90 Days): 0
+2025-11-13 17:50:51: 
+Operating Systems:
+2025-11-13 17:50:51:   Windows: 3
+2025-11-13 17:50:51:   macOS: 0
+2025-11-13 17:50:51:   iOS: 3
+2025-11-13 17:50:51:   Android: 0
+2025-11-13 17:50:51:   Other: 0
+2025-11-13 17:50:51: 
+Export Details:
+2025-11-13 17:50:51:   Output File: C:\scripts\Mext\Devices\Device Information\20251113\20251113-Devices.csv
+2025-11-13 17:50:51:   Processing Time: 00:00
+2025-11-13 17:51:01: === Starting Mailbox Rules Collection ===
+2025-11-13 17:51:02: [INFO] Checking rules for: caitlyn@oliverlawfl.com
+2025-11-13 17:51:03: [INFO] Checking rules for: david@oliverlawfl.com
+2025-11-13 17:51:08: [INFO] Checking rules for: DiscoverySearchMailbox{D919BA05-46A6-415f-80AD-7E09334BB852}@oliverlawfl.onmicrosoft.com
+2025-11-13 17:51:10: [INFO] Checking rules for: dmarc@oliverlawfl.com
+2025-11-13 17:51:11: [INFO] Checking rules for: susan@oliverlawfl.com
+2025-11-13 17:51:12: 
+=== Mailbox Rules Summary ===
+2025-11-13 17:51:12: 
+User Statistics:
+2025-11-13 17:51:12:   Users Processed: 5
+2025-11-13 17:51:12:   Users with Rules: 1
+2025-11-13 17:51:12:   Total Rules Found: 29
+2025-11-13 17:51:12:   Enabled Rules: 29
+2025-11-13 17:51:12: 
+Rule Types:
+2025-11-13 17:51:12:   Stop Processing Rules: 25
+2025-11-13 17:51:12: 
+Export Details:
+2025-11-13 17:51:12:   Output File: C:\scripts\Mext\EOL\Rules\20251113\20251113-MailboxRules.csv
+2025-11-13 17:51:12:   Processing Time: 00:10
+2025-11-13 17:51:12: === Starting Transport Rules Collection ===
+2025-11-13 17:51:12: [INFO] No transport rules found
+2025-11-13 17:51:12: === Starting Mailbox Audit Status Collection ===
+2025-11-13 17:51:13: [INFO] Organization-wide auditing is enabled - This overrides individual mailbox settings
+2025-11-13 17:51:13: [INFO] Retrieving mailbox list...
+2025-11-13 17:51:16: [INFO] Found 5 mailboxes to process
+2025-11-13 17:51:16: [INFO] Retrieving audit bypass associations...
+2025-11-13 17:51:16: [INFO] Attempting bulk retrieval of audit bypass associations...
+2025-11-13 17:51:20:   [!] Organization-wide auditing overrides individual mailbox settings
+2025-11-13 17:51:20:   [!] Default actions are automatically logged for all non-bypassed mailboxes
+2025-11-13 17:51:20: 
+=== Mailbox Audit Status Summary ===
+2025-11-13 17:51:20: 
+Organization Configuration:
+2025-11-13 17:51:20:   Organization-wide Auditing: Enabled
+2025-11-13 17:51:20: 
+Mailbox Statistics:
+2025-11-13 17:51:20:   Total Mailboxes: 5
+2025-11-13 17:51:20:   Audit Enabled: 4
+2025-11-13 17:51:20:   Audit Disabled: 1
+2025-11-13 17:51:20:   Audit Bypass Enabled: 0
+2025-11-13 17:51:20: 
+Audit Actions Configured:
+2025-11-13 17:51:20:   Owner Actions: 5
+2025-11-13 17:51:20:   Delegate Actions: 5
+2025-11-13 17:51:20:   Admin Actions: 5
+2025-11-13 17:51:20: 
+Export Details:
+2025-11-13 17:51:20:   Output File: C:\scripts\Mext\EOL\Audit Status\20251113\20251113-MailboxAuditStatus.csv
+2025-11-13 17:51:20:   Processing Time: 00:08
+2025-11-13 17:51:20: === Starting Mailbox Permissions Collection ===
+2025-11-13 17:51:20: [INFO] Retrieving mailbox list...
+2025-11-13 17:51:21: [INFO] Found 5 mailboxes to process
+2025-11-13 17:51:37: 
+=== Mailbox Permissions Analysis Summary ===
+2025-11-13 17:51:37: 
+Processing Statistics:
+2025-11-13 17:51:37:   Total Mailboxes: 5
+2025-11-13 17:51:37:   Mailboxes Processed: 5
+2025-11-13 17:51:37:   Mailboxes with Permissions: 2
+2025-11-13 17:51:37: 
+Permission Counts:
+2025-11-13 17:51:37:   Full Access: 2
+2025-11-13 17:51:37:   Send As: 1
+2025-11-13 17:51:37:   Send on Behalf: 1
+2025-11-13 17:51:37:   Calendar: 0
+2025-11-13 17:51:37:   Inbox: 0
+2025-11-13 17:51:37: 
+Export Details:
+2025-11-13 17:51:37:   Output File: C:\scripts\Mext\EOL\Mailbox Permissions\20251113\20251113-MailboxPermissions.csv
+2025-11-13 17:51:37:   Processing Time: 00:17
+2025-11-13 17:54:12: === Starting Directory Activity Log Analysis ===
+2025-11-13 17:54:12: Start Date: 2025-11-06 22:54:11
+2025-11-13 17:54:12: End Date: 2025-11-13 22:54:12
+2025-11-13 17:54:12: ----------------------------------------
+
+2025-11-13 17:54:13: [INFO] Retrieving Directory Activity logs...
+2025-11-13 17:54:15: [INFO] Done all Directory Activity Logs are collected
+2025-11-13 17:55:33: == Starting the Admin Audit Log Collection (utilizing Get-UAL) ==
+2025-11-13 17:55:33: === Starting Unified Audit Log Collection ===
+2025-11-13 17:55:42: Start date: 2025-11-06 22:54:11
+2025-11-13 17:55:42: End date: 2025-11-13 22:55:42
+2025-11-13 17:55:42: Output format: CSV
+2025-11-13 17:55:42: Output Directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113
+2025-11-13 17:55:42: 
+The following RecordType(s) are configured to be extracted:
+2025-11-13 17:55:42:   - ExchangeAdmin
+2025-11-13 17:55:42: ----------------------------------------
+
+2025-11-13 17:55:42: === Processing RecordType: ExchangeAdmin ===
+2025-11-13 17:55:47: [INFO] The record 'ExchangeAdmin' contains 1778 events during the acquisition period
+2025-11-13 17:55:47: [INFO] Using interval of 10081.5285903083 minutes based on estimated 1778 records
+2025-11-13 17:55:49: [INFO] Found 1778 audit logs between 2025-11-06T22:54:11Z and 2025-11-13T22:55:42Z
+2025-11-13 17:56:34: [INFO] Retrieved 1778 records (Total: 1778 / 1778)
+2025-11-13 17:56:34: [INFO] Successfully retrieved 1778 records for the current time range. Moving on!
+2025-11-13 17:57:15: [INFO] No audit logs between 2025-11-13 22:55:42 and 2025-11-13 22:55:42. Moving on!
+2025-11-13 17:57:15: 
+=== Unified Audit Log Collection Summary ===
+2025-11-13 17:57:15: 
+Date Range:
+2025-11-13 17:57:15:   Start Date: 2025-11-06 22:54:11
+2025-11-13 17:57:15:   End Date: 2025-11-13 22:55:42
+2025-11-13 17:57:15: 
+Collection Statistics:
+2025-11-13 17:57:15:   Total Records: 1778
+2025-11-13 17:57:15:   Files Created: 1
+2025-11-13 17:57:15:   Interval Adjustments: 0
+2025-11-13 17:57:15: 
+Export Details:
+2025-11-13 17:57:15:   Output Directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113
+2025-11-13 17:57:15:   Processing Time: 00:01:42
+2025-11-13 17:57:15: == Starting the Mailbox Audit Log Collection (utilizing Get-UAL) ==
+2025-11-13 17:57:15: === Starting Unified Audit Log Collection ===
+2025-11-13 17:57:16: Start date: 2025-11-06 22:54:11
+2025-11-13 17:57:16: End date: 2025-11-13 22:57:16
+2025-11-13 17:57:16: Output format: CSV
+2025-11-13 17:57:16: Output Directory: C:\scripts\Mext\Audit\Mailbox Audit Log\20251113\UnifiedAuditLog\20251113
+2025-11-13 17:57:16: 
+The following RecordType(s) are configured to be extracted:
+2025-11-13 17:57:16:   - ExchangeItem
+2025-11-13 17:57:16: ----------------------------------------
+
+2025-11-13 17:57:16: === Processing RecordType: ExchangeItem ===
+2025-11-13 17:57:18: [INFO] The record 'ExchangeItem' contains 1292 events during the acquisition period
+2025-11-13 17:57:19: [INFO] Found 244 audit logs between 2025-11-06T22:54:11Z and 2025-11-07T22:54:11Z
+2025-11-13 17:57:27: [INFO] Retrieved 244 records (Total: 244 / 244)
+2025-11-13 17:57:27: [INFO] Successfully retrieved 244 records for the current time range. Moving on!
+2025-11-13 17:57:29: [INFO] Found 50 audit logs between 2025-11-07T22:54:11Z and 2025-11-08T22:54:11Z
+2025-11-13 17:57:32: [INFO] Retrieved 50 records (Total: 50 / 50)
+2025-11-13 17:57:32: [INFO] Successfully retrieved 50 records for the current time range. Moving on!
+2025-11-13 17:57:33: [INFO] Found 48 audit logs between 2025-11-08T22:54:11Z and 2025-11-09T22:54:11Z
+2025-11-13 17:57:36: [INFO] Retrieved 48 records (Total: 48 / 48)
+2025-11-13 17:57:36: [INFO] Successfully retrieved 48 records for the current time range. Moving on!
+2025-11-13 17:57:38: [INFO] Found 239 audit logs between 2025-11-09T22:54:11Z and 2025-11-10T22:54:11Z
+2025-11-13 17:57:46: [INFO] Retrieved 239 records (Total: 239 / 239)
+2025-11-13 17:57:46: [INFO] Successfully retrieved 239 records for the current time range. Moving on!
+2025-11-13 17:57:48: [INFO] Found 109 audit logs between 2025-11-10T22:54:11Z and 2025-11-11T22:54:11Z
+2025-11-13 17:57:53: [INFO] Retrieved 109 records (Total: 109 / 109)
+2025-11-13 17:57:53: [INFO] Successfully retrieved 109 records for the current time range. Moving on!
+2025-11-13 17:57:54: [INFO] Found 409 audit logs between 2025-11-11T22:54:11Z and 2025-11-12T22:54:11Z
+2025-11-13 17:58:08: [INFO] Retrieved 409 records (Total: 409 / 409)
+2025-11-13 17:58:08: [INFO] Successfully retrieved 409 records for the current time range. Moving on!
+2025-11-13 17:58:09: [INFO] Found 193 audit logs between 2025-11-12T22:54:11Z and 2025-11-13T22:54:11Z
+2025-11-13 17:58:16: [INFO] Retrieved 193 records (Total: 193 / 193)
+2025-11-13 17:58:16: [INFO] Successfully retrieved 193 records for the current time range. Moving on!
+2025-11-13 17:58:56: [INFO] No audit logs between 2025-11-13 22:54:11 and 2025-11-13 22:57:16. Moving on!
+2025-11-13 17:58:56: 
+=== Unified Audit Log Collection Summary ===
+2025-11-13 17:58:56: 
+Date Range:
+2025-11-13 17:58:56:   Start Date: 2025-11-06 22:54:11
+2025-11-13 17:58:56:   End Date: 2025-11-13 22:57:16
+2025-11-13 17:58:56: 
+Collection Statistics:
+2025-11-13 17:58:56:   Total Records: 1292
+2025-11-13 17:58:56:   Files Created: 7
+2025-11-13 17:58:56:   Interval Adjustments: 0
+2025-11-13 17:58:56: 
+Export Details:
+2025-11-13 17:58:56:   Output Directory: C:\scripts\Mext\Audit\Mailbox Audit Log\20251113\UnifiedAuditLog\20251113
+2025-11-13 17:58:56:   Processing Time: 00:01:40
+2025-11-13 17:58:56: === Starting Message Trace Log Collection ===
+2025-11-13 17:58:56: [INFO] No users provided. Getting the Message Trace Log for all users between 2025-11-06T22:54:11Z and 2025-11-13T22:58:56Z
+2025-11-13 17:59:05: [INFO] Found 1479 records between 11/06/2025 23:03:40 and 11/13/2025 22:42:05
+2025-11-13 17:59:05: 
+=== Message Trace Analysis Summary ===
+2025-11-13 17:59:05: 
+Collection Details:
+2025-11-13 17:59:05:   Analysis Period: 11/06/2025 17:54:11 to 11/13/2025 22:58:56
+2025-11-13 17:59:05:   Users Processed: All Users
+2025-11-13 17:59:05:   Output Directory: C:\scripts\Mext\Audit\MessageTrace\20251113
+2025-11-13 17:59:05: 
+Export Details:
+2025-11-13 17:59:05:   Output File: C:\scripts\Mext\Audit\MessageTrace\20251113\20251113-MessageTrace.csv
+2025-11-13 17:59:05:   Processing Time: 00:09
+2025-11-13 18:44:52: === Starting Unified Audit Log Collection ===
+2025-11-13 18:45:01: Start date: 2025-05-17 23:45:01
+2025-11-13 18:45:01: End date: 2025-11-13 23:45:01
+2025-11-13 18:45:01: Output format: CSV
+2025-11-13 18:45:01: Output Directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113
+2025-11-13 18:45:01: ----------------------------------------
+
+2025-11-13 18:45:05: [INFO] Total number of events during the acquisition period: 166481
+2025-11-13 18:45:05: [INFO] Using interval of 54000 minutes based on estimated 166481 records
+2025-11-13 18:45:45: [INFO] No audit logs between 2025-05-17 23:45:01 and 2025-06-24 11:45:01. Moving on!
+2025-11-13 18:47:45: === Starting Unified Audit Log Collection ===
+2025-11-13 18:47:48: Start date: 2025-11-06 22:54:11
+2025-11-13 18:47:48: End date: 2025-11-13 23:47:45
+2025-11-13 18:47:48: Output format: CSV
+2025-11-13 18:47:48: Output Directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113
+2025-11-13 18:47:48: ----------------------------------------
+
+2025-11-13 18:47:50: [INFO] Total number of events during the acquisition period: 11365
+2025-11-13 18:47:50: [INFO] Using interval of 10133.5666666667 minutes based on estimated 11365 records
+2025-11-13 18:47:52: [INFO] Found 11365 audit logs between 2025-11-06T22:54:11Z and 2025-11-13T23:47:45Z
+2025-11-13 18:50:58: [INFO] Retrieved 5000 records (Total: 5000 / 11365)
+2025-11-13 18:56:24: [INFO] Retrieved 1300 records (Total: 6300 / 11365)
+2025-11-13 18:56:24: [WARNING] Retrieved record count (6300) does not match the expected count (11365). Verifying the count...
+2025-11-13 18:56:29: [WARNING] Retrieved record count (6300) still does not match the verified count (11365). Retrying batch...
+2025-11-13 19:04:31: [INFO] Retrieved 4800 records (Total: 4800 / 11365)
+2025-11-13 19:04:31: [WARNING] Retrieved record count (4800) does not match the expected count (11365). Verifying the count...
+2025-11-13 19:04:35: [WARNING] Retrieved record count (4800) still does not match the verified count (11365). Retrying batch...
+2025-11-13 19:08:04: [INFO] Retrieved 5000 records (Total: 5000 / 11365)
+2025-11-13 19:09:54: [INFO] Retrieved 5000 records (Total: 10000 / 11365)
+2025-11-13 19:10:40: [INFO] Retrieved 1365 records (Total: 11365 / 11365)
+2025-11-13 19:10:41: [INFO] Successfully retrieved 11365 records for the current time range. Moving on!
+2025-11-13 19:10:41: [INFO] Merging all output files into one file
+2025-11-13 19:10:41: [INFO] Creating the following directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113\Merged
+2025-11-13 19:10:42: [INFO] CSV files merged into C:\scripts\Mext\Audit\UnifiedAuditLog\20251113\Merged\UAL-Combined.csv
+2025-11-13 19:10:42: 
+=== Unified Audit Log Collection Summary ===
+2025-11-13 19:10:42: 
+Date Range:
+2025-11-13 19:10:42:   Start Date: 2025-11-06 22:54:11
+2025-11-13 19:10:42:   End Date: 2025-11-13 23:47:45
+2025-11-13 19:10:42: 
+Collection Statistics:
+2025-11-13 19:10:42:   Total Records: 11365
+2025-11-13 19:10:42:   Files Created: 1
+2025-11-13 19:10:42:   Interval Adjustments: 0
+2025-11-13 19:10:42: 
+Export Details:
+2025-11-13 19:10:42:   Output Directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113
+2025-11-13 19:10:42:   Processing Time: 00:22:56
+2025-11-13 19:30:37: === Starting MFA Status Collection ===
+2025-11-13 19:30:37: [INFO] Identifying authentication methods...
+2025-11-13 19:30:37: [INFO] Processing all users...
+2025-11-13 19:30:38: [INFO] Found 5 users to process
+2025-11-13 19:30:41: [INFO] Retrieving user registration details...
+2025-11-13 19:30:41: 
+=== MFA Status Analysis Summary ===
+2025-11-13 19:30:41: 
+MFA Status:
+2025-11-13 19:30:41:   Total Users: 5
+2025-11-13 19:30:41:   MFA Enabled: 4 users (80%)
+2025-11-13 19:30:41:   MFA Disabled: 1 users (20%)
+2025-11-13 19:30:41: 
+Authentication Methods:
+2025-11-13 19:30:41:   Email: 1
+2025-11-13 19:30:41:   Fido2: 3
+2025-11-13 19:30:41:   Microsoft Authenticator App: 5
+2025-11-13 19:30:41:   Phone: 3
+2025-11-13 19:30:41:   Software OAuth: 0
+2025-11-13 19:30:41:   Hello Business: 3
+2025-11-13 19:30:41:   Temporary Access Pass: 0
+2025-11-13 19:30:41:   Certificate Based Auth: 0
+2025-11-13 19:30:41: 
+Output Files:
+2025-11-13 19:30:41:   Authentication Methods: C:\scripts\Mext\Entra\MFA\20251113\20251113-UserRegistrationDetails.csv
+2025-11-13 19:30:41:   Registration Details: C:\scripts\Mext\Entra\MFA\20251113\20251113-AuthenticationMethods.csv
+2025-11-13 19:30:41: === Starting Users Collection ===
+2025-11-13 19:30:45: [INFO] Found 5 users
+2025-11-13 19:30:45: 
+=== User Analysis Summary ===
+2025-11-13 19:30:45: 
+User Counts:
+2025-11-13 19:30:45:   Total Users: 5
+2025-11-13 19:30:45:   Enabled Users: 4
+2025-11-13 19:30:45:   Disabled Users: 1
+2025-11-13 19:30:45:   Synced from On-Premises: 0
+2025-11-13 19:30:45:   Guest Users: 0
+2025-11-13 19:30:45: 
+Recent Account Creation:
+2025-11-13 19:30:45:   Last 7 days: 0
+2025-11-13 19:30:45:   Last 30 days: 0
+2025-11-13 19:30:45:   Last 90 days: 0
+2025-11-13 19:30:45:   Last 6 months: 2
+2025-11-13 19:30:45:   Last 1 year: 2
+2025-11-13 19:30:45: 
+Export Details:
+2025-11-13 19:30:45:   Output File: C:\scripts\Mext\Entra\Users\20251113\20251113-Users.csv
+2025-11-13 19:30:45:   Processing Time: 00:04
+2025-11-13 19:30:45: === Starting Admin Users Collection ===
+2025-11-13 19:30:45: [INFO] Analyzing administrator roles...
+2025-11-13 19:30:53: 
+Roles with users:
+2025-11-13 19:30:53:   + Azure Information Protection Administrator (1 users)
+2025-11-13 19:30:53:   + Compliance Administrator (1 users)
+2025-11-13 19:30:53:   + Attack Simulation Administrator (1 users)
+2025-11-13 19:30:53:   + Compliance Data Administrator (1 users)
+2025-11-13 19:30:53:   + Security Administrator (2 users)
+2025-11-13 19:30:53:   + Global Administrator (2 users)
+2025-11-13 19:30:53: 
+Empty roles:
+2025-11-13 19:30:53:   - Azure AD Joined Device Local Administrator
+2025-11-13 19:30:53: 
+=== Admin Users Summary ===
+2025-11-13 19:30:53: 
+Role Summary:
+2025-11-13 19:30:53:   Total admin roles: 7
+2025-11-13 19:30:53:   Roles with users: 6
+2025-11-13 19:30:53:   Empty roles: 1
+2025-11-13 19:30:53:   Total administrators: 8
+2025-11-13 19:30:53:   Inactive administrators (30+ days): 0
+2025-11-13 19:30:53: 
+Export Details:
+2025-11-13 19:30:53:   Output File: C:\scripts\Mext\Entra\Admins\20251113\20251113-AdminUsers.csv
+2025-11-13 19:30:53:   Processing Time: 00:07
+2025-11-13 19:30:53: === Starting Directory Role Membership Export ===
+2025-11-13 19:30:53: [INFO] Retrieving directory roles and memberships...
+2025-11-13 19:30:53: [INFO] Found 11 directory roles
+2025-11-13 19:32:00: 
+Roles with users:
+2025-11-13 19:32:00:   + Azure Information Protection Administrator (1 users)
+2025-11-13 19:32:00:   + Compliance Administrator (1 users)
+2025-11-13 19:32:00:   + Customer LockBox Access Approver (1 users)
+2025-11-13 19:32:00:   + Attack Payload Author (1 users)
+2025-11-13 19:32:00:   + Attack Simulation Administrator (1 users)
+2025-11-13 19:32:00:   + Security Operator (1 users)
+2025-11-13 19:32:00:   + Compliance Data Administrator (1 users)
+2025-11-13 19:32:00:   + Security Administrator (2 users)
+2025-11-13 19:32:00:   + Global Administrator (2 users)
+2025-11-13 19:32:00: 
+Empty roles:
+2025-11-13 19:32:00:   - Azure AD Joined Device Local Administrator
+2025-11-13 19:32:00:   - Directory Readers
+2025-11-13 19:32:00: 
+=== Directory Role Membership Summary ===
+2025-11-13 19:32:00: 
+Role Statistics:
+2025-11-13 19:32:00:   Total Roles Processed: 11
+2025-11-13 19:32:00:   Roles with Members: 9
+2025-11-13 19:32:00:   Roles without Members: 2
+2025-11-13 19:32:01:   Total User Assignments: 11
+2025-11-13 19:32:01: 
+Export Details:
+2025-11-13 19:32:01:   Output File: C:\scripts\Mext\Entra\Roles\20251113\20251113-AllRoles.csv
+2025-11-13 19:32:01:   Processing Time: 01:07
+2025-11-13 19:32:01: === Starting Conditional Access Policy Collection ===
+2025-11-13 19:32:06: [INFO] Processing policy: Microsoft-managed: Multifactor authentication for admins accessing Microsoft Admin Portals
+2025-11-13 19:32:06: [INFO] Processing policy: Microsoft-managed: Block legacy authentication
+2025-11-13 19:32:06: [INFO] Processing policy: Microsoft-managed: Block device code flow
+2025-11-13 19:32:06: [INFO] Processing policy: Require multifactor authentication for all users
+2025-11-13 19:32:06: 
+=== Conditional Access Policy Summary ===
+2025-11-13 19:32:06: 
+Policy Summary:
+2025-11-13 19:32:06:   Total Policies: 4
+2025-11-13 19:32:06:   Enabled Policies: 4
+2025-11-13 19:32:06:   Disabled Policies: 0
+2025-11-13 19:32:06:   Report Only: 0
+2025-11-13 19:32:06: 
+Export Details:
+2025-11-13 19:32:06:   Output File: C:\scripts\Mext\Entra\ConditionalAccessPolicies\20251113\20251113-ConditionalAccessPolicies.csv
+2025-11-13 19:32:06:   Processing Time: 00:05
+2025-11-13 19:32:06: === Starting OAuth Permissions Collection ===
+2025-11-13 19:32:06: [INFO] Retrieving all ServicePrincipal objects...
+2025-11-13 19:32:12: [INFO] Successfully retrieved 330 ServicePrincipal objects
+2025-11-13 19:32:12: [INFO] Caching all ServicePrincipal objects...
+2025-11-13 19:32:12: [INFO] Cached 100 of 330 service principals...
+2025-11-13 19:32:12: [INFO] Cached 200 of 330 service principals...
+2025-11-13 19:32:12: [INFO] Cached 300 of 330 service principals...
+2025-11-13 19:32:12: [INFO] All ServicePrincipal objects cached successfully
+2025-11-13 19:32:12: [INFO] Processing delegated permissions...
+2025-11-13 19:32:12: [INFO] Found 28 OAuth2PermissionGrants to process
+2025-11-13 19:32:13: [INFO] Processing delegated grant 25 of 28 - App: 'Clio Contacts - US'
+2025-11-13 19:32:13: [INFO] Delegated permissions processing completed - Found 177 delegated permissions from 28 grants
+2025-11-13 19:32:13: [INFO] Processing application permissions...
+2025-11-13 19:32:17: [INFO] Processing application permissions for app 25 of 330 - 'Common Data Service - Azure Data Lake Storage'
+2025-11-13 19:32:21: [INFO] Processing application permissions for app 50 of 330 - 'PTSS'
+2025-11-13 19:32:25: [INFO] Processing application permissions for app 75 of 330 - 'SecOps for Security Copilot'
+2025-11-13 19:32:29: [INFO] Processing application permissions for app 100 of 330 - 'Azure Purview'
+2025-11-13 19:32:34: [INFO] Processing application permissions for app 125 of 330 - 'Group Configuration Processor'
+2025-11-13 19:32:38: [INFO] Processing application permissions for app 150 of 330 - 'ComplianceAuthServer'
+2025-11-13 19:32:42: [INFO] Processing application permissions for app 175 of 330 - 'TelephoneNumberManagement'
+2025-11-13 19:32:47: [INFO] Processing application permissions for app 200 of 330 - 'Teams NRT DLP Ingestion Service'
+2025-11-13 19:32:51: [INFO] Processing application permissions for app 225 of 330 - 'Teams Admin Monitoring Alerting Platform'
+2025-11-13 19:32:56: [INFO] Processing application permissions for app 250 of 330 - 'AzureLockbox'
+2025-11-13 19:33:00: [INFO] Processing application permissions for app 275 of 330 - 'Microsoft Exact Data Match Service'
+2025-11-13 19:33:04: [INFO] Processing application permissions for app 300 of 330 - 'CompliancePolicy'
+2025-11-13 19:33:09: [INFO] Processing application permissions for app 325 of 330 - 'DWEngineV2'
+2025-11-13 19:33:10: [INFO] Application permissions processing completed - Found 0 application permissions
+2025-11-13 19:33:10: [INFO] Exporting results to CSV...
+2025-11-13 19:33:10: [INFO] Exporting service principals to CSV...
+2025-11-13 19:33:10: [INFO] Exporting App Registrations to CSV...
+2025-11-13 19:33:10: 
+=== OAuth Permissions Summary ===
+2025-11-13 19:33:10: 
+Processing Summary:
+2025-11-13 19:33:10:   Service Principals Processed: 330
+2025-11-13 19:33:10:   Delegated Grants Processed: 28
+2025-11-13 19:33:10: 
+Permissions Found:
+2025-11-13 19:33:10:   Total Permissions: 177
+2025-11-13 19:33:10:   Delegated Permissions: 177
+2025-11-13 19:33:10:   Application Permissions: 0
+2025-11-13 19:33:10: 
+Output Files:
+2025-11-13 19:33:10:   OAuth Permissions: C:\scripts\Mext\Entra\EntraID\20251113-OAuthPermissions\20251113-OAuthPermissions.csv
+2025-11-13 19:33:10:   Service Principals: C:\scripts\Mext\Entra\EntraID\20251113-ServicePrincipals\20251113-ServicePrincipals.csv
+2025-11-13 19:33:10:   App Registrations: C:\scripts\Mext\Entra\EntraID\20251113-AppRegistrations\20251113-AppRegistrations.csv
+2025-11-13 19:33:10: === Starting Security Alerts Collection ===
+2025-11-13 19:33:10: [INFO] Analyzing security alerts...
+2025-11-13 19:33:10: [INFO] Filtering alerts from 2025-11-06T00:00:00Z
+2025-11-13 19:33:17: 
+=== Security Alerts Analysis ===
+2025-11-13 19:33:17: 
+Alert Summary:
+2025-11-13 19:33:17:   Total Alerts: 0
+2025-11-13 19:33:17: 
+Severity Distribution:
+2025-11-13 19:33:17:   High: 0
+2025-11-13 19:33:17:   Medium: 0
+2025-11-13 19:33:17:   Low: 0
+2025-11-13 19:33:17:   Informational: 0
+2025-11-13 19:33:17: 
+Status Distribution:
+2025-11-13 19:33:17:   New: 0
+2025-11-13 19:33:17:   In Progress: 0
+2025-11-13 19:33:17:   Resolved: 0
+2025-11-13 19:33:17:   Dismissed: 0
+2025-11-13 19:33:17:   Unknown: 0
+2025-11-13 19:33:17: 
+Export Details:
+2025-11-13 19:33:17:   Output File: C:\scripts\Mext\Entra\SecurityAlerts\20251113\20251113-SecurityAlerts.csv
+2025-11-13 19:33:17:   Processing Time: 00:07
+2025-11-13 19:33:17: === Starting Groups Collection ===
+2025-11-13 19:33:17: [INFO] Fetching all groups...
+2025-11-13 19:33:22: [INFO] Found 9 groups
+2025-11-13 19:33:22: 
+=== Group Analysis Summary ===
+2025-11-13 19:33:22: 
+Group Summary:
+2025-11-13 19:33:22:   Total Groups: 9
+2025-11-13 19:33:22:   Security Enabled: 6
+2025-11-13 19:33:22:   Mail Enabled: 3
+2025-11-13 19:33:22:   On-Premises Synced: 0
+2025-11-13 19:33:22: 
+Export Details:
+2025-11-13 19:33:22:   Output File: C:\scripts\Mext\Groups\Groups\20251113\20251113-Groups.csv
+2025-11-13 19:33:22:   Processing Time: 00:05
+2025-11-13 19:33:22: === Starting Dynamic Groups Collection ===
+2025-11-13 19:33:22: [INFO] Fetching all groups from Microsoft Graph...
+2025-11-13 19:33:22: [INFO] Found 9 total groups
+2025-11-13 19:33:22: [INFO] Found 2 dynamic groups
+2025-11-13 19:33:22: 
+=== Dynamic Group Analysis Summary ===
+2025-11-13 19:33:22: 
+Dynamic Group Summary:
+2025-11-13 19:33:22:   Total Dynamic Groups: 2
+2025-11-13 19:33:22:   Security Enabled: 2
+2025-11-13 19:33:22:   Mail Enabled: 0
+2025-11-13 19:33:22: 
+Membership Rule Processing States:
+2025-11-13 19:33:22:   On: 2
+2025-11-13 19:33:22: 
+Export Details:
+2025-11-13 19:33:22:   Output File: C:\scripts\Mext\Groups\Groups\20251113\20251113-DynamicGroups.csv
+2025-11-13 19:33:22:   Processing Time: 00:00
+2025-11-13 19:33:22: === Starting Group Members Collection ===
+2025-11-13 19:33:22: [INFO] Fetching all groups...
+2025-11-13 19:33:23: [INFO] Found 9 groups
+2025-11-13 19:33:23: [INFO] Processing group: All Company
+2025-11-13 19:33:23: [INFO] Processing group: All Users
+2025-11-13 19:33:23: [INFO] Processing group: Firm
+2025-11-13 19:33:23: [INFO] Processing group: AutoPatchQualityUpdateGroup - Test
+2025-11-13 19:33:23: [INFO] Processing group: AutoPatchQualityUpdateGroup - Parent Group
+2025-11-13 19:33:23: [INFO] Processing group: AutoPatchGroup
+2025-11-13 19:33:24: [INFO] Processing group: AutoPatchQualityUpdateGroup - Last
+2025-11-13 19:33:24: [INFO] Processing group: AutoPatchQualityUpdateGroup - Ring1
+2025-11-13 19:33:24: [INFO] Processing group: Oliver Law, PLLC
+2025-11-13 19:33:24: 
+=== Group Members Summary ===
+2025-11-13 19:33:24: 
+Collection Results:
+2025-11-13 19:33:24:   Total Groups Processed: 9
+2025-11-13 19:33:24:   Total Members Found: 20
+2025-11-13 19:33:24: 
+Export Details:
+2025-11-13 19:33:24:   Output File: C:\scripts\Mext\Groups\Groups\20251113\20251113-GroupMembers.csv
+2025-11-13 19:33:24:   Processing Time: 00:01
+2025-11-13 19:33:24: === Starting License Collection ===
+2025-11-13 19:33:24: [INFO] License information saved to: C:\scripts\Mext\Licenses\Licenses\20251113\20251113-TenantLicenses.csv
+2025-11-13 19:33:24: 
+License Information:
+2025-11-13 19:33:24: === Starting License Compatibility Check ===
+2025-11-13 19:33:24: 
+License Status:
+2025-11-13 19:33:24: E5: Not Present
+2025-11-13 19:33:24: E3: Not Present
+2025-11-13 19:33:25: P2: Not Present
+2025-11-13 19:33:25: P1: Present
+2025-11-13 19:33:25: 
+Feature Compatibility:
+2025-11-13 19:33:25: Get-Sessions (E5): Not Available
+2025-11-13 19:33:25: Get-MessageIDs (E5): Not Available
+2025-11-13 19:33:25: Get-GraphEntraAuditLogs (E5): Not Available
+2025-11-13 19:33:25: Get-RiskyUsers (E5 or P2): Not Available
+2025-11-13 19:33:25: 
+Retention Information:
+2025-11-13 19:33:25: Audit Log retention: 30 days
+2025-11-13 19:33:25: Sign-in Log retention: 30 days
+2025-11-13 19:33:25: 
+Recommendations:
+2025-11-13 19:33:25: - Consider E5 license for full feature access and extended retention
+2025-11-13 19:33:25: - P2 license would enable risky users monitoring
+2025-11-13 19:33:25: === Starting Security Defaults Check ===
+2025-11-13 19:33:25: 
+Security Defaults Status:
+2025-11-13 19:33:25: Security Defaults: Disabled
+2025-11-13 19:33:26: 
+License Context:
+2025-11-13 19:33:26: Premium License(s) Detected:
+2025-11-13 19:33:26:   - P1
+2025-11-13 19:33:26: 
+Recommendations:
+2025-11-13 19:33:26: Current configuration aligns with Microsoft recommendations
+2025-11-13 19:33:26:   - Ensure Conditional Access policies are properly configured
+2025-11-13 19:33:26:   - Regular review of security policies is recommended
+2025-11-13 19:33:26: 
+Check Summary:
+2025-11-13 19:33:26: SecurityDefaultsEnabled    : No
+HasPremiumLicense          : Yes
+RecommendedState           : Disabled
+AlignedWithRecommendations : Yes
+CheckDate                  : 2025-11-13 19:33:26
+2025-11-13 19:33:26: 
+Output Files:
+2025-11-13 19:33:26: - Results exported to: C:\scripts\Mext\Licenses\Licenses\20251113\20251113-EntraSecurityDefaults.csv
+2025-11-13 19:33:26: === Starting User License Collection ===
+2025-11-13 19:33:27: 
+User License Summary:
+2025-11-13 19:33:27: Total Users: 5
+2025-11-13 19:33:27:   - Total License Assignments: 4
+2025-11-13 19:33:27:   - Licensed Users: 5
+2025-11-13 19:33:27:   - Unlicensed Users: 2
+2025-11-13 19:33:27: 
+License Type Distribution:
+2025-11-13 19:33:27:   - SPB: 3 assignments
+2025-11-13 19:33:27:   - FLOW_FREE: 1 assignments
+2025-11-13 19:33:27: 
+Exported File:
+2025-11-13 19:33:27:   - File: C:\scripts\Mext\Licenses\Licenses\20251113\20251113-UserLicenses.csv
+2025-11-13 19:33:27: === Starting Device Collection ===
+2025-11-13 19:33:27: [INFO] Collecting device information...
+2025-11-13 19:33:27: [INFO] Processing 6 devices...
+2025-11-13 19:33:27: 
+=== Device Analysis Summary ===
+2025-11-13 19:33:27: 
+Device Counts:
+2025-11-13 19:33:27:   Total Devices: 6
+2025-11-13 19:33:27:   Entra ID Joined: 3
+2025-11-13 19:33:27:   Workplace Joined: 3
+2025-11-13 19:33:27:   Hybrid Joined: 0
+2025-11-13 19:33:27: 
+Device Status:
+2025-11-13 19:33:27:   Compliant Devices: 3
+2025-11-13 19:33:27:   Managed Devices: 3
+2025-11-13 19:33:27:   Active (Last 30 Days): 5
+2025-11-13 19:33:27:   Inactive (>90 Days): 0
+2025-11-13 19:33:27: 
+Operating Systems:
+2025-11-13 19:33:27:   Windows: 3
+2025-11-13 19:33:27:   macOS: 0
+2025-11-13 19:33:27:   iOS: 3
+2025-11-13 19:33:27:   Android: 0
+2025-11-13 19:33:27:   Other: 0
+2025-11-13 19:33:27: 
+Export Details:
+2025-11-13 19:33:27:   Output File: C:\scripts\Mext\Devices\Device Information\20251113\20251113-Devices.csv
+2025-11-13 19:33:27:   Processing Time: 00:00
+2025-11-13 19:33:27: === Starting Mailbox Rules Collection ===
+2025-11-13 19:33:29: [INFO] Checking rules for: caitlyn@oliverlawfl.com
+2025-11-13 19:33:29: [INFO] Checking rules for: david@oliverlawfl.com
+2025-11-13 19:33:35: [INFO] Checking rules for: DiscoverySearchMailbox{D919BA05-46A6-415f-80AD-7E09334BB852}@oliverlawfl.onmicrosoft.com
+2025-11-13 19:33:36: [INFO] Checking rules for: dmarc@oliverlawfl.com
+2025-11-13 19:33:37: [INFO] Checking rules for: susan@oliverlawfl.com
+2025-11-13 19:33:38: 
+=== Mailbox Rules Summary ===
+2025-11-13 19:33:38: 
+User Statistics:
+2025-11-13 19:33:38:   Users Processed: 5
+2025-11-13 19:33:38:   Users with Rules: 1
+2025-11-13 19:33:38:   Total Rules Found: 29
+2025-11-13 19:33:38:   Enabled Rules: 29
+2025-11-13 19:33:38: 
+Rule Types:
+2025-11-13 19:33:38:   Stop Processing Rules: 25
+2025-11-13 19:33:38: 
+Export Details:
+2025-11-13 19:33:38:   Output File: C:\scripts\Mext\EOL\Rules\20251113\20251113-MailboxRules.csv
+2025-11-13 19:33:38:   Processing Time: 00:10
+2025-11-13 19:33:38: === Starting Transport Rules Collection ===
+2025-11-13 19:33:38: [INFO] No transport rules found
+2025-11-13 19:33:38: === Starting Mailbox Audit Status Collection ===
+2025-11-13 19:33:39: [INFO] Organization-wide auditing is enabled - This overrides individual mailbox settings
+2025-11-13 19:33:39: [INFO] Retrieving mailbox list...
+2025-11-13 19:33:42: [INFO] Found 5 mailboxes to process
+2025-11-13 19:33:42: [INFO] Retrieving audit bypass associations...
+2025-11-13 19:33:42: [INFO] Attempting bulk retrieval of audit bypass associations...
+2025-11-13 19:33:45:   [!] Organization-wide auditing overrides individual mailbox settings
+2025-11-13 19:33:45:   [!] Default actions are automatically logged for all non-bypassed mailboxes
+2025-11-13 19:33:45: 
+=== Mailbox Audit Status Summary ===
+2025-11-13 19:33:45: 
+Organization Configuration:
+2025-11-13 19:33:45:   Organization-wide Auditing: Enabled
+2025-11-13 19:33:45: 
+Mailbox Statistics:
+2025-11-13 19:33:45:   Total Mailboxes: 5
+2025-11-13 19:33:45:   Audit Enabled: 4
+2025-11-13 19:33:45:   Audit Disabled: 1
+2025-11-13 19:33:45:   Audit Bypass Enabled: 0
+2025-11-13 19:33:45: 
+Audit Actions Configured:
+2025-11-13 19:33:45:   Owner Actions: 5
+2025-11-13 19:33:45:   Delegate Actions: 5
+2025-11-13 19:33:45:   Admin Actions: 5
+2025-11-13 19:33:45: 
+Export Details:
+2025-11-13 19:33:45:   Output File: C:\scripts\Mext\EOL\Audit Status\20251113\20251113-MailboxAuditStatus.csv
+2025-11-13 19:33:45:   Processing Time: 00:06
+2025-11-13 19:33:45: === Starting Mailbox Permissions Collection ===
+2025-11-13 19:33:45: [INFO] Retrieving mailbox list...
+2025-11-13 19:33:46: [INFO] Found 5 mailboxes to process
+2025-11-13 19:34:00: 
+=== Mailbox Permissions Analysis Summary ===
+2025-11-13 19:34:00: 
+Processing Statistics:
+2025-11-13 19:34:00:   Total Mailboxes: 5
+2025-11-13 19:34:00:   Mailboxes Processed: 5
+2025-11-13 19:34:00:   Mailboxes with Permissions: 2
+2025-11-13 19:34:00: 
+Permission Counts:
+2025-11-13 19:34:00:   Full Access: 2
+2025-11-13 19:34:00:   Send As: 1
+2025-11-13 19:34:00:   Send on Behalf: 1
+2025-11-13 19:34:00:   Calendar: 0
+2025-11-13 19:34:00:   Inbox: 0
+2025-11-13 19:34:00: 
+Export Details:
+2025-11-13 19:34:00:   Output File: C:\scripts\Mext\EOL\Mailbox Permissions\20251113\20251113-MailboxPermissions.csv
+2025-11-13 19:34:00:   Processing Time: 00:15
+2025-11-13 19:35:24: === Starting Unified Audit Log Collection ===
+2025-11-13 19:35:28: Start date: 2025-10-30 23:34:58
+2025-11-13 19:35:28: End date: 2025-11-14 00:35:24
+2025-11-13 19:35:28: Output format: CSV
+2025-11-13 19:35:28: Output Directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113
+2025-11-13 19:35:28: ----------------------------------------
+
+2025-11-13 19:35:31: [INFO] Total number of events during the acquisition period: 22292
+2025-11-13 19:35:31: [INFO] Using interval of 20220.4333333333 minutes based on estimated 22292 records
+2025-11-13 19:35:33: [INFO] Found 22292 audit logs between 2025-10-30T23:34:58Z and 2025-11-14T00:35:23Z
+2025-11-13 19:44:07: [INFO] Retrieved 4800 records (Total: 4800 / 22292)
+2025-11-13 19:44:07: [WARNING] Retrieved record count (4800) does not match the expected count (22292). Verifying the count...
+2025-11-13 19:44:11: [INFO] Adjusted expected count from 22292 to 22298 after revalidating the API response.
+2025-11-13 19:44:11: [WARNING] Retrieved record count (4800) still does not match the verified count (22298). Retrying batch...
+2025-11-13 19:47:58: [INFO] Retrieved 5000 records (Total: 5000 / 22298)
+2025-11-13 19:49:46: [INFO] Retrieved 5000 records (Total: 10000 / 22298)
+2025-11-13 19:55:18: [INFO] Retrieved 2000 records (Total: 12000 / 22298)
+2025-11-13 19:55:18: [WARNING] Retrieved record count (12000) does not match the expected count (22298). Verifying the count...
+2025-11-13 19:55:22: [WARNING] Retrieved record count (12000) still does not match the verified count (22298). Retrying batch...
+2025-11-13 19:58:52: [INFO] Retrieved 5000 records (Total: 5000 / 22298)
+2025-11-13 20:00:33: [INFO] Retrieved 5000 records (Total: 10000 / 22298)
+2025-11-13 20:02:17: [INFO] Retrieved 5000 records (Total: 15000 / 22298)
+2025-11-13 20:04:16: [INFO] Retrieved 5000 records (Total: 20000 / 22298)
+2025-11-13 20:05:17: [INFO] Retrieved 2298 records (Total: 22298 / 22298)
+2025-11-13 20:05:17: [INFO] Successfully retrieved 22298 records for the current time range. Moving on!
+2025-11-13 20:05:59: [INFO] No audit logs between 2025-11-14 00:35:23 and 2025-11-14 00:35:24. Moving on!
+2025-11-13 20:05:59: [INFO] Merging all output files into one file
+2025-11-13 20:05:59: [INFO] Creating the following directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113\Merged
+2025-11-13 20:06:00: [INFO] CSV files merged into C:\scripts\Mext\Audit\UnifiedAuditLog\20251113\Merged\UAL-Combined.csv
+2025-11-13 20:06:00: 
+=== Unified Audit Log Collection Summary ===
+2025-11-13 20:06:00: 
+Date Range:
+2025-11-13 20:06:00:   Start Date: 2025-10-30 23:34:58
+2025-11-13 20:06:00:   End Date: 2025-11-14 00:35:24
+2025-11-13 20:06:00: 
+Collection Statistics:
+2025-11-13 20:06:00:   Total Records: 22298
+2025-11-13 20:06:00:   Files Created: 1
+2025-11-13 20:06:00:   Interval Adjustments: 0
+2025-11-13 20:06:00: 
+Export Details:
+2025-11-13 20:06:00:   Output Directory: C:\scripts\Mext\Audit\UnifiedAuditLog\20251113
+2025-11-13 20:06:00:   Processing Time: 00:30:35

@@ -1,5 +1,6 @@
 ## https://learn.microsoft.com/en-us/microsoft-365/enterprise/connect-to-all-microsoft-365-services-in-a-single-windows-powershell-window?view=o365-worldwide
 ## https://microsoft-365-extractor-suite.readthedocs.io/en/latest/index.html
+## https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-schema#auditlogrecordtype
 
 <## INSTALL MODULES
 Install-Module -Name ExchangeOnlineManagement -RequiredVersion 3.9.0
@@ -9,15 +10,16 @@ Install-Module -Name Microsoft.Online.SharePoint.PowerShell -Force
 Install-Module -Name MicrosoftTeams -Force
 Install-Module -Name Microsoft-Extractor-Suite -Force
 Install-Module -Name ImportExcel -Force
-##>
 
-Import-Module -Name ExchangeOnlineManagement -RequiredVersion 3.9.0
-Import-Module -Name Microsoft.Graph -RequiredVersion 2.32.0
-Import-Module -Name Microsoft.Graph.Beta -RequiredVersion 2.32.0
+
+Import-Module -Name ExchangeOnlineManagement # -RequiredVersion 3.9.0
+Import-Module -Name Microsoft.Graph # -RequiredVersion 2.32.0
+Import-Module -Name Microsoft.Graph.Beta # -RequiredVersion 2.32.0
 Import-Module -Name Microsoft.Online.SharePoint.PowerShell -Force
 Import-Module -Name MicrosoftTeams -Force
 Import-Module -Name Microsoft-Extractor-Suite -Force
 Import-Module -Name ImportExcel -Force
+##>
 
 Connect-MgGraph -Scopes ("AuditLog.Read.All",
                         "AuditLogsQuery.Read.All",
@@ -37,9 +39,9 @@ Connect-ExchangeOnline
 Connect-AzAccount
 
 
-$OutputDir = 'C:\scripts\mext'
 
-# functions
+# function
+$OutputDir = 'C:\scripts\mext'
 function Reset-Folder {
     param (
         [string]$ParentPath = "C:\Scripts",
@@ -66,7 +68,6 @@ function Reset-Folder {
         }
     }
 }
-
 Reset-Folder
 
 ## ENTRA ##
@@ -78,8 +79,6 @@ Get-MFA -OutputDir $OutputDir
 Get-Users -OutputDir $OutputDir 
 Get-AdminUsers -OutputDir $OutputDir 
 Get-AllRoleActivity -OutputDir $OutputDir 
-Get-GraphEntraSignInLogs -OutputDir $OutputDir -startDate 2025-11-05 #json output of interactive and non-interactive logins
-Get-GraphEntraAuditLogs -OutputDir $OutputDir -startDate 2025-11-05 #json output of Entra audit logs
 Get-ConditionalAccessPolicies -OutputDir $OutputDir
 Get-OAuthPermissionsGraph -OutputDir $OutputDir
 Get-SecurityAlerts -OutputDir $OutputDir -DaysBack 7
@@ -122,18 +121,35 @@ Get-MailboxAuditStatus -OutputDir $OutputDir
 Get-MailboxPermissions -OutputDir $OutputDir
 #Get-Sessions -StartDate 2025-08-05 -EndDate 2025-08-06 -OutputDir $OutputDir # takes long time and limit is 5k
 
-$OutputDir = 'C:\scripts\Mext\Audit'
-if (-not (Test-Path $OutputDir)) {
-    New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
-}
+
 ## AUDIT ##
-Get-DirectoryActivityLogs -OutputDir $OutputDir -StartDate 2025-11-01
-Get-AdminAuditLog -OutputDir $OutputDir -StartDate 2025-11-01
-Get-MailboxAuditLog -OutputDir $OutputDir -StartDate 11/1/2025 -EndDate 11/12/2025
-Get-MessageTraceLog -OutputDir $OutputDir -StartDate 11/1/2025 -EndDate 11/12/2025
-Get-UALStatistics -OutputDir $OutputDir
-#Get-UALGraph -searchName test3 -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
-#Get-UALGraph -searchName ualAll -StartDate "2025-08-01" -EndDate "2025-08-02" -OutputDir $OutputDir
+$startDate = (Get-Date).AddDays(-14)
+$endDate = (Get-Date)
+$OutputDir = 'C:\scripts\Mext\Audit'
+
+if (!(Test-Path $OutputDir)) {New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null}
+
+## Unified Audit Log All Activities ##
+Get-UAL -OutputDir $OutputDir -StartDate $startDate -EndDate (Get-Date) -Output CSV -MergeOutput
+#Search-UnifiedAuditLog -StartDate (Get-Date).AddDays(-1) -EndDate $endDate -RecordType * | Export-Csv -Path "$OutputDir\ualtest.csv" -nti -Force 
+
+## UAL AAD Activities ##
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType AzureActiveDirectory | Export-Csv -Path "$OutputDir\aad.csv" -nti -Force 
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType AzureActiveDirectoryAccountLogon | Export-Csv -Path "$OutputDir\login.csv" -nti -Force 
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType AzureActiveDirectoryStsLogon | Export-Csv -Path "$OutputDir\sts.csv" -nti -Force 
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType AadRiskDetection | Export-Csv -Path "$OutputDir\Risky.csv" -nti -Force
+
+## UAL Storae Activities ##
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType OneDrive | Export-Csv -Path "$OutputDir\onedrive.csv" -nti -Force 
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType SharePoint | Export-Csv -Path "$OutputDir\spo.csv" -nti -Force 
+
+## UAL Exchange Activities ##
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType ExchangeAdmin | Export-Csv -Path "$OutputDir\exoadm.csv" -nti -Force 
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType ExchangeItem | Export-Csv -Path "$OutputDir\exoitem.csv" -nti -Force 
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType ExchangeItemAggregated | Export-Csv -Path "$OutputDir\exoagg.csv" -nti -Force 
+Search-UnifiedAuditLog -StartDate $startDate -EndDate $endDate -RecordType ExchangeAggregatedOperation | Export-Csv -Path "$OutputDir\exoaggop.csv" -nti -Force 
+Get-MessageTraceV2 -ResultSize 5000 -StartDate (Get-Date).AddDays(-10) -EndDate (Get-Date) | Export-Csv -Path "$OutputDir\mtrace.csv" -nti -Force
+
 
 Disconnect-AzAccount
 Disconnect-ExchangeOnline
