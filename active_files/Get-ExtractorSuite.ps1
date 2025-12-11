@@ -129,7 +129,7 @@ Get-AllRoleActivity -OutputDir $OutputDir
 Get-GraphEntraSignInLogs -OutputDir $OutputDir -startDate 2025-11-05 #json output of interactive and non-interactive logins
 Get-GraphEntraAuditLogs -OutputDir $OutputDir -startDate 2025-11-05 #json output of Entra audit logs
 Get-ConditionalAccessPolicies -OutputDir $OutputDir
-Get-OAuthPermissionsGraph -OutputDir $OutputDir
+# Get-OAuthPermissionsGraph -OutputDir $OutputDir
 # Get-SecurityAlerts -OutputDir $OutputDir -DaysBack 180 -- not working, think i need the compliance role
 
 $OutputDir = 'C:\scripts\Mext\Groups'
@@ -168,6 +168,7 @@ if (-not (Test-Path $OutputDir)) {
     New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
 }
 ## EXCHANGE ONLINE ##
+Connect-ExchangeOnline
 Get-MailboxRules -OutputDir $OutputDir 
 Get-TransportRules -OutputDir $OutputDir
 Get-MailboxAuditStatus -OutputDir $OutputDir
@@ -179,10 +180,10 @@ if (-not (Test-Path $OutputDir)) {
     New-Item -Path $OutputDir -ItemType Directory -Force | Out-Null
 }
 ## AUDIT ##
-Get-DirectoryActivityLogs -OutputDir $OutputDir -StartDate 2025-11-01
-Get-AdminAuditLog -OutputDir $OutputDir -StartDate 2025-11-01
-Get-MailboxAuditLog -OutputDir $OutputDir -StartDate 11/1/2025 -EndDate 11/12/2025
-Get-MessageTraceLog -OutputDir $OutputDir -StartDate 11/1/2025 -EndDate 11/12/2025
+Get-DirectoryActivityLogs -OutputDir $OutputDir -StartDate 2025-12-01
+Get-AdminAuditLog -OutputDir $OutputDir -StartDate 2025-12-01
+Get-MailboxAuditLog -OutputDir $OutputDir -StartDate 12/1/2025 -EndDate 12/10/2025
+Get-MessageTraceLog -OutputDir $OutputDir -StartDate 12/1/2025 -EndDate 12/10/2025
 Get-UALStatistics -OutputDir $OutputDir
 #Get-UALGraph -searchName test3 -startDate "2025-08-01" -endDate "2025-08-02" -OutputDir $OutputDir -Output CSV
 #Get-UALGraph -searchName ualAll -StartDate "2025-08-01" -EndDate "2025-08-02" -OutputDir $OutputDir
@@ -190,3 +191,7 @@ Get-UALStatistics -OutputDir $OutputDir
 Disconnect-AzAccount
 Disconnect-MgGraph
 Disconnect-ExchangeOnline -Confirm:$false
+
+
+
+
